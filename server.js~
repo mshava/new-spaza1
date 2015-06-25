@@ -1,0 +1,94 @@
+var express = require('express');
+var exphbs  = require('express-handlebars');
+
+var fs = require('fs');
+
+var Products = require('./nelisa_products');
+var products = new Products();
+
+var itemArr = products.productList('./Nelisa Sales History.csv');
+
+var group = products.groupItems(itemArr);
+
+
+var mostPop = products.mostPopularPdt(group);
+
+//console.log(mostPop);
+
+var leastPop = products.leastPopularPdt(group);
+
+//console.log(leastPop);
+
+var mostPopCat = products.mostPopularCat(group);
+
+//console.log(mostPopCat);
+
+var leastPopCat = products.leastPopularCat(group);
+
+//console.log(leastPopCat);
+
+var app = express ();
+  // create a route
+app.use(express.static('public'));
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
+
+
+app.get('/', function(req, res){
+	res.render("index");
+});
+
+app.get("/products", function (req, res) {
+	var productList = [];
+
+	for (key in itemMap){
+		productList.push({
+			name:key,
+			qty:itemMap[key]
+		});
+	}
+	res.render("products", {product :productList});
+});
+
+app.get("/popular", function (req, res) {
+
+	res.render("popular_products", 
+		{product: mostPop
+	});
+
+});
+		
+app.get("/least", function (req, res) {
+	
+	res.render("least_products", {product : leastPop});
+});
+
+app.get("./popular_category", function (req , res) {
+
+	res.render("most_popular_category", {product : mostPopCat});
+
+});
+
+app.get("./least_category", function (req, res) {
+
+	res.render("least_popular_category", {product : leastPopCat});
+
+});
+
+
+
+app.get('/persona', function(req, res){
+	res.render("persona");
+});
+	
+app.get('/site_help', function(req, res){
+	res.render("site_help");
+});
+
+var port = process.env.PORT || 8080;
+
+var server = app.listen(port,function(){
+	var host = server.address().address;
+	var port =server.address().port;
+	console.log('Example app listening at http://%s:%s',host,port);
+});
