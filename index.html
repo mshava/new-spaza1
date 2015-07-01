@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +13,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <style>
 body {
-background-image: url("NELI's.jpg");
+background-image: url("/store1.jpg");
 background-size: 100%;
 padding: 10em;
 margin-right: 5px 2px;
@@ -22,19 +21,20 @@ margin-right: 5px 2px;
 #container{
 opacity: 0.70;
 width: 1090px;
-height: 390px;
+height: 370px;
 padding-left: 30px;
-border-radius: 70px 0px 70px 0px;
-border-bottom-width: 3px;
-border-bottom-color: blue;
-border-bottom-style: solid;
+border-radius: 57px 0px 57px 0px;
+border-width: 3px;
+border-color: blue;
+border-list-style: solid;
 background: -webkit-linear-gradient(#44aacc,lightblue);
 }
 p{
 font-size: 23px;
 text-align: center;
 margin-top: 5px;
-font-family: sans-serif, ;
+font-family: sans-serif;
+font-color:red;
 }
 h1{
 text-align: center;
@@ -44,73 +44,84 @@ padding-top: 5px;
 .list{
 margin-right: 20px;
 border-radius: 2px;
-border-bottom-width: 3px;
-border-bottom-color: gray;
-border-bottom-style: solid;
+border-width: 3px;
+border-color: gray;
+border-list-style: solid;
 background: -mozkit-linear-gradien(#dddddd,green);
 }
 .products{
 margin-right: 20px;
 border-radius: 2px;
-border-bottom-width: 3px;
-border-bottom-color: pink;
-border-bottom-style: solid;
+border-width: 3px;
+border-color: pink;
+border-list-style: solid;
 background-color: lightcoral;
 }
 .populars{
 margin-right: 20px;
 border-radius: 2px;
-border-bottom-width: 3px;
-border-bottom-color: pink;
-border-bottom-style: solid;
+border-width: 3px;
+border-color: pink;
+border-list-style: solid;
 background-color: lightcoral;
 }
 .Category{
 margin-right: 20px;
 border-radius: 2px;
-border-bottom-width: 3px;
-border-bottom-color: pink;
-border-bottom-style: solid;
+border-width: 3px;
+border-color: pink;
+border-list-style: solid;
 background-color: lightcoral;
 }
 .Popular{
 border-radius: 2px;
-border-bottom-width: 3px;
-border-bottom-color: pink;
-border-bottom-style: solid;
+border-width: 3px;
+border-color: pink;
+border-list-style: solid;
 margin-right: 20px;
 background-color: lightcoral;
 }
 .category1{
 margin-right: 20px;
 border-radius: 2px 0px 40px 2px;
-border-bottom-width: 3px;
-border-bottom-color: pink;
-border-bottom-style: solid;
+border-width: 3px;
+border-color: pink;
+border-list-style: solid;
 background-color: lightcoral;
 }
 </style>
 </head>
 <body>
 <div id="container">
+
 <h1><strong>Nelisa's App</strong></h1>
-<p>Link to Nelisa spaza shop, via internet.</p>
-<p><button type="button" class="btn btn-sm Sales history"><strong>Sales history</strong></button></p>
-<p><button type="button" class="btn btn-lg Sales purchases">Sales purchases</button></p>
+
 </div>
-</div>
-<!-- Standard button -->
-<button type="button" class="btn btn-Product list">Product list</button>
-<a class="btn btn-default" href="/popular_products" role="button">Product list</a>
-<!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-<button type="button" class="btn btn-Most popular products">Most popular product</button>
-<!-- Indicates a successful or positive action -->
-<button type="button" class="btn btn-Least populars product">Least popular product</button>
-<!-- Contextual button for informational alert messages -->
-<button type="button" class="btn btn-Product Category">Product category</button>
-<!-- Indicates caution should be taken with this action -->
-<button type="button" class="btn btn-Most Popular category">Most popular category</button>
-<!-- Indicates a dangerous or potentially negative action -->
-<button type="button" class="btn btn-leasts popular category1">Least popular category</button>
+
+<a href="javascript:;" data-toggle="collapse" data-target="#demo"><li>
+<a href="/products">Product List</a>
+
+</li>
+<li><a href="/popularPdt"><button>Most Popular Product</button></a></li> 
+
+<li><a href="/leastPdt"><button>Least Popular Product</button></a></li> 
+
+<li><a href="/cat"><button>Categories</button></a></li>
+
+<li><a href="/mostPopCat"><button>Most Popular Category</button></a></li>
+
+<li><a href="/leastPopCat"><button>Least Popular Category</button></a></li>
+
+<li><a href="/earningsPerPdt"><button>Product Earnings</button></a></li> 
+
+<li><a href="/mostProfPtd"><button>Most Profitable Product</button></a></li> 
+
+<li><a href="/LeastProfPdt"><button>Least Profitable Product</button></a></li>
+
+ <i class="fa fa-fw fa-caret-down"></i></a>
+<ul id="demo" class="collapse">
+
+
+
 </body>
 </html>
