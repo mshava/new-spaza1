@@ -1,5 +1,0 @@
-import csv
-
-f = open("new_csv.py")
-
-csv_f = csv.reader(f)
