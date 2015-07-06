@@ -1,11 +1,17 @@
-	<div id="container"><h2>Least Popular Products</h2>
+	<div id="container"><h2>Least Popular Product</h2>
 
 	
 	<ul class="people_list">
 
-			{{product.name}} - {{product.amt}}
+		{{#each products}}
+		
+		<li>{{this.name}} - {{this.totalqty}}</li>
 	
+		{{/each}}	
 
+
+		<img scr="../12-630x370 (1).jpg"/>
+		<a href="./index.html">Back to Homepage</a>
 	
 	</ul>
 	</div>

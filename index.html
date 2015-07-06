@@ -13,8 +13,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <style>
 body {
-background-image: url("/store1.jpg");
-background-size: 100%;
+background-image: url("./store1.jpg");
+background-size: cover;
 padding: 10em;
 margin-right: 5px 2px;
 }
@@ -40,6 +40,13 @@ h1{
 text-align: center;
 font-family: cursive, Arial, Verdana;
 padding-top: 5px;
+color:#7A005C;
+}
+h2 {
+text-align: center;
+font-family: cursive, Arial, Verdana;
+padding-top: 5px;
+color:#7A005C;
 }
 .list{
 margin-right: 20px;
@@ -90,38 +97,34 @@ border-list-style: solid;
 background-color: lightcoral;
 }
 </style>
+
 </head>
 <body>
-<div id="container">
-
-<h1><strong>Nelisa's App</strong></h1>
-
+<link rel="icon" type="./header.png" href="header.png" />
+<a href="javascript:;" data-toggle="collapse" data-target="#demo">
+<div class="col-md-3">
+<div class="btn-group-vertical" role="group" aria-label="...">
+<a href="/products" class = "btn btn-lg btn-success">Product List</a>
+<br>
+<a href="/popular_products" class ="btn btn-lg btn-success">Most Popular Product</a>
+<br>
+<a href="least_products" class ="btn btn-lg btn-success">Least Popular Product</a>
+<br>
+<a href="least_popular_catergory" class ="btn btn-lg btn-success" >Categories</a>
+<br>
+<a href="least_popular_catergory" class ="btn btn-lg btn-success" >Most Popular Categories</a>
+<br>
+<a href="least_popular_catergory" class ="btn btn-lg btn-success" >Least Popular Categories</a>
+<br>
+<a href="/earningPerPdt" class ="btn btn-lg btn-success" >Product Earnings</a>
+<br>
+<a href="/mostProfPdt" class ="btn btn-lg btn-success" >Most Profitable Product</a>
+<br>
+<a href="/least_popular_catergory" class ="btn btn-lg btn-success" >Least Profitable Product</a>
 </div>
-
-<a href="javascript:;" data-toggle="collapse" data-target="#demo"><li>
-<a href="/products">Product List</a>
-
-</li>
-<li><a href="/popularPdt"><button>Most Popular Product</button></a></li> 
-
-<li><a href="/leastPdt"><button>Least Popular Product</button></a></li> 
-
-<li><a href="/cat"><button>Categories</button></a></li>
-
-<li><a href="/mostPopCat"><button>Most Popular Category</button></a></li>
-
-<li><a href="/leastPopCat"><button>Least Popular Category</button></a></li>
-
-<li><a href="/earningsPerPdt"><button>Product Earnings</button></a></li> 
-
-<li><a href="/mostProfPtd"><button>Most Profitable Product</button></a></li> 
-
-<li><a href="/LeastProfPdt"><button>Least Profitable Product</button></a></li>
-
- <i class="fa fa-fw fa-caret-down"></i></a>
+</div>
+<i class="fa fa-fw fa-caret-down"></i></a>
 <ul id="demo" class="collapse">
-
-
 
 </body>
 </html>

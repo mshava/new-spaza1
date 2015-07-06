@@ -1,13 +1,14 @@
-	<div id="container"><h2>Most Popular Products</h2>
+	<div id="container"><strong><h2>Most Popular Product</h2></strong>
 
 
 	<ul class="people_list">
 
-		{{#each product}}
+		{{#each products}}
 		
-		{{name}} - {{qty}}
-		
-		{{/each}}
+		<li>{{this.name}} - {{this.totalqty}}</li>
+	
+		{{/each}}	
+
 
 		<img scr="../12-630x370 (1).jpg"/>
 		<a href="./index.html">Back to Homepage</a>

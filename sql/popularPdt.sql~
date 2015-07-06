@@ -7,7 +7,7 @@ LIMIT 0 , 1
 
 */
 
-SELECT SUM(no_sold) as totalqty, name
+SELECT SUM(no_sold) as totalqty, prod_id, name
 FROM sales s
 INNER JOIN products p
 ON s.prod_id = p.id

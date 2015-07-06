@@ -1,48 +1,49 @@
 	exports.showProductList = function(req, res, next) {
-		
+
 		req.getConnection(function(err, connection) {
 				
-				if (err)
-
+			if (err)
 				return next (err);
 	
-	connection.query('SELECT * FROM `products`')
+			connection.query('SELECT * FROM products',[],function (err, results) {
+				if (err){
+					console.log(err);
+					return (err);
+				}
+				
+				console.log(results.length);
 
-	, function (err, results) {
-		
-		if (err)  return (err);
 
-	res.render('products', {
-		
-		products : results
-
-					});	 
-				};
+				res.render('products', {
+					products : results
+				});	 
 			});
-		};
+
+		})
+	};
 
 
 	exports.showpopularPdt = function(req, res, next) {
 
 		req.getConnection(function(err, connection) {
 
-				if (err)
-
+			if (err)
 				return next (err);
 	
-	connection.query('SELECT item , SUM(qty) as qty FROM purchases GROUP BY item ORDER BY qty ASC LIMIT 0, 1')				
+	connection.query('SELECT SUM(no_sold) as totalqty, name FROM sales s INNER JOIN products p ON s.prod_id = p.id GROUP BY name ORDER BY SUM(no_sold) DESC LIMIT 0, 1' ,[],function (err, results) {
 
-	,function (err, results) {
+		if (err){ 
+			console.log(err);
+			return (err);
+		}
 
-		if (err) return (err);
-
-	res.render('popular_products', {
-
-		products : results
+			res.render('popular_products', {
+				products : results
 
 					});	
-				}; 
-			});
+				}); 
+			
+			})
 		};
 
 	exports.showleastPdt = function(req, res, next) {
@@ -53,22 +54,26 @@
 
 				return next (err);
 				
-	connection.query('SELECT 	item , SUM(qty) as qty FROM purchases GROUP BY item ORDER BY qty ASC LIMIT 0, 1')			
+	connection.query('SELECT SUM(no_sold) as totalqty, name FROM sales s INNER JOIN products p ON s.prod_id = p.id GROUP BY name ORDER BY SUM(no_sold) ASC LIMIT 0, 1' ,[],function (err, results) {
+
+		if (err){
+		console.log(err); 
+			return (err);
+		}	
 	
-	,function (err, results) {
+		console.log("....." + results.length);
 
-		if (err) return (err);
-
-	res.render('products', {
-
-		products : results
+		res.render('least_products', {
+			products : results
 
 					});	
-				};	
-			});
+				});	
+			
+			})
 		};	
 
-	exports.showCategories = function(req, res, next) {
+	
+exports.showcategories = function(req, res, next) {
 
 		req.getConnection(function(err, connection) {
 
@@ -76,17 +81,67 @@
 
 				return next (err);
 				
-	connection.query('SELECT * FROM `stock_purchases_csv` LIMIT 0 , 1')			
-	
-	,function (err, results) {
+	connection.query('SELECT * FROM `categories`',[] ,function (err, results) {
 
-		if (err) return (err);
+		if (err){ 
+		console.log("....." + results.length);	
+			return (err);
+		}	
 
 	res.render('categories', {
 
-		categories : results
+		products : results
 
 					});	
-				};	
-			});
+				});	
+			
+			})
 		};		
+
+
+exports.showmostPopCat = function(req, res, next) {
+
+	req.getConnection(function(err, connection) {
+
+		if (err)
+
+		return next (err);
+	connection.query('SELECT  categories.name, sum(sales.no_sold) as totalqty FROM sales INNER JOIN products ON sales.prod_id = products.id INNER JOIN categories ON products.cat_id = categories.id GROUP BY categories.name ORDER BY totalqty DESC LIMIT 0,1; ',[],function (err, results) {
+
+		if (err){
+		//console.log("...." + results.length);
+			return (err);	
+		}
+	res.render('popular_category', {
+
+	    products : results
+	
+					});	
+				});		
+			
+			})
+		};	
+
+
+exports.showleastPopCat = function(req, res, next) {
+
+	req.getConnection(function(err, connection) {
+
+		if (err)
+
+		return next (err);
+	connection.query('SELECT  categories.name, sum(sales.no_sold) as totalqty FROM sales INNER JOIN products ON sales.prod_id = products.id INNER JOIN categories ON products.cat_id = categories.id GROUP BY categories.name ORDER BY totalqty ASC LIMIT 0,1; ',[],function (err, results) {
+
+		if (err){
+		//console.log("...." + results.length);
+			return (err);	
+		}
+	res.render('least_category', {
+
+	    products : results
+	
+					});	
+				});		
+			
+			})
+		};					
