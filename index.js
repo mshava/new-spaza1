@@ -12,6 +12,7 @@ var express = require("express"),
 
         products = require("./routes/spaza");
         categories = require("./routes/spaza");
+        sales = require("./routes/spaza");
 
 var app = express();
 
@@ -47,16 +48,29 @@ app.get("/products", products.showProductList);
 //app.get("/products/edit/:id", products.get);
 //app.post("/products/update/:id", products.update);
 //app.post("/products/add/:id", products.add);
-
 //app.get("/products/delete/:id", products.delete);
-
-//app.get("/products", spaza.showProductList);
 
 app.get("/popular_products", spaza.showpopularPdt);
 app.get("/least_products", spaza.showleastPdt);
+//app.get("/products/edit/:id", products.get);
+//app.post("/products/update/:id", products.update);
+//app.post("/products/add/:id", products.add);
+//app.get("/products/delete/:id", products.delete);
+
 app.get("/categories", spaza.showcategories);
 app.get("/popular_category",spaza.showmostPopCat);
 app.get("/least_category",spaza.showleastPopCat);
+//app.get("/products/edit/:id", products.get);
+//app.post("/products/update/:id", products.update);
+//app.post("/products/add/:id", products.add);
+//app.get("/products/delete/:id", products.delete);
+
+app.get("/product_earnings",spaza.showearningsPerPdt);
+//app.get("/products/edit/:id", products.get);
+//app.post("/products/update/:id", products.update);
+//app.post("/products/add/:id", products.add);
+//app.get("/products/delete/:id", products.delete);
+
 //app.get();
 
 

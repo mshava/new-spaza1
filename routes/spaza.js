@@ -144,4 +144,54 @@ exports.showleastPopCat = function(req, res, next) {
 				});		
 			
 			})
-		};					
+		};
+
+exports.showearningsPerPdt = function(req, res, next) {
+
+	req.getConnection(function(err, connection) {
+
+		if (err)
+
+		return next (err);
+
+	var query = "SELECT products.name, sum(sales.sales_price * sales.no_sold) as earningsPerProduct FROM sales INNER JOIN products ON sales.prod_id = products.id GROUP BY products.name ORDER BY sum(sales.sales_price) DESC;";
+	connection.query(query ,[],function (err, results) {
+
+		if (err){
+
+			return (err); 
+		}
+	res.render('product_earnings', {
+
+		products : results
+	
+					});	
+				});		
+			
+			})
+		};
+
+exports.showmostProfPdt = function(req, res, next) {
+
+	req.getConnection(function(err, connection) {
+
+		if (err)
+
+		return next (err);
+		
+		var query = "SELECT products.name, sum(sales.sales_price * sales.no_sold) as earningsPerProduct FROM sales INNER JOIN products ON sales.prod_id = products.id GROUP BY products.name ORDER BY earningsPerProduct DESC LIMIT 0,1;";
+	connection.query(query,[],function (err, results)	{
+
+		if (err) {
+
+			return (err);
+		}
+	res.render('profitable_product',{
+
+		products : results
+
+					});	
+				});	
+			
+			})
+		};									
