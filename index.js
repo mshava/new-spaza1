@@ -14,6 +14,7 @@ var express = require("express"),
         categories = require("./routes/spaza");
         sales = require("./routes/spaza");
 
+
 var app = express();
 
 var dbOptions = {
@@ -66,6 +67,7 @@ app.get("/least_category",spaza.showleastPopCat);
 //app.get("/products/delete/:id", products.delete);
 
 app.get("/product_earnings",spaza.showearningsPerPdt);
+app.get("/profitable_product",spaza.showmostProfPdt);
 //app.get("/products/edit/:id", products.get);
 //app.post("/products/update/:id", products.update);
 //app.post("/products/add/:id", products.add);
@@ -74,7 +76,7 @@ app.get("/product_earnings",spaza.showearningsPerPdt);
 //app.get();
 
 
-app.listen(3000, function () {
+app.listen(8080, function () {
     console.log("express-handlebars example server listerning on: 3000");
 });
 
