@@ -20,7 +20,7 @@ var app = express();
 var dbOptions = {
         host : "localhost",
         user : "root",
-        password : "2197832",
+        password : "amila",
         port : 3306,
         database : "sakonwaba"
 };
