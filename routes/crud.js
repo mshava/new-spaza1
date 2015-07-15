@@ -2,14 +2,19 @@ exports.show = function(req, res, next) {
 	req.getConnection(function(err, connection) {
 		if (err)
 			return next (err);
-	connection.query('SELECT * FROM products',[],function(err, results) {
+	connection.query('SELECT * FROM products',[],function(err, results, fields) {
 		if (err)
 			return next (err);
-	res.render('home',{
+	connection.query('SELECT * FROM categories',[],function(err, results, fields) {
+		if (err)
+			return next (err);	
+	res.render('products',{
 		products : results
-			});	
+		//categories : cat
+				});	
+		});	
+			});
 	});	
-		});
 };
 
 exports.add = function(req, res, next) {
@@ -36,7 +41,7 @@ exports.get = function(req, res, next) {
 	req.getConnection(function(err, connection) {
 		if (err)
 			return next (err);
-	connection.query('SELECT * FROM products WHERE id = ?',[id];function(err, rows) {
+	connection.query('SELECT * FROM products WHERE id = ?',[id],function(err, rows) {
 		if (err)
 			console.log('Error inserting : %$',err);
 
@@ -58,4 +63,17 @@ exports.update = function(req, res, next) {
 				
 				});	
 			});
-		};	
+		};
+
+exports.delete = function(req, res, next) {
+	var id = req.params.id;
+	req.getConnection(function(err, connection) {
+	connection.query('DELETE FROM products WHERE id = ?',[id],function(err, rows) {
+			if (err) {
+				console.log("Error selecting : %$ ", err);
+			}
+			res.redirect('/products');
+				
+				});	
+			});
+		};			

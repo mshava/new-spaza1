@@ -1,10 +1,16 @@
+	<div id="container">
+    <ul class="people_list">
+
 	<h1>Edit</h1>
-
 	{{#data}}
-	<form action="/products/update/{{id}}" method="POST">	
+	<form action="/addCategory/update/{{id}}" method="POST">	
 		
-		discription : <input type="text" name="discription" value="{{discription}}"> 
+		discription : <input type="text" name="name"  value="{{name}}"required> 
 
-	<input type="submit">
+	<input type="submit" >
 	</form>
 	{{/data}}
+
+	</ul>
+	
+</div>
