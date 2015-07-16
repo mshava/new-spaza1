@@ -5,6 +5,7 @@ var express = require("express"),
     myConnection = require("express-myconnection"),
     spaza = require("./routes/spaza");    
     products = require("./routes/crud");
+
     products = require("./routes/spaza");
     categories = require("./routes/spaza");
     addCategories = require("./routes/categories");
@@ -13,11 +14,19 @@ var express = require("express"),
 var app = express();
 
 var dbOptions = {
+<<<<<<< HEAD
         host : "localhost",
         user : "root",
         password : "2197832",
         port : 3306,
         database : "sakonwaba"
+=======
+    host : "localhost",
+    user : "root",
+    password : "amila",
+    port : 3306,
+    database : "sakonwaba"
+>>>>>>> 242ba628ec143b9848931ccf333401d09e7855a6
 };
 
 app.engine("handlebars", exphbs({defaultLayout : "main"}));
@@ -81,14 +90,14 @@ app.get("/profitable_product",spaza.showmostProfPdt);
 
 app.get("/",function (req, res){
 res.render("index");
- });
+});
 
 
 var port = process.env.PORT || 8080;       
    //start the server
 var server = app.listen(port, function () {
-var host = server.address().address;
-var port = server.address().port;
-console.log('Example app listening at http://%s:%s', host, port);
+    var host = server.address().address;
+    var port = server.address().port;
+       console.log('Example app listening at http://%s:%s', host, port);
 });
 

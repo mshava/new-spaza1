@@ -1,10 +1,9 @@
-
-	<div id="container"><h1>Products</h1>
+<div id="container"><h1>Products</h1>
 	
 	{{#products}}
 	<h2>{{description}}</h2>
-	<a href="/addCategory/edit/{{id}}">Edit</a>
-	<a href="/addCategory/Delete/{{id}}">Delete</a>
+		<a href="/addCategory/edit/{{id}}">Edit</a>
+		<a href="/addCategory/Delete/{{id}}">Delete</a>
 	{{/products}}
 	
 	{{#empty}}
@@ -12,12 +11,11 @@
 	{{/empty}}
 	
 	<div id="add-products">
-	<h1>Add a product</h1>
+	  <h1>Add a product</h1>
 	
-	<form action="addCategory/add" method="POST">
-	Description: <input type="text" name="description">
-	<input type="submit">
-	</form>
-	
+	    <form action="addCategory/add" method="POST">
+			Description: <input type="text" name="description">
+			<input type="submit">
+	    </form>
 	</div>
-	</div>
+</div>
