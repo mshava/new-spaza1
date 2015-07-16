@@ -55,13 +55,13 @@ app.get("/least_products", spaza.showleastPdt);
 //shows categories from spaza.js function
 app.get("/categories", spaza.showcategories);
 
-//add categories from catyegories.js functions and also show them
+//add categories from categories.js functions and also show them
 
 app.get("/addCategory", addCategories.show);
 app.get("/addCategory/edit/:id", addCategories.get);
 app.post("/addCategory/add", addCategories.add)
 app.post("/addCategory/update/:id", addCategories.update);
-app.get("/addCategory/delete/:id",addCategories.delete);
+app.get("/addCategory/delete/:id", addCategories.delete);
 
 app.get("/popular_category",spaza.showmostPopCat);
 app.get("/least_category",spaza.showleastPopCat);
@@ -84,7 +84,7 @@ res.render("index");
  });
 
 
-   var port = process.env.PORT || 8080;       
+var port = process.env.PORT || 8080;       
    //start the server
 var server = app.listen(port, function () {
 var host = server.address().address;

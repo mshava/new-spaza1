@@ -49,22 +49,22 @@ exports.update = function(req, res, next){
 			var data = JSON.parse(JSON.stringify(req.body));
 			var id = req.params.id;
 			req.getConnection(function(err, connection){
-			connection.query('UPDATE categories SET ? WHERE id = ?', [data, id], function(err, rows){
+		connection.query('UPDATE categories SET ? WHERE id = ?', [data, id], function(err, rows){
 			if (err){
-			console.log("Error Updating : %s ",err );
+		console.log("Error Updating : %s ",err );
 			}
-			res.redirect('/addCategory');
+		res.redirect('/addCategory');
 		});
 	});
 };
 exports.delete = function(req, res, next){
-var Id = req.params.Id;
-req.getConnection(function(err, connection){
-connection.query('DELETE FROM categories WHERE Id = ?', [Id], function(err,rows){
-if(err){
-console.log("Error Selecting : %s ",err );
-}
-res.redirect('/addCategory');
-});
-});
-};
+		var id = req.params.id;
+	req.getConnection(function(err, connection){
+	connection.query('DELETE FROM categories WHERE Id = ?', [id], function(err,rows){
+			if(err){
+	console.log("Error Selecting : %s ",err );
+			}
+	res.redirect('/categories');
+			});
+		});
+	};
