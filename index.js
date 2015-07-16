@@ -14,19 +14,13 @@ var express = require("express"),
 var app = express();
 
 var dbOptions = {
-<<<<<<< HEAD
+
         host : "localhost",
         user : "root",
         password : "2197832",
         port : 3306,
         database : "sakonwaba"
-=======
-    host : "localhost",
-    user : "root",
-    password : "amila",
-    port : 3306,
-    database : "sakonwaba"
->>>>>>> 242ba628ec143b9848931ccf333401d09e7855a6
+
 };
 
 app.engine("handlebars", exphbs({defaultLayout : "main"}));
