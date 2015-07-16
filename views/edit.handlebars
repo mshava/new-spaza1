@@ -1,18 +1,14 @@
-<<<<<<< HEAD
 <div id="container">
-<h1>Edit</h1>
-=======
-<div id="container"><h1>Edit</h1>
->>>>>>> 621908fb48dc0354fcd867705011a2258d472d45
+    <h1>Edit</h1>
+    {{#data}}
 
-{{#data}}
-<form action="/addCategory/update/{{id}}" method="POST">
-	Description: <input type="text" name="name" value="{{name}}" required>	
-	<input type="submit">
-</form>
-{{/data}}
-<<<<<<< HEAD
+    <div id="container">
+
+        <form action="/addCategory/update/{{id}}" method="POST">
+	        Description: <input type="text" name="name" value="{{name}}" required>	
+	        <input type="submit">
+        </form>
+       {{/data}}
+    </div>
 </div>
-=======
-</div>
->>>>>>> 621908fb48dc0354fcd867705011a2258d472d45
+
