@@ -84,7 +84,7 @@ res.render("index");
  });
 
 
-   var port = process.env.PORT || 8080;       
+var port = process.env.PORT || 8080;       
    //start the server
 var server = app.listen(port, function () {
 var host = server.address().address;
