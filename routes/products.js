@@ -2,10 +2,10 @@ exports.show = function (req, res, next) {
 	req.getConnection(function(err, connection){
 		if (err) 
 			return next(err);
-		connection.query('SELECT * FROM products', [id], function(err, results) {
+		connection.query('SELECT * FROM products', [], function(err, results) {
         	if (err) return next(err);
 
-    		res.render( 'products', {
+    		res.render( 'addProducts', {
     			products : results
     		});
         });
@@ -25,7 +25,7 @@ exports.add = function (req, res, next) {
 		connection.query('insert into products set ?', data, function(err, results) {
             if (err)
               	console.log("Error inserting : %s ",err );
-            res.redirect('/products');
+            res.redirect('/addProducts');
       	});
 	});
 };
@@ -51,7 +51,7 @@ exports.update = function(req, res, next){
     			if (err){
               		console.log("Error Updating : %s ",err );
     			}
-          		res.redirect('/products');
+          		res.redirect('/addProducts');
     		});	
         });
 };
@@ -63,7 +63,7 @@ exports.delete = function(req, res, next){
 			if(err){
     			console.log("Error Selecting : %s ",err );
 			}
-			res.redirect('/products');
+			res.redirect('/addProducts');
 		});
 	});
 };
