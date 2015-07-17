@@ -4,31 +4,22 @@ var express = require("express"),
     bodyParser = require("body-parser"),
     myConnection = require("express-myconnection"),
     spaza = require("./routes/spaza");    
-    addProducts = require("./routes/products");
+    
 
     products = require("./routes/spaza");
     categories = require("./routes/spaza");
     addCategories = require("./routes/categories");
+    addProducts = require("./routes/products");
     sales = require("./routes/spaza");
         
 var app = express();
 
 var dbOptions = {
-<<<<<<< HEAD
     host : "localhost",
     user : "root",
     password : "amila",
     port : 3306,
     database : "sakonwaba"
-=======
-
-        host : "localhost",
-        user : "root",
-        password : "2197832",
-        port : 3306,
-        database : "sakonwaba"
->>>>>>> 9f4b0deee1d83f0850be08193243272051fb5242
-
 };
 
 app.engine("handlebars", exphbs({defaultLayout : "main"}));
@@ -50,8 +41,8 @@ app.get("/products", products.showProductList);
 
 app.get("/addProducts",addProducts.show)
 app.get("/addProducts/edit/:id", addProducts.get);
+app.post("/products/add/", addProducts.add);
 app.post("/addProducts/update/:id", addProducts.update);
-app.post("/addProducts/add/:id", addProducts.add);
 app.get("/addProducts/delete/:id", addProducts.delete);
 
 app.get("/popular_products", spaza.showpopularPdt);
@@ -64,10 +55,11 @@ app.get("/least_products", spaza.showleastPdt);
 //app.get("/categories", categories.show);
 
 //shows categories from spaza.js function
-app.get("/categories", spaza.showcategories);
+//app.get("/categories", spaza.showcategories);
 
 //add categories from categories.js functions and also show them
 
+app.get("/categories", addCategories.show);
 app.get("/addCategory", addCategories.show);
 app.get("/addCategory/edit/:id", addCategories.get);
 app.post("/addCategory/add", addCategories.add)

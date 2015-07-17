@@ -1,27 +1,15 @@
 
-<<<<<<< HEAD
+
 <div id="container">
 <h1>Edit</h1>
 	{{#data}}
-	<form action="/addCategory/update/{{id}}" method="POST">
-		Description: <input type="text" name="name" value="{{name}}" required>	
+	<form action="/addCategories/update/{{id}}" method="POST">
+		Description: <input type="text" name="name" value="{{name}}" required>
+        <!--Description: <input type="text" name="name" value="{{name}}" required> -->
 		<input type="submit">
 	</form>
 	{{/data}}
 </div>
 
 
-=======
-<div id="container"><h1>Edit</h1>
 
-
-{{#data}}
-<form action="/addCategory/update/{{id}}" method="POST">
-	Description: <input type="text" name="name" value="{{name}}" required>	
-	<input type="submit">
-</form>
-{{/data}}
-
-</div>
-
->>>>>>> 9f4b0deee1d83f0850be08193243272051fb5242

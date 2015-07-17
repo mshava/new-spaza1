@@ -7,9 +7,20 @@ exports.show = function (req, res, next) {
 			if (err) 
 				return next(err);
 				//console.log(products);
-			res.render( 'addCategory', {
+
+			var result = {
 				products : results
-			});
+			};
+
+			console.log(req.query);
+			console.log("---> " + req.query);
+
+
+			if(req.query.error === "true" ){
+				result.error = "Can't delete category..."
+			}
+
+			res.render( 'addCategory', result);
 		});
 	});
 };
@@ -61,8 +72,11 @@ exports.delete = function(req, res, next){
 	    connection.query('DELETE FROM categories WHERE Id = ?', [id], function(err,rows){
 	        if(err){
 	            console.log("Error Selecting : %s ",err );
+	            return res.redirect('/categories?error=true&msg=category_linked');
 		    }
-	        res.redirect('/categories');
+		    else{
+	        	res.redirect('/categories');
+	        }
 		});
 	});
 };

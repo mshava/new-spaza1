@@ -1,23 +1,27 @@
-
-<div id="container"><h1>Products</h1>
-	
+<div id="container">
+    <h1>Products</h1>
 	{{#products}}
-	<h2>{{description}}</h2>
-	<a href="/addProducts/edit/{{id}}">Edit</a>
-	<a href="/Products/Delete/{{id}}">Delete</a>
+	    <h2>{{name}}</h2>
+		<h2>{{description}}</h2>
+		<a href="/addProducts/edit/{{id}}">Edit</a>
+		<a href="/Products/Delete/{{id}}">Delete</a>
 	{{/products}}
-	
 	{{#empty}}
-	<p>The list is empty</p>
-	{{empty}}
-
-
+		<p>The list is empty</p>
+	{{/empty}}
 	<div id="add-products">
-	 <h1>Add a product</h1>
-	
-	    <form action="addProducts/add" method="POST">
-	      Description: <input type="text" name="description">
-	      <input type="submit">
-	    </form>
+	    <h1>Add product</h1>
+	    <form action="/products/add" method="POST">
+            Product Name: <br /><input type="text" name="name">
+            <br/><br/>Category ID: <br />
+            
+	            <select name="cat_id">
+	                {{#categories}}
+	                    <option value="{{id}}">{{name}}</option>
+	                {{/categories}}
+	            </select>
+	      
+            <br /><br /><input type="submit">
+        </form>
 	</div>
 </div>

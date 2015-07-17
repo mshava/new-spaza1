@@ -51,7 +51,13 @@
 			});	
 		})
 	};	
+	
+	/*
 	exports.showcategories = function(req, res, next) {
+
+		console.log(req.query);
+			console.log("---> " + req.query);
+
 		req.getConnection(function(err, connection) {
 			if (err)
 			    return next (err);	
@@ -66,6 +72,7 @@
 			});		
 		})
 	};
+	*/
 
 	exports.showmostPopCat = function(req, res, next) {
 		req.getConnection(function(err, connection) {
