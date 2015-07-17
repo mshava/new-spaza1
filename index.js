@@ -4,7 +4,7 @@ var express = require("express"),
     bodyParser = require("body-parser"),
     myConnection = require("express-myconnection"),
     spaza = require("./routes/spaza");    
-    products = require("./routes/crud");
+    addProducts = require("./routes/products");
 
     products = require("./routes/spaza");
     categories = require("./routes/spaza");
@@ -14,11 +14,20 @@ var express = require("express"),
 var app = express();
 
 var dbOptions = {
+<<<<<<< HEAD
     host : "localhost",
     user : "root",
     password : "amila",
     port : 3306,
     database : "sakonwaba"
+=======
+
+        host : "localhost",
+        user : "root",
+        password : "2197832",
+        port : 3306,
+        database : "sakonwaba"
+>>>>>>> 9f4b0deee1d83f0850be08193243272051fb5242
 
 };
 
@@ -39,11 +48,11 @@ app.use(bodyParser.json())
 app.get("/products", products.showProductList);
 
 
-//app.get("/products",products.show)
-//app.get("/products/edit/:id", products.get);
-//app.post("/products/update/:id", products.update);
-//app.post("/products/add/:id", products.add);
-//app.get("/products/delete/:id", products.delete);
+app.get("/addProducts",addProducts.show)
+app.get("/addProducts/edit/:id", addProducts.get);
+app.post("/addProducts/update/:id", addProducts.update);
+app.post("/addProducts/add/:id", addProducts.add);
+app.get("/addProducts/delete/:id", addProducts.delete);
 
 app.get("/popular_products", spaza.showpopularPdt);
 app.get("/least_products", spaza.showleastPdt);

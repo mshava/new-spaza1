@@ -1,10 +1,23 @@
-<div id="add-products">
- <h1>Add a product</h1>
+
+<div id="container"><h1>Products</h1>
 	
-	<form action="Products/add" method="POST">
-	    Description: <input type="text" name="description">
-	    <input type="submit">
-	</form>
+	{{#products}}
+	<h2>{{name}}</h2>
+	<a href="/addProducts/edit/{{id}}">Edit</a>
+	<a href="/Products/Delete/{{id}}">Delete</a>
+	{{/products}}
 	
-   </div>
+	{{#empty}}
+	<p>The list is empty</p>
+	{{empty}}
+
+
+	<div id="add-products">
+	 <h1>Add a product</h1>
+	
+	    <form action="addProducts/add" method="POST">
+	      Description: <input type="text" name="name">
+	      <input type="submit">
+	    </form>
+	</div>
 </div>
