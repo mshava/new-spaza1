@@ -66,7 +66,7 @@ exports.update = function(req, res, next){
 exports.delete = function(req, res, next){
 	var id = req.params.id;
 	req.getConnection(function(err, connection){
-		connection.query('DELETE FROM products WHERE cat_id = ?', [id], function(err,rows){
+		connection.query('DELETE FROM products WHERE id = ?', [id], function(err,rows){
 			if(err){
     			console.log("Error Selecting : %s ",err );
 			}
