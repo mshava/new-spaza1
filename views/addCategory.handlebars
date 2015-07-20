@@ -3,11 +3,15 @@
 	******* {{error}}******
 
 	<h1>Add Category</h1>
+	<table>
 	   {{#products}}
-	<h2>{{name}}</h2>
-		<a href="/addCategory/edit/{{id}}">Edit</a>
-		<a href="/addCategory/delete/{{id}}">Delete</a>
+	<tr>
+		<td><h2>{{name}}</h2></td>
+		<td><a href="/addCategory/edit/{{id}}">Edit</a></td>
+		<td><a href="/addCategory/delete/{{id}}">Delete</a></td>
+	</tr>
 	{{/products}}
+	</table>
 	{{#empty}}
 	   <p>The list is empty.</p>
 	{{/empty}}
