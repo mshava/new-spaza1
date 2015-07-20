@@ -5,11 +5,11 @@
 	<h1>Add Category</h1>
 	<table>
 	   {{#products}}
-	<tr>
-		<td><h2>{{name}}</h2></td>
-		<td><a href="/addCategory/edit/{{id}}">Edit</a></td>
-		<td><a href="/addCategory/delete/{{id}}">Delete</a></td>
-	</tr>
+	   <tr>
+	        <td><h2>{{name}}</h2></td>
+		    <td><a href="/addCategory/edit/{{id}}">Edit</a></td>
+		    <td><a href="/addCategory/delete/{{id}}">Delete</a></td>
+		</tr>
 	{{/products}}
 	</table>
 	{{#empty}}
