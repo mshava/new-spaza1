@@ -1,16 +1,28 @@
 <div id="container">
     <h1>Sales</h1>
-    <table>
+    <table border="2">
+    
 		{{#sales}}
+		<thead>
+			<th data-field="name">name</th>
+			<th data-field="sales_date">sale_date</th>
+		    
+		    <th data-field="sales">Sales</th>
+		    
+		    <th data-field="Edit">Edit</th>
+		    <th data-field="Delete">Delete</th>
+		</thead>
 		<tr>
-		    <td><h2>{{name}}</h2></td> 
-			<td><h2>{{description}}</h2></td>
-			<td><a href="/addSale/edit/{{prod_id}}">Edit</a></td>
-			<td><a href="/addSales/Delete/{{prod_id}}">Delete</a></td>
+		    <td><h2>{{name}}</h2></td>
+		    <td><h2>{{sales_date}}</h2></td>
+		    
+			<td><h2>R{{sales}}</h2></td>
+			<td><h2>{{description}}</h2></td>			
+			<td><a href="/addSale/edit/{{id}}">Edit</a></td>
+			<td><a href="/addSale/Delete/{{id}}">Delete</a></td>
 		</tr>
 		{{/sales}}
 	</table>
-
 	{{#empty}}
 		<p>The list is empty</p>
 	{{/empty}}
@@ -18,16 +30,16 @@
 	<div id="add-product">
 
 	    <h1>Add Sale</h1>
-	    <form action="/products/add" method="POST">
-	        Date:<input type="date" name="date"><br />
+	    <form action="/addSale/add" method="POST">
+	        Date:<input type="date" name="sales_date"><br />
             Product Name:<br /> 
             <select name="prod_id">
 	            {{#products}}
-	            	<option value="{{prod_id}}">{{name}}</option>
+	            	<option value="{{id}}">{{name}}</option>
 	            {{/products}}
             </select><br />
 	        Price:<br /><input type="price" name="number"><br />
-	        Quantity:<br /><input type="number" name="qty"<br />
+	        Quantity:<br /><input type="number" name="no_sold"<br />
 	      
             <br /><br /><input type="submit">
         </form>
