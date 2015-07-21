@@ -1,0 +1,35 @@
+<div id="container">
+    <h1>Sales</h1>
+    <table>
+		{{#sales}}
+		<tr>
+		    <td><h2>{{name}}</h2></td> 
+			<td><h2>{{description}}</h2></td>
+			<td><a href="/addSale/edit/{{prod_id}}">Edit</a></td>
+			<td><a href="/addSales/Delete/{{prod_id}}">Delete</a></td>
+		</tr>
+		{{/sales}}
+	</table>
+
+	{{#empty}}
+		<p>The list is empty</p>
+	{{/empty}}
+
+	<div id="add-product">
+
+	    <h1>Add Sale</h1>
+	    <form action="/products/add" method="POST">
+	        Date:<input type="date" name="date"><br />
+            Product Name:<br /> 
+            <select name="prod_id">
+	            {{#products}}
+	            	<option value="{{prod_id}}">{{name}}</option>
+	            {{/products}}
+            </select><br />
+	        Price:<br /><input type="price" name="number"><br />
+	        Quantity:<br /><input type="number" name="qty"<br />
+	      
+            <br /><br /><input type="submit">
+        </form>
+	</div>
+</div>
