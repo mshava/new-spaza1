@@ -3,7 +3,7 @@ exports.show = function (req, res, next) {
 		if (err)
 			return next(err);
 	
-			connection.query('SELECT sales.prod_id as id,products.name as name,sum(sales.quantity * sales.price) as sales, sales.date as date from sales, products WHERE products.id = sales.prod_id group by name order by sum(sales.quantity*sales.price) DESC', [], function(err, results) {
+			connection.query('SELECT sales.id as sales_id, sales.prod_id as prod_id,products.name as name,sum(sales.quantity * sales.price) as sales, sales.date as date from sales, products WHERE products.id = sales.prod_id group by name order by sum(sales.quantity*sales.price) DESC', [], function(err, results) {
 	        	if (err) 
 	        		return next(err);
 		var query = 'SELECT name,id from products';
