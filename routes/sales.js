@@ -40,7 +40,7 @@ exports.add = function (req, res, next) {
 		}
 		var input = JSON.parse(JSON.stringify(req.body));
 		var data = {
-			prod_id: input.prod_id,
+			prod_id: input.id,
 			date: input.date,
 			quantity: input.quantity,
 			price : input.price
@@ -53,7 +53,6 @@ exports.add = function (req, res, next) {
 		});
 	});
 };
-
 
 exports.get = function(req, res, next){
 	var id = req.params.id;
@@ -72,11 +71,11 @@ exports.update = function(req, res, next){
 	var id = req.params.id;
 	var input = JSON.parse(JSON.stringify(req.body));
 	     var data = {
-			prod_id: input.prod_id,
+			prod_id: input.id,
 			date: input.date,
 			quantity: input.quantity,
 			price : input.price
-		};
+    };
 	req.getConnection(function(err, connection){
 		connection.query('UPDATE sales SET ? WHERE id = ?', [data, id], function(err, rows){
 			if (err){
