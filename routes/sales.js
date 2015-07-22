@@ -3,12 +3,12 @@ exports.show = function (req, res, next) {
 		if (err)
 			return next(err);
 	
-			connection.query('SELECT sales.prod_id as id,products.name as name,sum(sales.no_sold * sales.sales_price) as sales,sales.sales_date as sales_date from sales, products WHERE products.id = sales.prod_id group by name order by sum(sales.no_sold*sales.sales_price) DESC', [], function(err, results) {
+			connection.query('SELECT sales.prod_id as id,products.name as name,sum(sales.quantity * sales.price) as sales, sales.date as date from sales, products WHERE products.id = sales.prod_id group by name order by sum(sales.quantity*sales.price) DESC', [], function(err, results) {
 	        	if (err) 
 	        		return next(err);
-		//var query = 'SELECT name from products';
+		var query = 'SELECT name,id from products';
 		//var query = 'SELECT sales.prod_id as id,products.name as name from sales,products WHERE products.id = sales.prod_id group by name';
-		//connection.query(query, [], function(err, results1){
+		connection.query(query, [], function(err, results1){
 		    //connection.query(query, [], function(err, results) {
 			//if (err) 
 				//return next(err);
@@ -27,10 +27,10 @@ exports.show = function (req, res, next) {
 
 				res.render( 'addSale', {
 					sales : results,
-					//products : results1
+					products : results1
 				});
 			});
-		
+		});
 	});
 };
 exports.add = function (req, res, next) {
@@ -41,9 +41,9 @@ exports.add = function (req, res, next) {
 		var input = JSON.parse(JSON.stringify(req.body));
 		var data = {
 			prod_id: input.prod_id,
-			sales_date: input.sales_date,
-			no_sold : input.no_sold,
-			sales_price : input.sales_price
+			date: input.date,
+			quantity: input.quantity,
+			price : input.price
 		};
 		connection.query('insert into sales set ?', data, function(err, results) {
 			if (err)
@@ -72,9 +72,11 @@ exports.update = function(req, res, next){
 	var id = req.params.id;
 	var input = JSON.parse(JSON.stringify(req.body));
 	     var data = {
-	     	name : input.name,
-	     	sales_date : input.sales_date
-	     }
+			prod_id: input.prod_id,
+			date: input.date,
+			quantity: input.quantity,
+			price : input.price
+		};
 	req.getConnection(function(err, connection){
 		connection.query('UPDATE sales SET ? WHERE id = ?', [data, id], function(err, rows){
 			if (err){
