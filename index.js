@@ -46,8 +46,8 @@ app.post("/products/add/", addProducts.add);
 app.post("/addProducts/update/:id", addProducts.update);
 app.get("/addProducts/delete/:id", addProducts.delete);
 
-app.get("/popular_products", spaza.showpopularPdt);
-app.get("/least_products", spaza.showleastPdt);
+app.get("/popular_products", products.showpopularPdt);
+app.get("/least_products", products.showleastPdt);
 //app.get("/products/edit/:id", products.get);
 //app.post("/products/update/:id", products.update);
 //app.post("/products/add/:id", products.add);

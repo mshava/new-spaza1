@@ -23,7 +23,7 @@
 
 			if (err)
 				return next (err);
-					connection.query('SELECT SUM(no_sold) as totalqty, name FROM sales s INNER JOIN products p ON s.prod_id = p.id GROUP BY name ORDER BY SUM(no_sold) DESC LIMIT 0, 1' ,[],function (err, results) {
+					connection.query('SELECT SUM(quantity) as totalqty, name FROM sales s INNER JOIN products p ON s.prod_id = p.id GROUP BY name ORDER BY SUM(quantity) DESC LIMIT 0, 1' ,[],function (err, results) {
 				if (err){ 
 					console.log(err);
 					return (err);
@@ -39,7 +39,7 @@
 			if (err)
 				return next (err);
 				
-					connection.query('SELECT SUM(no_sold) as totalqty, name FROM sales s INNER JOIN products p ON s.prod_id = p.id GROUP BY name ORDER BY SUM(no_sold) ASC LIMIT 0, 1' ,[],function (err, results) {
+					connection.query('SELECT SUM(quantity) as totalqty, name FROM sales s INNER JOIN products p ON s.prod_id = p.id GROUP BY name ORDER BY SUM(quantity) ASC LIMIT 0, 1' ,[],function (err, results) {
 		       	if (err){
 					console.log(err); 
 					return (err);
@@ -78,7 +78,7 @@
 		req.getConnection(function(err, connection) {
 			if (err)
 				return next (err);
-					connection.query('SELECT  categories.name, sum(sales.no_sold) as totalqty FROM sales INNER JOIN products ON sales.prod_id = products.id INNER JOIN categories ON products.cat_id = categories.id GROUP BY categories.name ORDER BY totalqty DESC LIMIT 0,1; ',[],function (err, results) {
+					connection.query('SELECT  categories.name, sum(sales.quantity) as totalqty FROM sales INNER JOIN products ON sales.prod_id = products.id INNER JOIN categories ON products.cat_id = categories.id GROUP BY categories.name ORDER BY totalqty DESC LIMIT 0,1; ',[],function (err, results) {
 				if (err){
 				//console.log("...." + results.length);
 					return (err);	
@@ -94,7 +94,7 @@
 		req.getConnection(function(err, connection) {
 			if (err)
 			return next (err);
-		        connection.query('SELECT  categories.name, sum(sales.no_sold) as totalqty FROM sales INNER JOIN products ON sales.prod_id = products.id INNER JOIN categories ON products.cat_id = categories.id GROUP BY categories.name ORDER BY totalqty ASC LIMIT 0,1; ',[],function (err, results) {
+		        connection.query('SELECT  categories.name, sum(sales.quantity) as totalqty FROM sales INNER JOIN products ON sales.prod_id = products.id INNER JOIN categories ON products.cat_id = categories.id GROUP BY categories.name ORDER BY totalqty ASC LIMIT 0,1; ',[],function (err, results) {
 				if (err){
 					//console.log("...." + results.length);
 					return (err);	
@@ -110,7 +110,7 @@
 		req.getConnection(function(err, connection) {
 			if (err)
 			   return next (err);
-		       var query = "SELECT products.name, sum(sales.sales_price * sales.no_sold) as earningsPerProduct FROM sales INNER JOIN products ON sales.prod_id = products.id GROUP BY products.name ORDER BY sum(sales.sales_price) DESC;";
+		       var query = "SELECT products.name, sum(sales.price * sales.quantity) as earningsPerProduct FROM sales INNER JOIN products ON sales.prod_id = products.id GROUP BY products.name ORDER BY sum(sales.price) DESC;";
 		       connection.query(query ,[],function (err, results) {
 				if (err){
 					return (err); 
@@ -127,7 +127,7 @@
 		req.getConnection(function(err, connection) {
 			if (err)
 			return next (err);
-			var query = "SELECT products.name, sum(sales.sales_price * sales.no_sold) as earningsPerProduct FROM sales INNER JOIN products ON sales.prod_id = products.id GROUP BY products.name ORDER BY earningsPerProduct DESC LIMIT 0,1;";
+			var query = "SELECT products.name, sum(sales.price * sales.quantity) as earningsPerProduct FROM sales INNER JOIN products ON sales.prod_id = products.id GROUP BY products.name ORDER BY earningsPerProduct DESC LIMIT 0,1;";
 		    connection.query(query,[],function (err, results)	{
 			if (err) {
 				return (err);

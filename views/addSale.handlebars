@@ -1,24 +1,23 @@
 <div id="container">
     <h1>Sales</h1>
     <table border="2">
+    
+		{{#sales}}
 		<thead>
 			<th data-field="name">name</th>
-			<th data-field="sales_date">Date</th>    
-		    <th data-field="sales">Sales</th> 
+			<th data-field="sales_date">sale date</th>    
+		    <th data-field="sales">Sales</th>
 		    <th data-field="Edit">Edit</th>
 		    <th data-field="Delete">Delete</th>
 		</thead>
-		<tbody>
-			{{#sales}}
-				<tr>
-				    <td><h2>{{name}}</h2></td>
-				    <td><h2>{{date}}</h2></td>
-					<td><h2>R{{sales}}</h2></td>			
-					<td><a href="/addSale/edit/{{id}}">Edit</a></td>
-					<td><a href="/addSale/Delete/{{id}}">Delete</a></td>
-				</tr>
-			{{/sales}}
-		</tbody>
+		<tr>
+		    <td><h2>{{name}}</h2></td>
+		    <td><h2>{{date}}</h2></td>
+			<td><h2>R{{sales}}</h2></td>			
+			<td><a href="/addSale/edit/{{id}}">Edit</a></td>
+			<td><a href="/addSale/delete/{{id}}">Delete</a></td>
+		</tr>
+		{{/sales}}
 	</table>
 	{{#empty}}
 		<p>The list is empty</p>
@@ -28,12 +27,12 @@
 
 	    <h1>Add Sale</h1>
 	    <form action="/addSale/add" method="POST">
-	        Date:<input type="date" name="date"><br />
+	        Date:<input type="date" name="sales_date"><br />
             Product Name:<br /> 
-            <select name="id">
-	            {{#each products}}
+            <select name="prod_id">
+	            {{#products}}
 	            	<option value="{{id}}">{{name}}</option>
-	            {{/each}}
+	            {{/products}}
             </select><br />
 	        Price:<br /><input type="price" name="number"><br />
 	        Quantity:<br /><input type="number" name="no_sold"<br />

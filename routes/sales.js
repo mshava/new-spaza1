@@ -40,7 +40,7 @@ exports.add = function (req, res, next) {
 		}
 		var input = JSON.parse(JSON.stringify(req.body));
 		var data = {
-			prod_id: input.prod_id,
+			prod_id: input.id,
 			date: input.date,
 			quantity: input.quantity,
 			price : input.price
