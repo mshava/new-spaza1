@@ -5,7 +5,7 @@
 		{{#sales}}
 		<thead>
 			<th data-field="name">name</th>
-			<th data-field="sales_date">sale date</th>    
+			<th data-field="date">sale date</th>    
 		    <th data-field="sales">Sales</th>
 		    <th data-field="Edit">Edit</th>
 		    <th data-field="Delete">Delete</th>
@@ -18,6 +18,18 @@
 			<td><a href="/addSale/delete/{{id}}">Delete</a></td>
 		</tr>
 		{{/sales}}
+
+		<tbody>
+			{{#sales}}
+				<tr>
+				    <td><h2>{{name}}</h2></td>
+				    <td><h2>{{date}}</h2></td>
+					<td><h2>R{{sales}}</h2></td>			
+					<td><a href="/addSale/edit/{{sales_id}}">Edit</a></td>
+					<td><a href="/addSale/Delete/{{sales_id}}">Delete</a></td>
+				</tr>
+			{{/sales}}
+		</tbody>
 	</table>
 	{{#empty}}
 		<p>The list is empty</p>
@@ -34,8 +46,8 @@
 	            	<option value="{{id}}">{{name}}</option>
 	            {{/products}}
             </select><br />
-	        Price:<br /><input type="price" name="number"><br />
-	        Quantity:<br /><input type="number" name="no_sold"<br />
+	        Price:<br /><input type="price" name="price"><br />
+	        Quantity:<br /><input type="number" name="quantity"<br />
 	      
             <br /><br /><input type="submit">
         </form>
