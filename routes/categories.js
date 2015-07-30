@@ -20,7 +20,7 @@ exports.show = function (req, res, next) {
 				result.error = "Can't delete category..."
 			}
 
-			res.render( 'addCategory', result);
+			res.render( 'addCategories', result);
 		});
 	});
 };
@@ -36,7 +36,7 @@ exports.add = function (req, res, next) {
 		connection.query('insert into categories set ?', data, function(err, results) {
 			if (err)
 		console.log("Error inserting : %s ",err );
-			res.redirect('/addCategory');
+			res.redirect('/addCategories');
 			
 		});
 	});
@@ -49,7 +49,7 @@ exports.get = function(req, res, next){
 			if(err){
 		        console.log("Error Selecting : %s ",err );
 			}
-		    res.render('edit',{page_title:"Edit Customers - Node.js", data : rows[0]});
+		    res.render('edit',{page_title:"Edit Customers - Node.js", data : rows});
 		});
 	});
 };
@@ -62,7 +62,7 @@ exports.update = function(req, res, next){
 			if (err){
 		       console.log("Error Updating : %s ",err );
 			}
-		    res.redirect('/addCategory');
+		    res.redirect('/addCategories');
 		});
 	});
 };

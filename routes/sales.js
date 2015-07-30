@@ -3,7 +3,7 @@ exports.show = function (req, res, next) {
 		if (err)
 			return next(err);
 	
-			connection.query('SELECT sales.id as sales_id, sales.prod_id as prod_id,products.name as name,sum(sales.quantity * sales.price) as sales, sales.date as date from sales, products WHERE products.id = sales.prod_id group by name order by sum(sales.quantity*sales.price) DESC', [], function(err, results) {
+			connection.query('SELECT sales.prod_id as id,products.name as name,sum(sales.quantity * sales.price) as sales, sales.date as date from sales, products WHERE products.id = sales.prod_id group by name order by sum(sales.quantity*sales.price) DESC', [], function(err, results) {
 	        	if (err) 
 	        		return next(err);
 		var query = 'SELECT name,id from products';
@@ -54,14 +54,22 @@ exports.add = function (req, res, next) {
 	});
 };
 
+
 exports.get = function(req, res, next){
 	var id = req.params.id;
+	var input = JSON.parse(JSON.stringify(req.body));
+	    var data = {
+			prod_id: input.id,
+			date: input.date,
+			quantity: input.quantity,
+			price : input.price
+		};
 	req.getConnection(function(err, connection){
 		connection.query('SELECT * FROM sales WHERE id = ?', [id], function(err,rows){
 			if(err){
 		        console.log("Error Selecting : %s ",err );
 			}
-		    res.render('edit',{page_title:"Edit Customers - Node.js", data : rows[0]});
+		    res.render('/edit',{page_title:"Edit Customers - Node.js", data : rows[0]});
 		});
 	});
 };
@@ -75,7 +83,7 @@ exports.update = function(req, res, next){
 			date: input.date,
 			quantity: input.quantity,
 			price : input.price
-    };
+		};
 	req.getConnection(function(err, connection){
 		connection.query('UPDATE sales SET ? WHERE id = ?', [data, id], function(err, rows){
 			if (err){

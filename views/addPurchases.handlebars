@@ -1,0 +1,50 @@
+<div id="container">
+    <h1>Purchases</h1>
+    <table border="2">
+    
+		
+		<thead>
+			<th data-field="purchases_id">name</th>
+			<th data-field="purchases_date">date</th>    
+		    <th data-field="sales_price">Price</th>
+		    <th data-field="qty">qty</th>
+		    <th data-field="Edit">Edit</th>
+		    <th data-field="Delete">Delete</th>
+		</thead>
+		<tbody>
+			
+				<tr>
+				{{#each purchases}}
+				    <td><h2>{{name}}</h2></td>
+				    <td><h2>{{date}}</h2></td>
+					<td><h2>R{{sales_price}}</h2></td>
+					<td><h2>{{qty}}</h2></td>
+					<td><a href="/addPurchases/edit/{{purchases_id}}">Edit</a></td>
+					<td><a href="/addPurchases/Delete/{{purchases_id}}">Delete</a></td>
+				</tr>
+			{{/each}}
+		</tbody>
+
+	</table>
+	{{#empty}}
+		<p>The list is empty</p>
+	{{/empty}}
+
+	<div id="add-product">
+
+	    <h1>Add Purchases</h1>
+	    <form action="/addPurchases/add" method="POST">
+	        Date:<input type="date" name="purchases_date"><br />
+            Product Name:<br /> 
+            <select name="purchases_id">
+	            {{#purchases}}
+	            	<option value="{{id}}">{{name}}</option>
+	            {{/purchases}}
+            </select><br />
+	        Price:<br /><input type="price" name="price"><br />
+	        Quantity:<br /><input type="number" name="qty"<br />
+	      
+            <br /><br /><input type="submit">
+        </form>
+	</div>
+</div>

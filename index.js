@@ -9,6 +9,7 @@ var express = require("express"),
     products = require("./routes/spaza");
     categories = require("./routes/spaza");
     addCategories = require("./routes/categories");
+    addPurchases = require("./routes/purchases")
     addProducts = require("./routes/products");
     sales = require("./routes/spaza");
     addSale = require("./routes/sales");
@@ -67,11 +68,11 @@ app.get("/addSale/delete/:id", addSale.delete);
 //add categories from categories.js functions and also show them
 
 app.get("/categories", addCategories.show);
-app.get("/addCategory", addCategories.show);
-app.get("/addCategory/edit/:id", addCategories.get);
-app.post("/addCategory/add", addCategories.add)
-app.post("/addCategory/update/:id", addCategories.update);
-app.get("/addCategory/delete/:id", addCategories.delete);
+app.get("/addCategories", addCategories.show);
+app.get("/addCategories/edit/:id", addCategories.get);
+app.post("/addCategories/add", addCategories.add)
+app.post("/addCategories/update/:id", addCategories.update);
+app.get("/addCategories/delete/:id", addCategories.delete);
 
 app.get("/popular_category",spaza.showmostPopCat);
 app.get("/least_category",spaza.showleastPopCat);
@@ -86,6 +87,12 @@ app.get("/profitable_product",spaza.showmostProfPdt);
 //app.post("/products/update/:id", products.update);
 //app.post("/products/add/:id", products.add);
 //app.get("/products/delete/:id", products.delete);
+
+app.get("/addPurchases",addPurchases.show);
+//app.get("/addPurchases",addPurchases.show);
+//app.post("/addPurchases/update/:id", addPurchases.update);
+app.post("/addPurchases/add/:id", addPurchases.add);
+//app.get("/addPurchases/delete/:id", addPurchases.delete);
 
 //app.get();
 

@@ -2,23 +2,14 @@
     <h1>Sales</h1>
     <table border="2">
     
-		{{#sales}}
+		
 		<thead>
 			<th data-field="name">name</th>
-			<th data-field="date">sale date</th>    
+			<th data-field="sales_date">sale date</th>    
 		    <th data-field="sales">Sales</th>
 		    <th data-field="Edit">Edit</th>
 		    <th data-field="Delete">Delete</th>
 		</thead>
-		<tr>
-		    <td><h2>{{name}}</h2></td>
-		    <td><h2>{{date}}</h2></td>
-			<td><h2>R{{sales}}</h2></td>			
-			<td><a href="/addSale/edit/{{id}}">Edit</a></td>
-			<td><a href="/addSale/delete/{{id}}">Delete</a></td>
-		</tr>
-		{{/sales}}
-
 		<tbody>
 			{{#sales}}
 				<tr>
@@ -30,6 +21,7 @@
 				</tr>
 			{{/sales}}
 		</tbody>
+
 	</table>
 	{{#empty}}
 		<p>The list is empty</p>
