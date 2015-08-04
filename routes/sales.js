@@ -3,7 +3,7 @@ exports.show = function (req, res, next) {
 		if (err)
 			return next(err);
 	
-			connection.query('SELECT sales.prod_id as id,products.name as name,sum(sales.quantity * sales.price) as sales, sales.date as date from sales, products WHERE products.id = sales.prod_id group by name order by sum(sales.quantity*sales.price) DESC', [], function(err, results) {
+			connection.query("SELECT DATE_FORMAT(sales.date,'%d %b %y') as date, sales.quantity as Quantity, sales.prod_id as id,products.name as name,sum(sales.quantity * sales.price) as sales from sales, products WHERE products.id = sales.prod_id group by name order by sum(sales.quantity*sales.price) DESC", [], function(err, results) {
 	        	if (err) 
 	        		return next(err);
 		var query = 'SELECT name,id from products';
@@ -25,7 +25,7 @@ exports.show = function (req, res, next) {
 				//result.error = "Can't delete category..."
 			//}
 
-				res.render( 'addSale', {
+				res.render( 'sales', {
 					sales : results,
 					products : results1
 				});
@@ -33,7 +33,27 @@ exports.show = function (req, res, next) {
 		});
 	});
 };
-exports.add = function (req, res, next) {
+exports.showAdd = function (req, res, next) {
+
+		req.getConnection(function(err, connection){
+		if (err)
+			return next(err);
+	
+			connection.query("SELECT DATE_FORMAT(sales.date,'%d %b %y') as date, sales.quantity as Quantity, sales.prod_id as id,products.name as name,sum(sales.quantity * sales.price) as sales from sales, products WHERE products.id = sales.prod_id group by name order by sum(sales.quantity*sales.price) DESC", [], function(err, results) {
+	        	if (err) 
+	        		return next(err);
+		var query = 'SELECT name,id from products';
+		//var query = 'SELECT sales.prod_id as id,products.name as name from sales,products WHERE products.id = sales.prod_id group by name';
+		connection.query(query, [], function(err, results1){
+				res.render( 'addSaleScreen', {
+					sales : results,
+					products : results1
+				});
+			});
+		});
+	});
+};
+exports.sales = function (req, res, next) {
 	req.getConnection(function(err, connection){
 		if (err){
 			return next(err);
@@ -49,7 +69,7 @@ exports.add = function (req, res, next) {
 			if (err)
 			    console.log("Error inserting : %s ",err );
 
-			res.redirect('/addSale');
+			res.redirect('/sales');
 		});
 	});
 };
@@ -89,7 +109,7 @@ exports.update = function(req, res, next){
 			if (err){
 		       console.log("Error Updating : %s ",err );
 			}
-		    res.redirect('/addSale');
+		    res.redirect('/sales');
 		});
 	});
 };
@@ -102,7 +122,7 @@ exports.delete = function(req, res, next){
 	            return res.redirect('/categories?error=true&msg=category_linked');
 		    }
 		    else{
-	        	res.redirect('/addSale');
+	        	res.redirect('/sales');
 	        }
 		});
 	});

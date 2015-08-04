@@ -5,17 +5,22 @@
 		
 		<thead>
 			<th data-field="name">name</th>
-			<th data-field="sales_date">sale date</th>    
+			<th data-field="sales_date">Sale date</th>    
 		    <th data-field="sales">Sales</th>
+		    <th data-field="sales.quantity">Quantity</th>
+		    <th data-field="Add Sale">Add Sale</th>
 		    <th data-field="Edit">Edit</th>
 		    <th data-field="Delete">Delete</th>
+		    
 		</thead>
 		<tbody>
 			{{#sales}}
 				<tr>
 				    <td><h2>{{name}}</h2></td>
 				    <td><h2>{{date}}</h2></td>
-					<td><h2>R{{sales}}</h2></td>			
+					<td><h2>R{{sales}}</h2></td>
+					<td><h2>{{Quantity}}</h2></td>
+					<td><a href="sales/add/{{sales_id}}">Add</a></td>			
 					<td><a href="/addSale/edit/{{sales_id}}">Edit</a></td>
 					<td><a href="/addSale/Delete/{{sales_id}}">Delete</a></td>
 				</tr>
