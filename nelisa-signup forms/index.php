@@ -8,22 +8,6 @@
 <body>
 <form name="reg" action="code_exec.php" onsubmit="return validationForm()" method="post">
     <table width="274" border="0" align="center" cellpadding="2" cellspacing="0">
-        <tr>
-            <td colspan="2">
-                <div align="center">
-                    <? php 
-                    $remarks=isset($_GET['remarks'])?$_GET['remarks']:"";
-                    if ($remarks==null and $remarks=="")
-                    {
-                    echo 'Register Here';
-                    }
-                    if ($remarks=='success')
-                    {
-                    echo 'Registration Success';
-                    }
-                    ?> 
-                </div></td>
-                </tr>
                 <tr>
                     <td width="95"><div align="right">First name:</div></td>
                     <td width="171"><input type="text" name="fname"/></td>
