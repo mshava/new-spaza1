@@ -11,8 +11,8 @@ var express = require("express"),
     addCategories = require("./routes/categories");
     addPurchases = require("./routes/purchases")
     addProducts = require("./routes/products");
-    sales = require("./routes/spaza");
-    addSale = require("./routes/sales");
+    //sales = require("./routes/spaza");
+    sales = require("./routes/sales");
         
 var app = express();
 
@@ -55,17 +55,17 @@ app.get("/least_products", products.showleastPdt);
 //app.get("/products/delete/:id", products.delete);
 
 //app.get("/categories", categories.show);
-app.get("/addSale",addSale.show);
-//app.get("/sales",sales.show);
-app.get("/addSale/edit/:id", addSale.get);
+//app.get("/addSale",addSale.show);
+app.get("/sales",sales.show);
+//app.get("/addSale/edit/:id", addSale.get);
 //app.get("/sales/edit/:id",sales.get);
-app.get("/addSale/add/", addSale.showAdd);
+app.get("/sales/add/", sales.showAdd);
 //app.get("/addSale/add/",sales.add);
-//app.get("/sales/add/", sales.add);
-app.post("/addSale/update/:id", addSale.update);
-//app.post("/sales/update/:id",sales.update);
-app.get("/addSale/delete/:id", addSale.delete);
-//app.get("/sales/delete/:id",sales.delete);
+//-app.get("/sales/add/", sales.add);
+//app.post("/addSale/update/:id", addSale.update);
+app.post("/sales/update/:id",sales.update);
+//app.get("/addSale/delete/:id", addSale.delete);
+app.get("/sales/delete/:id",sales.delete);
 
 
 //shows categories from spaza.js function
