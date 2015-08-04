@@ -1,0 +1,14 @@
+<div id="container">
+	<h1>Edit</h1>
+		{{#sale}}
+	    <form action="/addSale/update/{{id}}" method="POST">
+	    {{/sale}}
+	    <select name ="prod_id">
+	    {{#products}}
+			<option value ="{{id}}"> {{name}}</option>
+		{{/products}}
+		</select>
+		<input type="submit">
+	    </form>
+	
+</div>

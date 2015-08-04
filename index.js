@@ -19,7 +19,7 @@ var app = express();
 var dbOptions = {
     host : "localhost",
     user : "root",
-    password : "2197832",
+    password : "amila",
     port : 3306,
     database : "sakonwaba"
 };
@@ -55,11 +55,17 @@ app.get("/least_products", products.showleastPdt);
 //app.get("/products/delete/:id", products.delete);
 
 //app.get("/categories", categories.show);
-app.get("/addSale",addSale.show)
+app.get("/addSale",addSale.show);
+//app.get("/sales",sales.show);
 app.get("/addSale/edit/:id", addSale.get);
-app.post("/addSale/add/", addSale.add);
+//app.get("/sales/edit/:id",sales.get);
+app.get("/addSale/add/", addSale.showAdd);
+//app.get("/addSale/add/",sales.add);
+//app.get("/sales/add/", sales.add);
 app.post("/addSale/update/:id", addSale.update);
+//app.post("/sales/update/:id",sales.update);
 app.get("/addSale/delete/:id", addSale.delete);
+//app.get("/sales/delete/:id",sales.delete);
 
 
 //shows categories from spaza.js function
