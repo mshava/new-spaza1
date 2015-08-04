@@ -1,3 +1,80 @@
+	exports.showProductList = function(req, res, next) {
+
+		req.getConnection(function(err, connection) {
+				
+			if (err)
+				return next (err);
+	
+			connection.query('SELECT * FROM products',[],function (err, results) {
+				if (err){
+					console.log(err);
+					return (err);
+				}
+				console.log(results.length);
+				res.render('addProducts', {
+					products : results
+				});	 
+			});
+
+		})
+	};
+
+	exports.showAdd = function(req, res, next) {
+
+		req.getConnection(function(err, connection) {
+				
+			if (err)
+				return next (err);
+	
+			connection.query('SELECT * FROM categories',[],function (err, results) {
+				if (err){
+					console.log(err);
+					return (err);
+				}
+				console.log(results.length);
+				res.render('add', {
+					categories : results
+				});	 
+			});
+
+		})
+	};
+
+
+		exports.showpopularPdt = function(req, res, next) {
+		req.getConnection(function(err, connection) {
+
+			if (err)
+				return next (err);
+					connection.query('SELECT SUM(quantity) as totalqty, name FROM sales s INNER JOIN products p ON s.prod_id = p.id GROUP BY name ORDER BY SUM(quantity) DESC LIMIT 0, 1' ,[],function (err, results) {
+				if (err){ 
+					console.log(err);
+					return (err);
+				}
+				res.render('popular_products', {
+					products : results
+				});	
+			}); 	
+		})
+	};
+	exports.showleastPdt = function(req, res, next) {
+		req.getConnection(function(err, connection) {
+			if (err)
+				return next (err);
+				
+					connection.query('SELECT SUM(quantity) as totalqty, name FROM sales s INNER JOIN products p ON s.prod_id = p.id GROUP BY name ORDER BY SUM(quantity) ASC LIMIT 0, 1' ,[],function (err, results) {
+		       	if (err){
+					console.log(err); 
+					return (err);
+				}	
+				console.log("....." + results.length);
+				res.render('least_products', {
+					products : results
+				});	
+			});	
+		})
+	};	
+	
 exports.show = function (req, res, next) {
 	req.getConnection(function(err, connection){
 		if (err) 

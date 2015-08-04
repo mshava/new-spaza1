@@ -74,21 +74,28 @@
                             Refresh
                         </a>
                     </li>
-                    <li>
-                        <a id = "text" href="/products"><strong>Product List</strong></a>
-                    </li>
-                    <li>
-                    <li>
-                        <a id = "text" href="/addProducts"><strong>Add Products</strong></a>
-                    </li>
-                    <li>     
+                    <div class="dropdown">
+                      <li class="dropdown-toggle" id="text" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        PRODUCTS
+                        <span class="caret"></span>
+                      </li>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a id = "text" href="/addProducts"><strong>Products List</strong></li>
+                        <li><a id = "text" href="/popular_products"><strong>Most Popular Produc</strong></li>
+                        <li><a id = "text" href="/least_products"><strong>Least Popular Product</strong></li>
+                      </ul>
+                    </div>
 
 
+                    <!---<li>
+                        <a id = "text" href="/addProducts"><strong>Product List</strong></a>
+                    </li>
+                    <li>
                         <a id = "text" href="/popular_products"><strong>Most Popular Product</strong></a>
                     </li>
                     <li>
                         <a id = "text" href="/least_products"><strong>Least Popular Product</strong></a>
-                    </li>
+                    </li>-->
                     <li>
                         <a id = "text" href="/categories"><strong>Categories</strong></a>
                     </li>

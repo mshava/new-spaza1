@@ -6,13 +6,13 @@ var express = require("express"),
     spaza = require("./routes/spaza");    
     
 
-    products = require("./routes/spaza");
+    Products = require("./routes/products");
     categories = require("./routes/spaza");
     addCategories = require("./routes/categories");
     addPurchases = require("./routes/purchases")
     addProducts = require("./routes/products");
-    //sales = require("./routes/spaza");
     sales = require("./routes/sales");
+
         
 var app = express();
 
@@ -38,17 +38,17 @@ app.use(bodyParser.json())
 
 
 //app.get("/",products.show);
-app.get("/products", products.showProductList);
+app.get("/addProducts", Products.showProductList);
 
 
-app.get("/addProducts",addProducts.show)
-app.get("/addProducts/edit/:id", addProducts.get);
-app.post("/products/add/", addProducts.add);
-app.post("/addProducts/update/:id", addProducts.update);
-app.get("/addProducts/delete/:id", addProducts.delete);
+//app.get("/add",Products.show)
+app.get("/addProducts/edit/:id", Products.get);
+app.get("/addProducts/add/:id", Products.showAdd);
+app.post("/addProducts/update/:id", Products.update);
+app.get("/addProducts/delete/:id", Products.delete);
 
-app.get("/popular_products", products.showpopularPdt);
-app.get("/least_products", products.showleastPdt);
+app.get("/popular_products", Products.showpopularPdt);
+app.get("/least_products", Products.showleastPdt);
 //app.get("/products/edit/:id", products.get);
 //app.post("/products/update/:id", products.update);
 //app.post("/products/add/:id", products.add);
