@@ -24,6 +24,43 @@ exports.show = function (req, res, next) {
 		});
 	});
 };
+
+
+exports.showmostPopCat = function(req, res, next) {
+		req.getConnection(function(err, connection) {
+			if (err)
+				return next (err);
+					connection.query('SELECT  categories.name, sum(sales.quantity) as totalqty FROM sales INNER JOIN products ON sales.prod_id = products.id INNER JOIN categories ON products.cat_id = categories.id GROUP BY categories.name ORDER BY totalqty DESC LIMIT 0,1; ',[],function (err, results) {
+				if (err){
+				//console.log("...." + results.length);
+					return (err);	
+				}
+				res.render('popular_category', {
+			    	products : results
+				});	
+			});				
+		})
+	};	
+
+exports.showleastPopCat = function(req, res, next) {
+		req.getConnection(function(err, connection) {
+			if (err)
+			return next (err);
+		        connection.query('SELECT  categories.name, sum(sales.quantity) as totalqty FROM sales INNER JOIN products ON sales.prod_id = products.id INNER JOIN categories ON products.cat_id = categories.id GROUP BY categories.name ORDER BY totalqty ASC LIMIT 0,1; ',[],function (err, results) {
+				if (err){
+					//console.log("...." + results.length);
+					return (err);	
+				}
+				res.render('least_category', {
+				    products : results
+				});	
+			});				
+		})
+	};
+
+
+
+
 exports.add = function (req, res, next) {
 	req.getConnection(function(err, connection){
 		if (err){

@@ -7,8 +7,8 @@ var express = require("express"),
     
 
     Products = require("./routes/products");
-    categories = require("./routes/spaza");
-    addCategories = require("./routes/categories");
+    //categories = require("./routes/spaza");
+    categories = require("./routes/categories");
     addPurchases = require("./routes/purchases")
     addProducts = require("./routes/products");
     sales = require("./routes/sales");
@@ -19,7 +19,7 @@ var app = express();
 var dbOptions = {
     host : "localhost",
     user : "root",
-    password : "amila",
+    password : "2197832",
     port : 3306,
     database : "sakonwaba"
 };
@@ -70,12 +70,12 @@ app.get("/sales/delete/:id",sales.delete);
 
 //add categories from categories.js functions and also show them
 
-app.get("/categories", addCategories.show);
-app.get("/addCategories", addCategories.show);
-app.get("/addCategories/edit/:id", addCategories.get);
-app.post("/addCategories/add", addCategories.add)
-app.post("/addCategories/update/:id", addCategories.update);
-app.get("/addCategories/delete/:id", addCategories.delete);
+app.get("/categories", categories.show);
+app.get("/addCategories", categories.show);
+app.get("/addCategories/edit/:id", categories.get);
+app.post("/addCategories/add", categories.add)
+app.post("/addCategories/update/:id", categories.update);
+app.get("/addCategories/delete/:id", categories.delete);
 
 app.get("/popular_category",spaza.showmostPopCat);
 app.get("/least_category",spaza.showleastPopCat);
