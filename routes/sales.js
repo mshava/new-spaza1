@@ -53,15 +53,35 @@ exports.showAdd = function (req, res, next) {
 		});
 	});
 };
-exports.sales = function (req, res, next) {
+exports.showEdit = function (req, res, next) {
+
+		req.getConnection(function(err, connection){
+		if (err)
+			return next(err);
+	
+			connection.query("SELECT DATE_FORMAT(sales.date,'%d %b %y') as date, sales.quantity as Quantity, sales.prod_id as id,products.name as name,sum(sales.quantity * sales.price) as sales from sales, products WHERE products.id = sales.prod_id group by name order by sum(sales.quantity*sales.price) DESC", [], function(err, results) {
+	        	if (err) 
+	        		return next(err);
+		var query = 'SELECT name,id from products';
+		//var query = 'SELECT sales.prod_id as id,products.name as name from sales,products WHERE products.id = sales.prod_id group by name';
+		connection.query(query, [], function(err, results1){
+				res.render( 'editSales', {
+					sales : results,
+					products : results1
+				});
+			});
+		});
+	});
+};
+exports.addsale = function (req, res, next) {
 	req.getConnection(function(err, connection){
 		if (err){
 			return next(err);
 		}
 		var input = JSON.parse(JSON.stringify(req.body));
 		var data = {
-			prod_id: input.id,
-			date: input.date,
+			prod_id: input.prod_id,
+			date: input.sales_date,
 			quantity: input.quantity,
 			price : input.price
 		};
@@ -94,7 +114,7 @@ exports.get = function(req, res, next){
 	});
 };
 
-exports.update = function(req, res, next){
+exports.salesUpdate = function(req, res, next){
 	var data = JSON.parse(JSON.stringify(req.body));
 	var id = req.params.id;
 	var input = JSON.parse(JSON.stringify(req.body));

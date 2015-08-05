@@ -1,20 +1,17 @@
 <div id="container">
-<h1>edit</h1>
-	{{#data}}
-
-	    <form action="/addSale/edit/:id" method="POST">
-	        Date:<input type="date" name="sales_date" required><br />
-            Product Name:<br /> 
-            <select name="prod_id" required>
-	            {{#products}}
-	            	<option value="{{id}}" required>{{name}}</option>
-	            {{/products}}
-            </select><br />
-	        Price:<br /><input type="price" name="price" required><br />
-	        Quantity:<br /><input type="number" name="quantity" required<br />
-	      
-            <br /><br /><input type="submit">
-        </form>
-    {{/data}}    
-	</div>
+    <h1>Edit</h1>
+	
+		<form action="/sales/edit/:id" method="POST">
+		    Date:<input type="date" name="sales_date" required><br />
+	        Product Name:<br /> 
+	            <select name="prod_id" required>
+		            {{#products}}
+		            	<option value="{{id}}" required>{{name}}</option>
+		            {{/products}}
+	            </select><br />
+		    Price:<br /><input type="price" name="price" required><br />
+		    Quantity:<br /><input type="number" name="quantity" required<br />
+	        <br /><br /><input type="submit">
+	    </form>
+	    
 </div>

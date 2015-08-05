@@ -1,5 +1,6 @@
 <div id="container">
     <h1>Sales</h1>
+    <a href="sales/add/{{sales_id}}" class="btn btn-success btn-lg" role="button">Add Sale</a>	
     <table border="2">
     
 		
@@ -8,7 +9,6 @@
 			<th data-field="sales_date">Sale date</th>    
 		    <th data-field="sales">Sales</th>
 		    <th data-field="sales.quantity">Quantity</th>
-		    <th data-field="Add Sale">Add Sale</th>
 		    <th data-field="Edit">Edit</th>
 		    <th data-field="Delete">Delete</th>
 		    
@@ -20,9 +20,9 @@
 				    <td><h2>{{date}}</h2></td>
 					<td><h2>R{{sales}}</h2></td>
 					<td><h2>{{Quantity}}</h2></td>
-					<td><a href="sales/add/{{sales_id}}">Add</a></td>			
-					<td><a href="/addSale/edit/{{sales_id}}">Edit</a></td>
-					<td><a href="/addSale/Delete/{{sales_id}}">Delete</a></td>
+					
+					<td><a href="/sales/edit/{{id}}">Edit</a></td>
+					<td><a href="/sales/delete/{{id}}">Delete</a></td>
 				</tr>
 			{{/sales}}
 		</tbody>
@@ -32,7 +32,7 @@
 		<p>The list is empty</p>
 	{{/empty}}
 
-	<div id="add-product">
+	<!---<div id="add-product">
 
 	    <h1>Add Sale</h1>
 	    <form action="/addSale/add" method="POST">
@@ -49,4 +49,4 @@
             <br /><br /><input type="submit">
         </form>
 	</div>
-</div>
+</div>-->
