@@ -55,16 +55,13 @@ app.get("/least_products", Products.showleastPdt);
 //app.get("/products/delete/:id", products.delete);
 
 //app.get("/categories", categories.show);
-//app.get("/addSale",addSale.show);
 app.get("/sales",sales.show);
 //app.get("/addSale/edit/:id", addSale.get);
-//app.get("/sales/edit/:id",sales.get);
+app.get("/sales/edit/:id", sales.showEdit);
 app.get("/sales/add/", sales.showAdd);
-//app.get("/addSale/add/",sales.add);
-//-app.get("/sales/add/", sales.add);
-//app.post("/addSale/update/:id", addSale.update);
-app.post("/sales/update/:id",sales.update);
-//app.get("/addSale/delete/:id", addSale.delete);
+app.post("/sales/add/", sales.addsale);
+app.post("/sales/edit/:id", sales.salesUpdate);
+app.post("/sales/update/:id",sales.salesUpdate);
 app.get("/sales/delete/:id",sales.delete);
 
 
