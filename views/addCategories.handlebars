@@ -11,7 +11,8 @@
 	    </form>
 	</div>
 	<h1>Category</h1>
-	<table>
+	<div class="table-responsive">
+	<table class="table">
 	   {{#products}}
 	   <tr>
 	        <td><h2>{{name}}</h2></td>
@@ -19,6 +20,7 @@
 		    <td><a href="/addCategories/delete/{{id}}">Delete</a></td>
 		</tr>
 		{{/products}}
+	</div>
 	</table>
 		{{#empty}}
 	   <p>The list is empty.</p>
