@@ -1,6 +1,6 @@
 <div id="container">
-    <h1>Purchases</h1>
-
+    <h1>Pur</h1>
+     
     <table>
 		{{#suppliers}}
 		<tr>
@@ -14,25 +14,5 @@
 	{{#empty}}
 		<p>The list is empty</p>
 	{{/empty}}
-	<div id="add-products">
-	    <h1>Add Purchase</h1>
-	    <form action="/supplier/add" method="POST">
-            Product Name: <br /><input type="text" name="name">
-            <br/><br/>Category ID: <br />
-
-            	<select name="cat_id">
-	                {{#products}}
-	                    <option value="{{id}}">{{name}}</option>
-	                {{/products}}
-	            </select>
-            
-	            <select name="cat_id">
-	                {{#categories}}
-	                    <option value="{{id}}">{{name}}</option>
-	                {{/categories}}
-	            </select>
-	      
-            <br /><br /><input type="submit">
-        </form>
-	</div>
+	
 </div>
