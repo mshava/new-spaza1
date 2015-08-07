@@ -1,0 +1,21 @@
+<div id="container">
+	<div id="add-products">
+		<h1>Add Purchase</h1>
+		<div id="add-product">
+
+			<form action="/addPurchases/add" method="POST">
+			    Date:<input type="date" name="purchases_date"><br />
+		        Product Name:<br /> 
+		        <select name="purchases_id">
+			        {{#purchases}}
+			            <option value="{{id}}">{{name}}</option>
+			        {{/purchases}}
+		        </select><br />
+			    Price:<br /><input type="price" name="price"><br />
+			    Quantity:<br /><input type="number" name="qty"<br />
+			      
+		        <br /><br /><input type="submit">
+		    </form>
+		</div>
+	</div>
+</div>

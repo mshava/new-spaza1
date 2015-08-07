@@ -12,6 +12,7 @@ var express = require("express"),
     addPurchases = require("./routes/purchases")
     addProducts = require("./routes/products");
     sales = require("./routes/sales");
+    suppliers = require("./routes/suppliers");
 
         
 var app = express();
@@ -19,7 +20,7 @@ var app = express();
 var dbOptions = {
     host : "localhost",
     user : "root",
-    password : "2197832",
+    password : "amila",
     port : 3306,
     database : "sakonwaba"
 };
@@ -92,10 +93,18 @@ app.get("/profitable_product",spaza.showmostProfPdt);
 //app.get("/products/delete/:id", products.delete);
 
 app.get("/addPurchases",addPurchases.show);
+app.get("/addPurchases/add/", addPurchases.showAdd);
 //app.get("/addPurchases",addPurchases.show);
 //app.post("/addPurchases/update/:id", addPurchases.update);
 app.post("/addPurchases/add/:id", addPurchases.add);
 //app.get("/addPurchases/delete/:id", addPurchases.delete);
+
+
+app.get("/suppliers", suppliers.show);
+app.post("/suppliers/add/", suppliers.add);
+//app.get("/sales/add/", sales.showAdd);
+
+
 
 //app.get();
 

@@ -1,0 +1,38 @@
+<div id="container">
+    <h1>Suppliers</h1>
+
+    <table>
+		{{#suppliers}}
+		<tr>
+		    <td><h2>{{shop}}</h2></td> 
+			<td><h2>{{description}}</h2></td>
+			<td><a href="/addProducts/edit/{{id}}">Edit</a></td>
+			<td><a href="/addProducts/Delete/{{id}}">Delete</a></td>
+		</tr>
+		{{/suppliers}}
+	</table>
+	{{#empty}}
+		<p>The list is empty</p>
+	{{/empty}}
+	<div id="add-products">
+	    <h1>Add Supplier</h1>
+	    <form action="/supplier/add" method="POST">
+            Shop Name: <br /><input type="text" name="name">
+           <!-- <br/><br/>Category ID: <br />
+
+            	<<select name="cat_id">
+	                {{#products}}
+	                    <option value="{{id}}">{{name}}</option>
+	                {{/products}}
+	            </select>-->
+            
+	            <!---<select name="cat_id">
+	                {{#categories}}
+	                    <option value="{{id}}">{{name}}</option>
+	                {{/categories}}
+	            </select>-->
+	      
+            <br /><br /><input type="submit">
+        </form>
+	</div>
+</div>
