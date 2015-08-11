@@ -20,7 +20,7 @@ var app = express();
 var dbOptions = {
     host : "localhost",
     user : "root",
-    password : "amila",
+    password : "2197832",
     port : 3306,
     database : "sakonwaba"
 };
@@ -78,8 +78,8 @@ app.post("/addCategories/add", categories.add)
 app.post("/addCategories/update/:id", categories.update);
 app.get("/addCategories/delete/:id", categories.delete);
 
-app.get("/popular_category",spaza.showmostPopCat);
-app.get("/least_category",spaza.showleastPopCat);
+app.get("/popular_category",categories.showmostPopCat);
+app.get("/least_category",categories.showleastPopCat);
 //app.get("/products/edit/:id", products.get);
 //app.post("/products/update/:id", products.update);
 //app.post("/products/add/:id", products.add);
@@ -93,16 +93,18 @@ app.get("/profitable_product",spaza.showmostProfPdt);
 //app.get("/products/delete/:id", products.delete);
 
 app.get("/addPurchases",addPurchases.show);
-app.get("/addPurchases/add/", addPurchases.showAdd);
+app.get("/addPurchases/add/:id", addPurchases.showAdd);
 //app.get("/addPurchases",addPurchases.show);
 //app.post("/addPurchases/update/:id", addPurchases.update);
 app.post("/addPurchases/add/:id", addPurchases.add);
 //app.get("/addPurchases/delete/:id", addPurchases.delete);
 
 
-app.get("/suppliers", suppliers.show);
-app.post("/suppliers/add/", suppliers.add);
-//app.get("/sales/add/", sales.showAdd);
+app.get('/suppliers',suppliers.show);
+app.post('/suppliers/update/:id',suppliers.update);
+app.post('/suppliers/add',suppliers.add);
+app.get('/suppliers/delete/:id', suppliers.delete);
+app.get('/suppliers_edit/:id', suppliers.get);
 
 
 

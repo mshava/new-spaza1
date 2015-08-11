@@ -1,0 +1,98 @@
+<div id="container">
+    <h1>Pur</h1>
+     
+    <table>
+		{{#suppliers}}
+		<tr>
+		    <td><h2>{{name}}</h2></td> 
+			<td><h2>{{description}}</h2></td>
+			<td><a href="/suppliers_edit/edit/{{id}}">Edit</a></td>
+			<td><a href="/suppliers/Delete/{{id}}">Delete</a></td>
+		</tr>
+		{{/suppliers}}
+	</table>
+	{{#empty}}
+		<p>The list is empty</p>
+	{{/empty}}
+	
+</div>
+
+<table class="table table-striped custab">
+	<thead>
+		<tr>
+			<th>Supplier</th>
+			<th>Product</th>
+			<th>Qauntity</th>
+			<th>Price</th>
+			<th>Date</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+		<tr>
+		{{#each purchases}}
+			<td>{{names}}</td>
+			<td>{{name}}</td>
+			<td>{{qty}}</td>
+			<td>{{purchase_price}}</td>
+			<td>{{purchase_date}}</td>
+
+			<td class="text-center"><a class='btn btn-info btn-xs' href="/purchase/purchase_edit/{{id}}"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a href="/purchase/delete/{{id}}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure?')"><span class="glyphicon glyphicon-remove"></span> Delete</a></td>
+		</tr>
+		{{/each}}
+	</table>
+
+
+
+<form action="purchase/add" method="POST" class="form-horizontal" >
+	<div class="form-group">
+		<label class="control-label col-xs-2">Suppliers</label>
+			<div class="col-xs-10">
+				<select name="supplier_id">
+				{{#each Suppliers}}
+				<option value = "{{id}}">{{name}}</option>
+				{{/each}}
+			</select>
+	</div>
+</div>
+
+
+
+<div class="form-group">
+	<label class="control-label col-xs-2">Products</label>
+		<div class="col-xs-10">
+			<select name="product_id">
+				{{#each products}}
+				<option value = "{{id}}">{{name}}</option>
+				{{/each}}
+			</select>
+		</div>
+</div>
+
+<div class="form-group">
+		<label for="amount" class="control-label col-xs-2">Qauntity</label>
+			<div class="col-xs-10">
+				<input type="number" name="qty" class="form-control" placeholder="Please Enter Amount" required>
+			</div>
+	</div>
+
+<div class="form-group">
+	<label for="number" class="control-label col-xs-2">Price</label>
+		<div class="col-xs-10">
+			<input type="number" step="any" name="purchase_price" placeholder="Please Enter Price" required>
+				</div>
+					</div>
+
+					<div class="form-group">
+					<label for="date" class="control-label col-xs-2">Date</label>
+				<div class="col-xs-10">
+			<input type="date" class="form-control" name="purchase_date" placeholder="yyyy-mm-dd" required/>
+		</div>
+	</div>
+	<input type="submit" onclick="myFunction()">
+</form>
+</div>
+<script>
+function myFunction() {
+alert("New purchase added");
+}
+</script>
