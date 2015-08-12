@@ -6,8 +6,8 @@
 		<tr>
 		    <td><h2>{{name}}</h2></td> 
 			<td><h2>{{description}}</h2></td>
-			<td><a href="/suppliers_edit/edit/{{id}}">Edit</a></td>
-			<td><a href="/suppliers/Delete/{{id}}">Delete</a></td>
+			<td><a href="/addProducts/edit/{{id}}">Edit</a></td>
+			<td><a href="/addProducts/Delete/{{id}}">Delete</a></td>
 		</tr>
 		{{/suppliers}}
 	</table>
@@ -31,12 +31,12 @@
 		<tr>
 		{{#each purchases}}
 			<td>{{names}}</td>
-			<td>{{name}}</td>
-			<td>{{qty}}</td>
-			<td>{{purchase_price}}</td>
-			<td>{{purchase_date}}</td>
+			<td>{{Name}}</td>
+			<td>{{Qty}}</td>
+			<td>{{Purchase_price}}</td>
+			<td>{{Purchase_date}}</td>
 
-			<td class="text-center"><a class='btn btn-info btn-xs' href="/purchase/purchase_edit/{{id}}"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a href="/purchase/delete/{{id}}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure?')"><span class="glyphicon glyphicon-remove"></span> Delete</a></td>
+			<td class="text-center"><a class='btn btn-info btn-xs' href="/purchase/purchase_edit/{{id}}"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a href="/purchase/delete/{{id}}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure?')"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
 		</tr>
 		{{/each}}
 	</table>
@@ -47,7 +47,7 @@
 	<div class="form-group">
 		<label class="control-label col-xs-2">Suppliers</label>
 			<div class="col-xs-10">
-				<select name="supplier_id">
+				<select name="Supplier_id">
 				{{#each Suppliers}}
 				<option value = "{{id}}">{{name}}</option>
 				{{/each}}
@@ -58,37 +58,34 @@
 
 
 <div class="form-group">
-	<label class="control-label col-xs-2">Products</label>
-		<div class="col-xs-10">
-			<select name="product_id">
-				{{#each products}}
-				<option value = "{{id}}">{{name}}</option>
-				{{/each}}
-			</select>
-		</div>
+<label class="control-label col-xs-2">Products</label>
+<div class="col-xs-10">
+<select name="Product_Id">
+{{#each products}}
+<option value = "{{Id}}">{{Name}}</option>
+{{/each}}
+</select>
 </div>
-
+</div>
 <div class="form-group">
-		<label for="amount" class="control-label col-xs-2">Qauntity</label>
-			<div class="col-xs-10">
-				<input type="number" name="qty" class="form-control" placeholder="Please Enter Amount" required>
-			</div>
-	</div>
-
+<label for="Amount" class="control-label col-xs-2">Qauntity</label>
+<div class="col-xs-10">
+<input type="number" name="Qty" class="form-control" placeholder="Please Enter Amount" required>
+</div>
+</div>
 <div class="form-group">
-	<label for="number" class="control-label col-xs-2">Price</label>
-		<div class="col-xs-10">
-			<input type="number" step="any" name="purchase_price" placeholder="Please Enter Price" required>
-				</div>
-					</div>
-
-					<div class="form-group">
-					<label for="date" class="control-label col-xs-2">Date</label>
-				<div class="col-xs-10">
-			<input type="date" class="form-control" name="purchase_date" placeholder="yyyy-mm-dd" required/>
-		</div>
-	</div>
-	<input type="submit" onclick="myFunction()">
+<label for="number" class="control-label col-xs-2">Price</label>
+<div class="col-xs-10">
+<input type="number" step="any" name="Purchase_price" placeholder="Please Enter Price" required>
+</div>
+</div>
+<div class="form-group">
+<label for="date" class="control-label col-xs-2">Date</label>
+<div class="col-xs-10">
+<input type="date" class="form-control" name="Purchase_date" placeholder="yyyy-mm-dd" required/>
+</div>
+</div>
+<input type="submit" onclick="myFunction()">
 </form>
 </div>
 <script>

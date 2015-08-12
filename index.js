@@ -6,7 +6,7 @@ var express = require("express"),
     spaza = require("./routes/spaza");    
     
 
-    Products = require("./routes/products");
+    products = require("./routes/products");
     //categories = require("./routes/spaza");
     categories = require("./routes/categories");
     addPurchases = require("./routes/purchases")
@@ -35,21 +35,20 @@ app.use(myConnection(mysql, dbOptions, "single"));
 
 //gives the request the ability to handle form parameters
 app.use(bodyParser.urlencoded({ extended : false}))
-app.use(bodyParser.json())
-
+app.use(bodyParser.json());
 
 //app.get("/",products.show);
-app.get("/addProducts", Products.showProductList);
+app.get("/Products", products.showProductList);
 
 
 //app.get("/add",Products.show)
-app.get("/addProducts/edit/:id", Products.get);
-app.get("/addProducts/add/:id", Products.showAdd);
-app.post("/addProducts/update/:id", Products.update);
-app.get("/addProducts/delete/:id", Products.delete);
+app.get("/products/edit/:id", products.get);
+app.get("/products/add/:id", products.showAdd);
+app.post("/products/update/:id", products.update);
+app.get("/products/delete/:id", products.delete);
 
-app.get("/popular_products", Products.showpopularPdt);
-app.get("/least_products", Products.showleastPdt);
+app.get("/popular_products", products.showpopularPdt);
+app.get("/least_products", products.showleastPdt);
 //app.get("/products/edit/:id", products.get);
 //app.post("/products/update/:id", products.update);
 //app.post("/products/add/:id", products.add);
@@ -70,13 +69,30 @@ app.get("/sales/delete/:id",sales.delete);
 //app.get("/categories", spaza.showcategories);
 
 //add categories from categories.js functions and also show them
+/*
+app.get("/addCategories",function (req, res){
+    res.send("/addCategories");
+    res.render("/addCategories");
+ });
+
+app.post("/addCategories", function (req, res){
+    //res.render("addCategories");
+    console.log(req.body);
+    res.redirect('/categories')  
+});
+*/
 
 app.get("/categories", categories.show);
+app.post("/categories/add", categories.add);
+app.get("/categories/edit/:id", categories.get);
+app.post("/categories/update/:id",categories.update);
+app.get("/categories/delete/:id",categories.delete);
+/*
 app.get("/addCategories", categories.show);
-app.get("/addCategories/edit/:id", categories.get);
 app.post("/addCategories/add", categories.add)
 app.post("/addCategories/update/:id", categories.update);
 app.get("/addCategories/delete/:id", categories.delete);
+*/
 
 app.get("/popular_category",categories.showmostPopCat);
 app.get("/least_category",categories.showleastPopCat);

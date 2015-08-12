@@ -1,11 +1,18 @@
-<div id="container"><h1>Edit</h1>
-
-
-	{{#data}}
-	    <form action="/addCategory/update/{{id}}" method="POST">
-			Description: <input type="text" name="name" value="{{id}}" required>
-			<input type="submit">
-	    </form>
-	{{/data}}
-
+<div id="container">
+	<div id="editCategories">
+		<h1>Edit</h1>
+		<div class="table-responsive">
+			<table class="table">		
+				{{#data}}
+				<tr>
+			    <td>
+			    <form action="/categories/update/{{id}}" method="POST">
+					Description: <input type="text" name="name" value="{{name}}" required>
+					<input type="submit">
+			    </form>
+				</td>
+				</tr>
+				{{/data}}
+			</table>
+	</div>
 </div>

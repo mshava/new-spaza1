@@ -11,7 +11,7 @@
 					return (err);
 				}
 				console.log(results.length);
-				res.render('addProducts', {
+				res.render('Products', {
 					products : results
 				});	 
 			});
@@ -83,7 +83,7 @@ exports.show = function (req, res, next) {
 			connection.query('SELECT * FROM products', [], function(err, results) {
 	        	if (err) return next(err);
 
-	    		res.render( 'addProducts', {
+	    		res.render( 'Products', {
 	    			products : results,
 	    			categories : results1
 	    		});

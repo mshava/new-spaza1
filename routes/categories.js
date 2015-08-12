@@ -6,7 +6,6 @@ exports.show = function (req, res, next) {
 		connection.query(query, [], function(err, results) {
 			if (err) 
 				return next(err);
-				//console.log(products);
 
 			var result = {
 				products : results
@@ -14,7 +13,6 @@ exports.show = function (req, res, next) {
 
 			console.log(req.query);
 			console.log("---> " + req.query);
-
 
 			if(req.query.error === "true" ){
 				result.error = "Can't delete category..."
@@ -24,8 +22,6 @@ exports.show = function (req, res, next) {
 		});
 	});
 };
-
-
 
 exports.showmostPopCat = function(req, res, next) {
 		req.getConnection(function(err, connection) {
@@ -67,15 +63,17 @@ exports.add = function (req, res, next) {
 		if (err){
 			return next(err);
 		}
+		
+		// get the data from the user & put it in a map that match your db columns
 		var input = JSON.parse(JSON.stringify(req.body));
 		var data = {
 			name : input.name,
 		};
+
 		connection.query('insert into categories set ?', data, function(err, results) {
 			if (err)
-		console.log("Error inserting : %s ",err );
-			res.redirect('/addCategories');
-			
+			console.log("Error inserting : %s ",err );
+			res.redirect('/categories');
 		});
 	});
 };
@@ -100,14 +98,14 @@ exports.update = function(req, res, next){
 			if (err){
 		       console.log("Error Updating : %s ",err );
 			}
-		    res.redirect('/addCategories');
+		    res.redirect('/categories');
 		});
 	});
 };
 exports.delete = function(req, res, next){
 	var id = req.params.id;
 	req.getConnection(function(err, connection){
-	    connection.query('DELETE FROM categories WHERE Id = ?', [id], function(err,rows){
+	    connection.query('DELETE FROM categories WHERE id = ?', [id], function(err,rows){
 	        if(err){
 	            console.log("Error Selecting : %s ",err );
 	            return res.redirect('/categories?error=true&msg=category_linked');

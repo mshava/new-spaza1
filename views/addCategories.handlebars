@@ -3,12 +3,12 @@
 	******* {{error}}******
 
 
-	<div id="add-products">
+	<div id="addCategories">
 	   		<h1>Add Category</h1>
-	    		<form action="/addCategories/add" method="POST">
+	    		<form method="POST" action="/categories/add">
 		   		Description: <input type="text" name="name" required >
-		   <input type="submit">
-	    </form>
+		   		<input type="submit">
+	    		</form>
 	</div>
 	<h1>Category</h1>
 	<div class="table-responsive">
@@ -16,8 +16,8 @@
 	   {{#products}}
 	   <tr>
 	        <td><h2>{{name}}</h2></td>
-		    <td><a href="/addCategories/edit/{{id}}">Edit</a></td>
-		    <td><a href="/addCategories/delete/{{id}}">Delete</a></td>
+		    <td><a href="/categories/edit/{{id}}">Edit</a></td>
+		    <td><a href="/categories/delete/{{id}}">Delete</a></td>
 		</tr>
 		{{/products}}
 	</div>
