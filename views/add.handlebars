@@ -1,16 +1,23 @@
-<div id="add-products">
-	    <h1>Add product</h1>
-	    <form action="/products/add" method="POST">
-            Product Name: <br /><input type="text" name="name">
-            <br/><br/>Category ID: <br />
-            
-	            <select name="cat_id">
-	                {{#categories}}
-	                    <option value="{{id}}">{{name}}</option>
-	                {{/categories}}
-	            </select>
-	      
-            <br /><br /><input type="submit">
-        </form>
+<div id ="container">
+	<div id="add-products">
+		    <h1>Add product</h1>
+		    <form action="/products/add" method="POST">
+	            Product Name:
+	            
+	            
+	               <br /><input value="{{name}}" name="name">
+	            
+	            
+	            <br/><br/>Category ID: <br />
+	            
+		            <select name="cat_id">
+		                {{#categories}}
+		                    <option value="{{id}}">{{name}}</option>
+		                {{/categories}}
+		            </select>
+		      
+	            <br /><br /><input type="submit">
+	        </form>
+		</div>
 	</div>
 </div>

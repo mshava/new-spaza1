@@ -4,7 +4,7 @@ exports.show = function (req, res, next) {
 		req.getConnection(function(err, connection){
 				if (err)
 					return next(err);
-		connection.query('SELECT id, shop FROM suppliers', [], function(err, results) {
+		connection.query('SELECT DISTINCT shop FROM suppliers', [], function(err, results) {
 					res.render('suppliers', {
 						suppliers: results,
 			});

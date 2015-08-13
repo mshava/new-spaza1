@@ -109,7 +109,7 @@ exports.get = function(req, res, next){
 			if(err){
 		        console.log("Error Selecting : %s ",err );
 			}
-		    res.render('/edit',{page_title:"Edit Customers - Node.js", data : rows[0]});
+		    res.render('editSales',{page_title:"Edit Customers - Node.js", data : rows[0]});
 		});
 	});
 };
