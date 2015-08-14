@@ -19,7 +19,7 @@ var app = express();
 var dbOptions = {
     host : "localhost",
     user : "root",
-    password : "amila",
+    password : "2197832",
     port : 3306,
     database : "sakonwaba"
 };
@@ -39,12 +39,12 @@ app.use(bodyParser.json());
 //app.get("/",products.show);
 app.get("/products", products.showProductList);
 app.get("/products/add/:id", products.showAdd);
-<<<<<<< HEAD
+
 //app.get("/add",products.show);
 app.get("/products/edit/:id", products.get);
-=======
+
 app.post("/products/add/",products.add);
->>>>>>> 1e537577b94e568018f4b6da3eefc9ab31d36868
+
 app.post("/products/update/:id", products.update);
 app.get("/products/delete/:id", products.delete);
 
