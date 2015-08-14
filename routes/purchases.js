@@ -25,7 +25,7 @@ exports.showAdd = function (req, res, next) {
 	connection.query(query,[], function(err, purchases) {
 		if (err)
 			return next(err);
-			console.log(purchases);
+			//console.log(purchases);
 	var query = 'SELECT * FROM suppliers';
 	connection.query(query,[], function(err, supply) {
 		res.render('addPurchaseScreen', {
@@ -44,12 +44,12 @@ exports.add = function (req, res, next) {
 	var input = JSON.parse(JSON.stringify(req.body));
 	var data = {
 			prod_id:input.id,
-			Purchases_date: input.date,
-			Purchases_price: input.price,
-			Suppliers_id:input.id,
+			date: input.date,
+			sales_price: input.price,
+			//Suppliers_id:input.id,
 			qty:input.qty
 			};
-		console.log(data);
+		//console.log(data);
 	connection.query('insert into purchases set ?',data,function(err,results) {
 		if (err){
 			return next(err)

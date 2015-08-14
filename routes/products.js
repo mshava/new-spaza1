@@ -6,17 +6,26 @@
 			if (err)
 				return next (err);
 	
-			connection.query('SELECT * FROM products',[],function (err, results) {
+			connection.query('SELECT products.name,categories.name as category_name FROM products,categories WHERE products.cat_id = categories.id',[],function (err, products) {
+				connection.query('SELECT name FROM categories ',[],function (err, categories) {
+				connection
 				if (err){
 					console.log(err);
 					return (err);
 				}
+<<<<<<< HEAD
 				console.log(results.length);
 				res.render('addProducts', {
 					products : results
+=======
+				//console.log(results.length);
+				res.render('Products', {
+					products : products,
+					categories : categories
+>>>>>>> 1e537577b94e568018f4b6da3eefc9ab31d36868
 				});	 
 			});
-
+			});
 		})
 	};
 
@@ -108,7 +117,11 @@ exports.add = function (req, res, next) {
 		connection.query('insert into products set ?', data, function(err, results) {
             if (err)
             console.log("Error inserting : %s ",err );
+<<<<<<< HEAD
             res.redirect('/add');
+=======
+            res.redirect('/products');
+>>>>>>> 1e537577b94e568018f4b6da3eefc9ab31d36868
       	});
 	});
 };

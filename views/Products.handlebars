@@ -2,12 +2,14 @@
 	<div class="table-responsive">
 	<table class="table">
 	<thead>
-			<th data-field="name">Product Name</th>  
+			<th data-field="name">Product Name</th> 
+			<th data-field="name">Category Name</th> 
 	</thead>
     <tbody>
 		{{#products}}
 		<tr>
-		    <td><h2>{{name}}</h2></td> 
+		    <td><h2>{{name}}</h2></td>
+		    <td><h2>{{category_name}}</h2></td> 
 			<td><a href="/products/add/{{id}}">Add</a><td>
 			<td><a href="/products/edit/{{id}}">Edit</a></td>
 			<td><a href="/products/Delete/{{id}}">Delete</a></td>
