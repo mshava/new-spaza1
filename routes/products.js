@@ -1,3 +1,4 @@
+
 	exports.showProductList = function(req, res, next) {
 
 		req.getConnection(function(err, connection) {
@@ -11,7 +12,7 @@
 					return (err);
 				}
 				console.log(results.length);
-				res.render('Products', {
+				res.render('addProducts', {
 					products : results
 				});	 
 			});
@@ -41,7 +42,27 @@
 	};
 
 
-		exports.showpopularPdt = function(req, res, next) {
+/*		
+	
+exports.show = function (req, res, next) {
+	req.getConnection(function(err, connection){
+		if (err) 
+			return next(err);
+		connection.query('SELECT * FROM categories', [], function(err, results1) {
+			connection.query('SELECT * FROM products', [], function(err, results) {
+	        	if (err) return next(err);
+
+	    		res.render( '/products', {
+	    			products : results,
+	    			categories : results1
+	    		});
+	        });
+	    });
+	});
+};
+*/
+
+exports.showpopularPdt = function(req, res, next) {
 		req.getConnection(function(err, connection) {
 
 			if (err)
@@ -57,7 +78,7 @@
 			}); 	
 		})
 	};
-	exports.showleastPdt = function(req, res, next) {
+exports.showleastPdt = function(req, res, next) {
 		req.getConnection(function(err, connection) {
 			if (err)
 				return next (err);
@@ -74,24 +95,6 @@
 			});	
 		})
 	};	
-	
-exports.show = function (req, res, next) {
-	req.getConnection(function(err, connection){
-		if (err) 
-			return next(err);
-		connection.query('SELECT * FROM categories', [], function(err, results1) {
-			connection.query('SELECT * FROM products', [], function(err, results) {
-	        	if (err) return next(err);
-
-	    		res.render( 'Products', {
-	    			products : results,
-	    			categories : results1
-	    		});
-	        });
-	    });
-	});
-};
-
 exports.add = function (req, res, next) {
 	req.getConnection(function(err, connection){
 		if (err){ 
@@ -100,16 +103,15 @@ exports.add = function (req, res, next) {
 		var input = JSON.parse(JSON.stringify(req.body));
 		var data = {
             name : input.name,
-            cat_id : input.cat_id
+            cat_id : input.id
         };
 		connection.query('insert into products set ?', data, function(err, results) {
             if (err)
             console.log("Error inserting : %s ",err );
-            res.redirect('/addProducts');
+            res.redirect('/add');
       	});
 	});
 };
-
 exports.get = function(req, res, next){
 	var id = req.params.id;
 	req.getConnection(function(err, connection){
@@ -121,7 +123,6 @@ exports.get = function(req, res, next){
 		}); 
 	});
 };
-
 exports.update = function(req, res, next){
 
 	var data = JSON.parse(JSON.stringify(req.body));
@@ -135,11 +136,10 @@ exports.update = function(req, res, next){
     		if (err){
               	console.log("Error Updating : %s ",err );
     		}
-          	res.redirect('/addProducts');
+          	res.redirect('/products');
     	});	
     });
 };
-
 exports.delete = function(req, res, next){
 	var id = req.params.id;
 	req.getConnection(function(err, connection){
@@ -147,7 +147,7 @@ exports.delete = function(req, res, next){
 			if(err){
     			console.log("Error Selecting : %s ",err );
 			}
-			res.redirect('/products');
+			res.redirect('products');
 		});
 	});
 };

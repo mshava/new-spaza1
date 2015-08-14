@@ -7,10 +7,9 @@ var express = require("express"),
     
 
     products = require("./routes/products");
-    //categories = require("./routes/spaza");
     categories = require("./routes/categories");
     addPurchases = require("./routes/purchases")
-    addProducts = require("./routes/products");
+    //addProducts = require("./routes/products");
     sales = require("./routes/sales");
     suppliers = require("./routes/suppliers");
 
@@ -38,12 +37,10 @@ app.use(bodyParser.urlencoded({ extended : false}))
 app.use(bodyParser.json());
 
 //app.get("/",products.show);
-app.get("/Products", products.showProductList);
-
-
-//app.get("/add",Products.show)
-app.get("/products/edit/:id", products.get);
+app.get("/products", products.showProductList);
 app.get("/products/add/:id", products.showAdd);
+//app.get("/add",products.show);
+app.get("/products/edit/:id", products.get);
 app.post("/products/update/:id", products.update);
 app.get("/products/delete/:id", products.delete);
 
@@ -51,7 +48,7 @@ app.get("/popular_products", products.showpopularPdt);
 app.get("/least_products", products.showleastPdt);
 //app.get("/products/edit/:id", products.get);
 //app.post("/products/update/:id", products.update);
-//app.post("/products/add/:id", products.add);
+
 //app.get("/products/delete/:id", products.delete);
 
 //app.get("/categories", categories.show);

@@ -1,12 +1,12 @@
 <div id="add-products">
 	    <h1>Add product</h1>
 	    <form action="/products/add" method="POST">
-            Product Name: <br /><input type="text" name="name">
+            Product Name: <br /><input type="text" name="name" value="name" required>
             <br/><br/>Category ID: <br />
             
 	            <select name="cat_id">
 	                {{#categories}}
-	                    <option value="{{id}}">{{name}}</option>
+	                    <option value="{{id}}" name="name">{{name}}</option>
 	                {{/categories}}
 	            </select>
 	      

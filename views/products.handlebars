@@ -1,7 +1,25 @@
-<div id="container"><h2>Products</h2>
-	<ul class="people_list">
-		{{#each products}}
-		   {{this.name}}<br />
-		{{/each}}
-	</ul>
+<div id="container">
+	<div class="table-responsive">
+	<table class="table">
+	<thead>
+			<th data-field="name">Product Name</th>  
+	</thead>
+    <tbody>
+		{{#products}}
+		<tr>
+		    <td><h2>{{name}}</h2></td> 
+			<td><a href="/products/add/{{id}}">Add</a><td>
+			<td><a href="/products/edit/{{id}}">Edit</a></td>
+			<td><a href="/products/Delete/{{id}}">Delete</a></td>
+		</tr>
+		{{/products}}
+		</tbody>
+	</table>
 </div>
+</div>
+	{{#empty}}
+		<p>The list is empty</p>
+	{{/empty}}
+	
+	
+	
