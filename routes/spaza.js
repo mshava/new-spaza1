@@ -1,3 +1,23 @@
+		exports.showProductList = function(req, res, next) {
+
+		req.getConnection(function(err, connection) {
+				
+			if (err)
+				return next (err);
+	
+			connection.query('SELECT * FROM products',[],function (err, results) {
+				if (err){
+					console.log(err);
+					return (err);
+				}
+				console.log(results.length);
+				res.render('Products', {
+					products : results
+				});	 
+			});
+
+		})
+	};
 	exports.showpopularPdt = function(req, res, next) {
 		req.getConnection(function(err, connection) {
 

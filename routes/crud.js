@@ -8,7 +8,7 @@ exports.show = function(req, res, next) {
 	connection.query('SELECT * FROM categories',[],function(err, results, fields) {
 		if (err)
 			return next (err);	
-	res.render('products',{
+	res.render('Products',{
 		products : results
 		//categories : cat
 				});	
@@ -30,7 +30,7 @@ exports.add = function(req, res, next) {
 		if (err)
 			console.log('Error inserting : %$',err);
 
-	res.redirect('/products');	
+	res.redirect('/Products');	
 
 		});
 	});
@@ -59,7 +59,7 @@ exports.update = function(req, res, next) {
 			if (err){
 				console.log("Error updating : %$ ",err );
 			}
-			res.redirect('/products');
+			res.redirect('/Products');
 				
 				});	
 			});
@@ -72,7 +72,7 @@ exports.delete = function(req, res, next) {
 			if (err) {
 				console.log("Error selecting : %$ ", err);
 			}
-			res.redirect('/products');
+			res.redirect('/Products');
 				
 				});	
 			});

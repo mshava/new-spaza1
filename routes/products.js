@@ -1,3 +1,4 @@
+
 	exports.showProductList = function(req, res, next) {
 
 		req.getConnection(function(err, connection) {
@@ -12,10 +13,16 @@
 					console.log(err);
 					return (err);
 				}
+<<<<<<< HEAD
+				console.log(results.length);
+				res.render('addProducts', {
+					products : results
+=======
 				//console.log(results.length);
 				res.render('Products', {
 					products : products,
 					categories : categories
+>>>>>>> 1e537577b94e568018f4b6da3eefc9ab31d36868
 				});	 
 			});
 			});
@@ -44,7 +51,27 @@
 	};
 
 
-		exports.showpopularPdt = function(req, res, next) {
+/*		
+	
+exports.show = function (req, res, next) {
+	req.getConnection(function(err, connection){
+		if (err) 
+			return next(err);
+		connection.query('SELECT * FROM categories', [], function(err, results1) {
+			connection.query('SELECT * FROM products', [], function(err, results) {
+	        	if (err) return next(err);
+
+	    		res.render( '/products', {
+	    			products : results,
+	    			categories : results1
+	    		});
+	        });
+	    });
+	});
+};
+*/
+
+exports.showpopularPdt = function(req, res, next) {
 		req.getConnection(function(err, connection) {
 
 			if (err)
@@ -60,7 +87,7 @@
 			}); 	
 		})
 	};
-	exports.showleastPdt = function(req, res, next) {
+exports.showleastPdt = function(req, res, next) {
 		req.getConnection(function(err, connection) {
 			if (err)
 				return next (err);
@@ -77,6 +104,7 @@
 			});	
 		})
 	};	
+<<<<<<< HEAD
 	
 exports.show = function (req, res, next) {
 	req.getConnection(function(err, connection){
@@ -95,6 +123,8 @@ exports.show = function (req, res, next) {
 	});
 };
 
+=======
+>>>>>>> 3b5b2735d05b47f634fb8627d59f2fd34bd70be8
 exports.add = function (req, res, next) {
 	req.getConnection(function(err, connection){
 		if (err){ 
@@ -103,16 +133,19 @@ exports.add = function (req, res, next) {
 		var input = JSON.parse(JSON.stringify(req.body));
 		var data = {
             name : input.name,
-            cat_id : input.cat_id
+            cat_id : input.id
         };
 		connection.query('insert into products set ?', data, function(err, results) {
             if (err)
             console.log("Error inserting : %s ",err );
+<<<<<<< HEAD
+            res.redirect('/add');
+=======
             res.redirect('/products');
+>>>>>>> 1e537577b94e568018f4b6da3eefc9ab31d36868
       	});
 	});
 };
-
 exports.get = function(req, res, next){
 	var id = req.params.id;
 	req.getConnection(function(err, connection){
@@ -124,7 +157,6 @@ exports.get = function(req, res, next){
 		}); 
 	});
 };
-
 exports.update = function(req, res, next){
 
 	var data = JSON.parse(JSON.stringify(req.body));
@@ -142,7 +174,6 @@ exports.update = function(req, res, next){
     	});	
     });
 };
-
 exports.delete = function(req, res, next){
 	var id = req.params.id;
 	req.getConnection(function(err, connection){
@@ -150,7 +181,7 @@ exports.delete = function(req, res, next){
 			if(err){
     			console.log("Error Selecting : %s ",err );
 			}
-			res.redirect('/products');
+			res.redirect('products');
 		});
 	});
 };
