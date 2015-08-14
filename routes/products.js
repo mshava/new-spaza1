@@ -5,7 +5,7 @@
 			if (err)
 				return next (err);
 	
-			connection.query('SELECT products.name,categories.name as category_name FROM products,categories WHERE products.cat_id = categories.id',[],function (err, products) {
+			connection.query('SELECT products.id, products.name,categories.name as category_name FROM products,categories WHERE products.cat_id = categories.id',[],function (err, products) {
 				connection.query('SELECT name FROM categories ',[],function (err, categories) {
 				connection
 				if (err){
@@ -85,7 +85,7 @@ exports.show = function (req, res, next) {
 		connection.query('SELECT * FROM categories', [], function(err, results1) {
 			connection.query('SELECT * FROM products', [], function(err, results) {
 	        	if (err) return next(err);
-
+	        	console.log(results);
 	    		res.render( 'Products', {
 	    			products : results,
 	    			categories : results1

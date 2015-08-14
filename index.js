@@ -43,17 +43,13 @@ app.get("/Products", products.showProductList);
 
 //app.get("/add",Products.show)
 app.get("/products/edit/:id", products.get);
-app.get("/products/add/:id", products.showAdd);
+app.get("/products/add/", products.showAdd);
 app.post("/products/add/",products.add);
 app.post("/products/update/:id", products.update);
 app.get("/products/delete/:id", products.delete);
 
 app.get("/popular_products", products.showpopularPdt);
 app.get("/least_products", products.showleastPdt);
-//app.get("/products/edit/:id", products.get);
-//app.post("/products/update/:id", products.update);
-//app.post("/products/add/:id", products.add);
-//app.get("/products/delete/:id", products.delete);
 
 //app.get("/categories", categories.show);
 app.get("/sales",sales.show);
@@ -90,8 +86,8 @@ app.post("/addPurchases/add/",addPurchases.add);
 
 app.get('/suppliers',suppliers.show);
 app.post('/suppliers/update/',suppliers.update);
-app.post('/suppliers/add/:id',suppliers.add);
-app.get('/suppliers/delete/:id', suppliers.delete);
+app.post('/suppliers/add/',suppliers.add);
+app.get('/suppliers/delete/', suppliers.delete);
 app.get('/suppliers_edit/', suppliers.get);
 
 
