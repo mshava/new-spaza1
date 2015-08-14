@@ -8,7 +8,7 @@
 			<td><h2>{{description}}</h2></td>
 			<td><a href="/suppliers_edit/{{id}}">Edit</a></td>
 			<td><a href="/suppliers/delete/{{id}}">Delete</a></td>
-			<td><a href='/suppliers/add/{{id}}'>Add</a><td>
+			<td><a href='/suppliers/add/{{shop}}'>Add</a><td>
 			</tr>
 			{{/suppliers}}
 		</table>
@@ -20,8 +20,8 @@
 
 <div id="add-products">
 	<h1>Add Supplier</h1>
-		<form action="/supplier/add/" method="POST">
-			Shop Name: <br /><input type="text" name="name">
+		<form action="/suppliers/add" method="POST">
+			Shop Name: <br /><input type="text" name="name" required>
 <!-- <br/><br/>Category ID: <br />
 <<select name="cat_id">
 {{#products}}
@@ -33,7 +33,7 @@
 <option value="{{id}}">{{name}}</option>
 {{/categories}}
 </select>-->
-			<br /><br /><input type="submit">
+			<br /><br /><input type="add">
 		</form>
 </div>
 </div>
