@@ -18,7 +18,7 @@ exports.add = function (req, res, next) {
 				}
 		var input = JSON.parse(JSON.stringify(req.body));
 		var data = {
-			name : input.name,
+			shop : input.name,
 			};
 		connection.query('insert into suppliers set ?', data, function(err, results) {
 				if (err)
@@ -51,9 +51,9 @@ exports.update = function(req, res, next){
 	});
 };
 exports.delete = function(req, res, next){
-		var Id = req.params.Id;
+		var id = req.params.id;
 			req.getConnection(function(err, connection){
-			connection.query('DELETE FROM suppliers WHERE Id = ?', [Id], function(err,rows){
+			connection.query('DELETE FROM suppliers WHERE id = ?', [id], function(err){
 					if(err){
 				console.log("Error Selecting : %s ",err );
 					}
