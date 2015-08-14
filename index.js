@@ -37,12 +37,25 @@ app.use(bodyParser.urlencoded({ extended : false}))
 app.use(bodyParser.json());
 
 //app.get("/",products.show);
+<<<<<<< HEAD
+app.get("/Products", products.showProductList);
+
+
+//app.get("/add",Products.show)
+app.get("/products/edit/:id", products.get);
+app.get("/products/add/", products.showAdd);
+=======
 app.get("/products", products.showProductList);
 app.get("/products/add/:id", products.showAdd);
 
 //app.get("/add",products.show);
 app.get("/products/edit/:id", products.get);
+<<<<<<< HEAD
 
+=======
+=======
+>>>>>>> 3b5b2735d05b47f634fb8627d59f2fd34bd70be8
+>>>>>>> b0c5ea57b335a361c5b16330256e0d6cb3848ed9
 app.post("/products/add/",products.add);
 
 app.post("/products/update/:id", products.update);
@@ -50,10 +63,13 @@ app.get("/products/delete/:id", products.delete);
 
 app.get("/popular_products", products.showpopularPdt);
 app.get("/least_products", products.showleastPdt);
+<<<<<<< HEAD
+=======
 //app.get("/products/edit/:id", products.get);
 //app.post("/products/update/:id", products.update);
 
 //app.get("/products/delete/:id", products.delete);
+>>>>>>> 3b5b2735d05b47f634fb8627d59f2fd34bd70be8
 
 //app.get("/categories", categories.show);
 app.get("/sales",sales.show);
@@ -90,8 +106,8 @@ app.post("/addPurchases/add/",addPurchases.add);
 
 app.get('/suppliers',suppliers.show);
 app.post('/suppliers/update/',suppliers.update);
-app.post('/suppliers/add/:id',suppliers.add);
-app.get('/suppliers/delete/:id', suppliers.delete);
+app.post('/suppliers/add/',suppliers.add);
+app.get('/suppliers/delete/', suppliers.delete);
 app.get('/suppliers_edit/', suppliers.get);
 
 

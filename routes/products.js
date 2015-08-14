@@ -6,7 +6,11 @@
 			if (err)
 				return next (err);
 	
+<<<<<<< HEAD
 			connection.query('SELECT products.name, products.id,categories.name as category_name FROM products,categories WHERE products.cat_id = categories.id',[],function (err, products) {
+=======
+			connection.query('SELECT products.id, products.name,categories.name as category_name FROM products,categories WHERE products.cat_id = categories.id',[],function (err, products) {
+>>>>>>> b0c5ea57b335a361c5b16330256e0d6cb3848ed9
 				connection.query('SELECT name FROM categories ',[],function (err, categories) {
 				connection
 				if (err){
@@ -101,6 +105,27 @@ exports.showleastPdt = function(req, res, next) {
 			});	
 		})
 	};	
+<<<<<<< HEAD
+	
+exports.show = function (req, res, next) {
+	req.getConnection(function(err, connection){
+		if (err) 
+			return next(err);
+		connection.query('SELECT * FROM categories', [], function(err, results1) {
+			connection.query('SELECT * FROM products', [], function(err, results) {
+	        	if (err) return next(err);
+	        	console.log(results);
+	    		res.render( 'Products', {
+	    			products : results,
+	    			categories : results1
+	    		});
+	        });
+	    });
+	});
+};
+
+=======
+>>>>>>> 3b5b2735d05b47f634fb8627d59f2fd34bd70be8
 exports.add = function (req, res, next) {
 	req.getConnection(function(err, connection){
 		if (err){ 

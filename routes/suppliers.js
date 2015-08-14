@@ -4,7 +4,7 @@ exports.show = function (req, res, next) {
 		req.getConnection(function(err, connection){
 				if (err)
 					return next(err);
-		connection.query('SELECT DISTINCT shop FROM suppliers', [], function(err, results) {
+		connection.query('SELECT DISTINCT shop,id FROM suppliers', [], function(err, results) {
 					res.render('suppliers', {
 						suppliers: results,
 			});
@@ -53,7 +53,7 @@ exports.update = function(req, res, next){
 exports.delete = function(req, res, next){
 		var Id = req.params.Id;
 			req.getConnection(function(err, connection){
-			connection.query('DELETE FROM Suppliers WHERE Id = ?', [Id], function(err,rows){
+			connection.query('DELETE FROM suppliers WHERE Id = ?', [Id], function(err,rows){
 					if(err){
 				console.log("Error Selecting : %s ",err );
 					}
