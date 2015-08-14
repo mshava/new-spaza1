@@ -13,16 +13,16 @@
 					console.log(err);
 					return (err);
 				}
-<<<<<<< HEAD
-				console.log(results.length);
-				res.render('addProducts', {
-					products : results
-=======
+
 				//console.log(results.length);
-				res.render('Products', {
+				//res.render('products', {
+					//products : results
+
+				//console.log(results.length);
+				   res.render('Products', {
 					products : products,
 					categories : categories
->>>>>>> 1e537577b94e568018f4b6da3eefc9ab31d36868
+
 				});	 
 			});
 			});
@@ -104,7 +104,7 @@ exports.showleastPdt = function(req, res, next) {
 			});	
 		})
 	};	
-<<<<<<< HEAD
+
 	
 exports.show = function (req, res, next) {
 	req.getConnection(function(err, connection){
@@ -123,29 +123,25 @@ exports.show = function (req, res, next) {
 	});
 };
 
-=======
->>>>>>> 3b5b2735d05b47f634fb8627d59f2fd34bd70be8
-exports.add = function (req, res, next) {
-	req.getConnection(function(err, connection){
-		if (err){ 
-			return next(err);
-		}
-		var input = JSON.parse(JSON.stringify(req.body));
-		var data = {
-            name : input.name,
-            cat_id : input.id
-        };
-		connection.query('insert into products set ?', data, function(err, results) {
-            if (err)
-            console.log("Error inserting : %s ",err );
-<<<<<<< HEAD
-            res.redirect('/add');
-=======
+
+ exports.add = function (req, res, next) {
+ 	req.getConnection(function(err, connection){
+ 		if (err){ 
+ 			return next(err);
+ 		}
+ 		var input = JSON.parse(JSON.stringify(req.body));
+ 		var data = {
+             name : input.name,
+             cat_id : input.cat_id
+         };
+ 		connection.query('insert into products set ?', data, function(err, results) {
+             if (err)
+             console.log("Error inserting : %s ",err );
+           //res.redirect('/addProducts');
             res.redirect('/products');
->>>>>>> 1e537577b94e568018f4b6da3eefc9ab31d36868
-      	});
-	});
-};
+       	});
+ 	});
+ };
 exports.get = function(req, res, next){
 	var id = req.params.id;
 	req.getConnection(function(err, connection){
@@ -181,7 +177,7 @@ exports.delete = function(req, res, next){
 			if(err){
     			console.log("Error Selecting : %s ",err );
 			}
-			res.redirect('products');
+			res.redirect('/products');
 		});
 	});
 };

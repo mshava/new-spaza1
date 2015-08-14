@@ -37,35 +37,22 @@ app.use(bodyParser.urlencoded({ extended : false}))
 app.use(bodyParser.json());
 
 //app.get("/",products.show);
-<<<<<<< HEAD
-app.get("/Products", products.showProductList);
 
-
-//app.get("/add",Products.show)
-app.get("/products/edit/:id", products.get);
-app.get("/products/add/", products.showAdd);
-=======
-app.get("/products", products.showProductList);
-app.get("/products/add/:id", products.showAdd);
-<<<<<<< HEAD
-//app.get("/add",products.show);
-app.get("/products/edit/:id", products.get);
-=======
->>>>>>> 3b5b2735d05b47f634fb8627d59f2fd34bd70be8
-app.post("/products/add/",products.add);
->>>>>>> 1e537577b94e568018f4b6da3eefc9ab31d36868
-app.post("/products/update/:id", products.update);
-app.get("/products/delete/:id", products.delete);
+ app.get("/Products", products.showProductList);
+ app.get("/products/edit/:id", products.get);
+ app.get("/products/add/:id", products.showAdd);
+ app.post("/products/add/",products.add);
+ app.post("/products/update/:id", products.update);
+ app.get("/products/delete/:id", products.delete);
 
 app.get("/popular_products", products.showpopularPdt);
 app.get("/least_products", products.showleastPdt);
-<<<<<<< HEAD
-=======
+
 //app.get("/products/edit/:id", products.get);
 //app.post("/products/update/:id", products.update);
 
 //app.get("/products/delete/:id", products.delete);
->>>>>>> 3b5b2735d05b47f634fb8627d59f2fd34bd70be8
+
 
 //app.get("/categories", categories.show);
 app.get("/sales",sales.show);
@@ -94,6 +81,7 @@ app.get("/profitable_product",spaza.showmostProfPdt);
 
 app.get("/addPurchases",addPurchases.show);
 app.get("/addPurchases/add/", addPurchases.showAdd);
+app.get("/products/add/:id", products.showAdd);
 app.post("/addPurchases/add/",addPurchases.add);
 //app.post("/addPurchases/update/:id", addPurchases.update);
 //app.post("/addPurchases/add/:id", addPurchases.add);
