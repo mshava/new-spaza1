@@ -33,6 +33,7 @@ exports.show = function (req, res, next) {
 		});
 	});
 };
+/*
 exports.showAdd = function (req, res, next) {
 
 		req.getConnection(function(err, connection){
@@ -73,14 +74,15 @@ exports.showEdit = function (req, res, next) {
 		});
 	});
 };
-exports.addsale = function (req, res, next) {
+*/
+exports.add = function (req, res, next) {
 	req.getConnection(function(err, connection){
 		if (err){
 			return next(err);
 		}
 		var input = JSON.parse(JSON.stringify(req.body));
 		var data = {
-			prod_id: input.prod_id,
+			prod_id: input.id,
 			date: input.sales_date,
 			quantity: input.quantity,
 			price : input.price
@@ -100,7 +102,7 @@ exports.get = function(req, res, next){
 	var input = JSON.parse(JSON.stringify(req.body));
 	    var data = {
 			prod_id: input.id,
-			date: input.date,
+			date: input.sales_date,
 			quantity: input.quantity,
 			price : input.price
 		};
@@ -109,23 +111,30 @@ exports.get = function(req, res, next){
 			if(err){
 		        console.log("Error Selecting : %s ",err );
 			}
-		    res.render('editSales',{page_title:"Edit Customers - Node.js", data : rows[0]});
+		    res.render('/editSales',{page_title:"Edit Customers - Node.js", data : rows[0]});
 		});
 	});
 };
 
-exports.salesUpdate = function(req, res, next){
+exports.update = function(req, res, next){
 	var data = JSON.parse(JSON.stringify(req.body));
 	var id = req.params.id;
 	var input = JSON.parse(JSON.stringify(req.body));
 	     var data = {
+<<<<<<< HEAD
 			name: input.name
 			//date: input.date,
 			//quantity: input.quantity,
 			//price : input.price
+=======
+			prod_id: input.id,
+			date: input.sales_date,
+			quantity: input.quantity,
+			price : input.price
+>>>>>>> b2027164d9547aa5e23c51cd0967df787fb8fadc
 		};
 	req.getConnection(function(err, connection){
-		connection.query('UPDATE sales SET ? WHERE id = ?', [data, id], function(err, rows){
+		connection.query('UPDATE sales SET ? WHERE id = ?', [data, id], function(err){
 			if (err){
 		       console.log("Error Updating : %s ",err );
 			}
@@ -136,7 +145,7 @@ exports.salesUpdate = function(req, res, next){
 exports.delete = function(req, res, next){
 	var id = req.params.id;
 	req.getConnection(function(err, connection){
-	    connection.query('DELETE FROM sales WHERE Id = ?', [id], function(err,rows){
+	    connection.query('DELETE FROM sales WHERE id = ?', [id], function(err,rows){
 	        if(err){
 	            console.log("Error Selecting : %s ",err );
 	            return res.redirect('/categories?error=true&msg=category_linked');

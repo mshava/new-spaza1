@@ -1,6 +1,6 @@
 <div id="container">
     <h1>Purchases</h1>
-    <a href="addPurchases/add/" class="btn btn-warning btn-lg" role="button"> Add Purchase </a>
+    <a href="purchases/add" class="btn btn-warning btn-lg" role="button"> Add Purchase </a>
     <table border="2">
     
 		
@@ -20,8 +20,8 @@
 				    <td><h2>{{date}}</h2></td>
 					<td><h2>R{{sales_price}}</h2></td>
 					<td><h2>{{qty}}</h2></td>
-					<td><a href="/addPurchases/edit/{{purchases_id}}">Edit</a></td>
-					<td><a href="/addPurchases/Delete/{{purchases_id}}">Delete</a></td>
+					<td><a href="/purchases/edit/{{id}}">Edit</a></td>
+					<td><a href="/purchases/Delete/{{id}}">Delete</a></td>
 				</tr>
 			{{/each}}
 		</tbody>
@@ -31,10 +31,10 @@
 		<p>The list is empty</p>
 	{{/empty}}
 
-	<!--<div id="add-product">
+	<div id="add-purchase">
 
 	    <h1>Add Purchases</h1>
-	    <form action="/addPurchases/add" method="POST">
+	    <form method="POST" action="/purchases/add" >
 	        Date:<input type="date" name="purchases_date"><br />
             Product Name:<br /> 
             <select name="purchases_id">
@@ -43,9 +43,9 @@
 	            {{/purchases}}
             </select><br />
 	        Price:<br /><input type="price" name="price"><br />
-	        Quantity:<br /><input type="number" name="qty"<br />
+	        Quantity:<br /><input type="number" name="qty"><br />
 	      
             <br /><br /><input type="submit">
         </form>
-	</div>-->
+	</div>
 </div>

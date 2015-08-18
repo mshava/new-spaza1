@@ -1,6 +1,7 @@
 <div id="container">
 	<ul class="people_list">
 		<h1>Edit</h1>
+<<<<<<< HEAD
 {{#products}}
 
 			<form action="/sales/update/{{id}}" method="POST">
@@ -11,5 +12,13 @@
 				<input type="submit">
 			</form>
 {{/products}}
+=======
+			{{#sales}}
+			<form method="POST" action="/sales/update/{{id}}" >
+				Description: <input type="text" name="name" value="{{id}}" required>
+				<input type="submit">
+			</form>
+			{{/sales}}
+>>>>>>> b2027164d9547aa5e23c51cd0967df787fb8fadc
 	</ul>
 </div>
