@@ -1,3 +1,29 @@
+<<<<<<< HEAD
+
+
+<div id ="container">
+	<div id="add-products">
+		    <h1>Add product</h1>
+		    <form action="/products/add" method="POST">
+	            Product Name:
+	            
+	            
+	               <br /><input value="{{name}}" name="name">
+	            
+	            
+	            <br/><br/>Category ID: <br />
+	            
+		            <select name="cat_id">
+		                {{#categories}}
+		                    <option value="{{id}}">{{name}}</option>
+		                {{/categories}}
+		            </select>
+		      
+	            <br /><br /><input type="submit">
+	        </form>
+		</div>
+	</div>
+=======
 <div id ="container">
 <div id="add-products">
    <h1>Add product</h1>
@@ -20,4 +46,5 @@
        </form>
 </div>
 </div>
+>>>>>>> 34e100f18d088203ccb1e1d99a817beff2a51697
 </div>

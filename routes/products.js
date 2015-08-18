@@ -1,5 +1,61 @@
 exports.showProductList = function(req, res, next) {
 
+<<<<<<< HEAD
+	exports.showProductList = function(req, res, next) {
+
+		req.getConnection(function(err, connection) {
+				
+			if (err)
+				return next (err);
+	
+			connection.query('SELECT products.id, products.name,categories.name as category_name FROM products,categories WHERE products.cat_id = categories.id',[],function (err, products) {
+				connection.query('SELECT name FROM categories ',[],function (err, categories) {
+				connection
+				if (err){
+					console.log(err);
+					return (err);
+				}
+
+				//console.log(results.length);
+				//res.render('products', {
+					//products : results
+
+				//console.log(results.length);
+				   res.render('Products', {
+					products : products,
+					categories : categories
+
+				});	 
+			});
+			});
+		})
+	};
+
+	exports.showAdd = function(req, res, next) {
+
+		req.getConnection(function(err, connection) {
+				
+			if (err)
+				return next (err);
+	
+			connection.query('SELECT * FROM categories',[],function (err, results) {
+				if (err){
+					console.log(err);
+					return (err);
+				}
+				console.log(results.length);
+				res.render('add', {
+					categories : results
+				});	 
+			});
+
+		})
+	};
+
+
+/*		
+	
+=======
 req.getConnection(function(err, connection) {
 if (err)
 return next (err);
@@ -47,6 +103,7 @@ categories : results
 
 
 /*	
+>>>>>>> 34e100f18d088203ccb1e1d99a817beff2a51697
 exports.show = function (req, res, next) {
 req.getConnection(function(err, connection){
 if (err) 
@@ -82,6 +139,26 @@ products : results
 })
 };
 exports.showleastPdt = function(req, res, next) {
+<<<<<<< HEAD
+		req.getConnection(function(err, connection) {
+			if (err)
+				return next (err);
+				
+					connection.query('SELECT SUM(quantity) as totalqty, name FROM sales s INNER JOIN products p ON s.prod_id = p.id GROUP BY name ORDER BY SUM(quantity) ASC LIMIT 0, 1' ,[],function (err, results) {
+		       	if (err){
+					console.log(err); 
+					return (err);
+				}	
+				console.log("....." + results.length);
+				res.render('least_products', {
+					products : results
+				});	
+			});	
+		})
+	};	
+
+	
+=======
 req.getConnection(function(err, connection) {
 if (err)
 return next (err);
@@ -98,6 +175,7 @@ products : results
 })
 };	
 
+>>>>>>> 34e100f18d088203ccb1e1d99a817beff2a51697
 exports.show = function (req, res, next) {
 req.getConnection(function(err, connection){
 if (err) 
@@ -118,6 +196,17 @@ connection.query('SELECT * FROM products', [], function(err, results) {
 
  exports.add = function (req, res, next) {
  	req.getConnection(function(err, connection){
+<<<<<<< HEAD
+ 		if (err){ 
+ 			return next(err);
+ 		}
+ 		var input = JSON.parse(JSON.stringify(req.body));
+ 		var data = {
+             name : input.name,
+             cat_id : input.cat_id
+         };
+ 		connection.query('insert into products set ?', data, function(err, results) {
+=======
  	if (err){ 
  	return next(err);
  	}
@@ -127,6 +216,7 @@ connection.query('SELECT * FROM products', [], function(err, results) {
              cat_id : input.cat_id
          };
  	connection.query('insert into products set ?', data, function(err, results) {
+>>>>>>> 34e100f18d088203ccb1e1d99a817beff2a51697
              if (err)
              console.log("Error inserting : %s ",err );
            //res.redirect('/addProducts');
@@ -163,6 +253,19 @@ var data = {
     });
 };
 exports.delete = function(req, res, next){
+<<<<<<< HEAD
+	var id = req.params.id;
+	req.getConnection(function(err, connection){
+		connection.query('DELETE FROM products WHERE id = ?', [id], function(err,rows){
+			if(err){
+    			console.log("Error Selecting : %s ",err );
+			}
+			res.redirect('/products');
+		});
+	});
+};
+
+=======
 var id = req.params.id;
 req.getConnection(function(err, connection){
 connection.query('DELETE FROM products WHERE id = ?', [id], function(err,rows){
@@ -173,3 +276,4 @@ res.redirect('/products');
 });
 });
 };
+>>>>>>> 34e100f18d088203ccb1e1d99a817beff2a51697
