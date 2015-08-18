@@ -19,7 +19,7 @@ var app = express();
 var dbOptions = {
     host : "localhost",
     user : "root",
-    password : "2197832",
+    password : "amila",
     port : 3306,
     database : "sakonwaba"
 };
@@ -37,10 +37,10 @@ app.use(bodyParser.urlencoded({ extended : false}))
 app.use(bodyParser.json());
 
 //app.get("/",products.show);
-<<<<<<< HEAD
+
 
  app.get("/Products", products.showProductList);
-=======
+
 
 app.get("/Products", products.showProductList);
 //app.get("/add",Products.show)
@@ -51,7 +51,7 @@ app.get("/Products", products.showProductList);
 //app.get("/products/add/:id", products.showAdd);
 
 //app.get("/add",products.show);
->>>>>>> 34e100f18d088203ccb1e1d99a817beff2a51697
+
  app.get("/products/edit/:id", products.get);
  app.get("/products/add/:id", products.showAdd);
  app.post("/products/add/",products.add);
@@ -60,10 +60,10 @@ app.get("/Products", products.showProductList);
 
 app.get("/popular_products", products.showpopularPdt);
 app.get("/least_products", products.showleastPdt);
-<<<<<<< HEAD
 
-=======
->>>>>>> 34e100f18d088203ccb1e1d99a817beff2a51697
+
+
+
 //app.get("/products/edit/:id", products.get);
 //app.post("/products/update/:id", products.update);
 
@@ -74,11 +74,11 @@ app.get("/least_products", products.showleastPdt);
 app.get("/sales",sales.show);
 app.get("/sales/update/:id", sales.get);
 app.get("/sales/edit/:id", sales.showEdit);
-//app.get("/sales/update/:id", sales.get)
+app.get("/sales/update/:id", sales.get)
 app.get("/sales/add/", sales.showAdd);
 app.post("/sales/add/", sales.addsale);
 app.post("/sales/edit/", sales.salesUpdate);
-app.post("/sales/update/",sales.salesUpdate);
+app.post("/sales/update/:id",sales.salesUpdate);
 app.get("/sales/delete/:id",sales.delete);
 
 
