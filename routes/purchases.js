@@ -17,6 +17,7 @@ exports.show = function (req, res, next) {
 		});
 	});
 };
+/*
 exports.showAdd = function (req, res, next) {
 	req.getConnection(function(err, connection) {
 		if (err)
@@ -36,25 +37,90 @@ exports.showAdd = function (req, res, next) {
 		});
 	});
 };
-exports.add = function (req, res, next) {
-	req.getConnection(function(err, connection) {
-		if (err){
+*/
+ exports.add = function (req, res, next) {
+		req.getConnection(function(err, connection){
+			if (err){
 			return next(err);
-		}
-	var input = JSON.parse(JSON.stringify(req.body));
-	var data = {
-			prod_id:input.id,
+			}
+		var input = JSON.parse(JSON.stringify(req.body));
+		var data = {
+			id:input.purchases_id,
 			date: input.date,
 			sales_price: input.price,
-			//Suppliers_id:input.id,
-			qty:input.qty
+			item:input.qty
 			};
-		//console.log(data);
-	connection.query('insert into purchases set ?',data,function(err,results) {
+		connection.query('insert into purchases set ?', data, function(err, results) {
+				if (err)
+					console.log(err);
+			res.redirect('/purchases');
+		});	
+	});
+};
+
+exports.get = function(req, res, next){
+	req.getConnection(function(err, connection){
 		if (err){
-			return next(err)
-			}
-			res.redirect('addPurchases');
+				return next(err);
+				}
+			var purchaseid = Number(req.params.purchase_id);
+			var purchaseSql = 'SELECT * from purchases p where p.id = ?';
+			connection.query(purchaseSql, [purchase_id], function(err, purchases) {
+					if (err){
+						return next(err);
+						}
+		
+			connection.query('SELECT * FROM products', [], function(err, products) {
+					if (err)
+						return next(err);
+
+			var purchase = purchases.length > 0 ? purchases[0] : {};
+			var productList = products.map(function(product){
+				var result = {
+					id : product.id,
+					name : product.name,
+					selectedProduct : product.id === purchase.product_id
+					};
+					return result;
+					});
+			var context = {
+				products : productList,
+				purchase: purchases.length > 0 ? purchases[0] : {},
+					};
+			res.render('editPurchases', context);
+				});
+			});
+		});
+	};
+
+exports.update = function(req, res, next){
+	var data = JSON.parse(JSON.stringify(req.body));
+	var id = req.params.id;
+	var qty = req.params.qty;
+	var purchase_date = req.params.purchase_date;
+	var purchase_price = req.params.purchase_price;
+	var prodid = req.params.product_id;
+		req.getConnection(function(err, connection){
+		connection.query('UPDATE Purchases SET ? WHERE id = ?', [data, id,qty,purchase_date,purchase_price], function(err, rows){
+		connection.query('UPDATE products SET ? WHERE id = ?', [data, prod_id], function(err, rows){
+				if (err){
+		console.log("Error Updating : %s ",err );
+		}
+		res.redirect('/purchases')
+
+			});
+		});
+	});
+};
+
+exports.delete = function(req, res, next){
+	var id = req.params.id;
+		req.getConnection(function(err, connection){
+			connection.query('DELETE FROM Purchases WHERE id = ?', [id], function(err,rows){
+					if(err){
+				console.log("Error Selecting : %s ",err );
+				}
+			res.redirect('/purchases');
 		});
 	});
 };
