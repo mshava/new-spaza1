@@ -1,26 +1,14 @@
 <div id="container">
 	<ul class="people_list">
 		<h1>Edit</h1>
-<<<<<<< HEAD
-
-			<form action="/sales/update/" method="POST">
-				Description: 
+			<form action="/sales/update/{{id}}" method="POST">
+			Description :
 				<select>
 				{{#products}}
-
 					<option value = {{id}}>{{name}}</option>
-					{{/products}}
-
+				{{/products}}
 				</select>
 				<input type="submit">
-			</form>
-=======
-			{{#data}}
-			<form action="/sales/update/{{id}}" method="POST">
-				Description: <input type="text" name="name" value="{{id}}" required>
-				<input type="submit">
-			</form>
-			{{/data}}
->>>>>>> b2027164d9547aa5e23c51cd0967df787fb8fadc
+			</form>	
 	</ul>
 </div>

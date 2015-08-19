@@ -19,7 +19,7 @@
 				    <td><h2>{{name}}</h2></td>
 				    <td><h2>{{date}}</h2></td>
 					<td><h2>R{{sales}}</h2></td>
-					<td><h2>{{Quantity}}</h2></td>
+					<td><h2>{{quantity}}</h2></td>
 					
 					<td><a href="/sales/edit/{{id}}">Edit</a></td>
 					<td><a href="/sales/delete/{{id}}">Delete</a></td>
@@ -32,21 +32,4 @@
 		<p>The list is empty</p>
 	{{/empty}}
 
-	<div id="add-sale">
-
-	    <h1>Add Sale</h1>
-	    <form action="/sales/add" method="POST">
-	        Date:<input type="date" name="sales_date"><br />
-            Product Name:<br /> 
-            <select name="prod_id">
-	            {{#products}}
-	            	<option value="{{id}}">{{name}}</option>
-	            {{/products}}
-            </select><br />
-	        Price:<br /><input type="price" name="price"><br />
-	        Quantity:<br /><input type="number" name="quantity"<br />
-	      
-            <br /><br /><input type="submit">
-        </form>
-	</div>
-</div>-->
+	
