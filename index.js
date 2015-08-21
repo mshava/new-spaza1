@@ -99,13 +99,13 @@ app.get("/sales/delete/:id",sales.delete);
  app.get("/profitable_product",spaza.showmostProfPdt);
  
  
-//app.get("/addPurchases",addPurchases.show);
-//app.get("/addPurchases/add/", addPurchases.showAdd);
+app.get("/purchases", addPurchases.show);
+app.get("/purchases/add/", addPurchases.showAdd);
 //app.get("/products/add/:id", products.showAdd);
-//app.post("/addPurchases/add/",addPurchases.add);
- //app.post("/addPurchases/update/:id", addPurchases.update);
- //app.post("/addPurchases/add/:id", addPurchases.add);
- //app.get("/addPurchases/delete/:id", addPurchases.delete);
+app.post("/purchases/add/",addPurchases.add);
+app.post("/addPurchases/update/:id", addPurchases.update);
+app.post("/addPurchases/add/:id", addPurchases.add);
+app.get("/addPurchases/delete/:id", addPurchases.delete);
  
  
  app.get('/suppliers',suppliers.show);
