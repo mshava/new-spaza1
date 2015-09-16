@@ -10,10 +10,10 @@
  
      products = require("./routes/products");
      categories = require("./routes/categories");
-     addPurchases = require("./routes/purchases")
-     //addProducts = require("./routes/products");
+     addPurchases = require("./routes/purchases");
      sales = require("./routes/sales");
      suppliers = require("./routes/suppliers");
+     //login = require("./routes/login");
      signup = require("./routes/users_signup");
  
          
@@ -102,12 +102,11 @@ app.get("/sales/delete/:id",sales.delete);
  
  
 app.get("/addPurchases",addPurchases.show);
-//app.get("/addPurchases/add/", addPurchases.showAdd);
-//app.get("/products/add/:id", products.showAdd);
-//app.post("/addPurchases/add/",addPurchases.add);
- //app.post("/addPurchases/update/:id", addPurchases.update);
- //app.post("/addPurchases/add/:id", addPurchases.add);
- //app.get("/addPurchases/delete/:id", addPurchases.delete);
+app.get("/addPurchases/add/", addPurchases.showAdd);
+app.post("/addPurchases/add/",addPurchases.add);
+app.post("/addPurchases/update/:id", addPurchases.update);
+app.post("/addPurchases/add/:id", addPurchases.add);
+app.get("/addPurchases/delete/:id", addPurchases.delete);
  
  
  app.get('/suppliers',suppliers.show);
@@ -115,6 +114,25 @@ app.get("/addPurchases",addPurchases.show);
  app.post('/suppliers/add',suppliers.add);
  app.get('/suppliers_edit/:id', suppliers.get);
  app.get('/suppliers/delete/:id', suppliers.delete);
+
+
+//app.get("/login",function (req, res){
+//res.render("login");
+//});
+
+//app.post("/login/add",function (req,res){
+//res.render("login/add:id");
+//});
+
+
+ //app.get("/login",login.show);
+ //app.post("/login/add",login.add);
+ //app.post("/login/update/:id",login.update);
+ //app.get("/login/edit:id",login.get);
+
+
+
+
 
  app.get("/signup",signup.show);
  app.post("/signup/add",signup.add);
