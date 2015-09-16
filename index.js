@@ -1,4 +1,6 @@
  var express = require("express"),
+
+     Exsession = require('express-session'),
      exphbs = require("express-handlebars"),
      mysql = require("mysql"),
      bodyParser = require("body-parser"),
@@ -12,6 +14,7 @@
      //addProducts = require("./routes/products");
      sales = require("./routes/sales");
      suppliers = require("./routes/suppliers");
+     signup = require("./routes/users_signup");
  
          
  var app = express();
@@ -19,8 +22,7 @@
  var dbOptions = {
      host : "localhost",
      user : "root",
-    // password : "2197832",
-     password : "amila",
+     password : "2197832",
      port : 3306,
      database : "sakonwaba"
  };
@@ -99,7 +101,7 @@ app.get("/sales/delete/:id",sales.delete);
  app.get("/profitable_product",spaza.showmostProfPdt);
  
  
-//app.get("/addPurchases",addPurchases.show);
+app.get("/addPurchases",addPurchases.show);
 //app.get("/addPurchases/add/", addPurchases.showAdd);
 //app.get("/products/add/:id", products.showAdd);
 //app.post("/addPurchases/add/",addPurchases.add);
@@ -113,7 +115,13 @@ app.get("/sales/delete/:id",sales.delete);
  app.post('/suppliers/add',suppliers.add);
  app.get('/suppliers_edit/:id', suppliers.get);
  app.get('/suppliers/delete/:id', suppliers.delete);
- 
+
+ app.get("/signup",signup.show);
+ app.post("/signup/add",signup.add);
+ app.post("/signup/update/:id",signup.update);
+ app.get("/signup/edit/:id",signup.get);
+ app.get("/signup/delete:id",signup.delete);
+
  
  //app.get();
  

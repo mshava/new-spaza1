@@ -2,7 +2,7 @@ exports.show = function (req, res, next) {
 	req.getConnection(function(err, connection){
 		if (err)
 			return next(err);
-		var query = 'SELECT * from categories';
+		var query = 'SELECT  * from categories';
 		connection.query(query, [], function(err, results) {
 			if (err) 
 				return next(err);
@@ -94,7 +94,7 @@ exports.update = function(req, res, next){
 	var data = JSON.parse(JSON.stringify(req.body));
 	var id = req.params.id;
 	req.getConnection(function(err, connection){
-		connection.query('UPDATE categories SET ? WHERE id = ?', [data, id], function(err, rows){
+		connection.query('UPDATE categories SET ? WHERE Id = ?', [data, id], function(err, rows){
 			if (err){
 		       console.log("Error Updating : %s ",err );
 			}
@@ -105,7 +105,7 @@ exports.update = function(req, res, next){
 exports.delete = function(req, res, next){
 	var id = req.params.id;
 	req.getConnection(function(err, connection){
-	    connection.query('DELETE FROM categories WHERE id = ?', [id], function(err,rows){
+	    connection.query('DELETE FROM categories WHERE Id = ?', [id], function(err,rows){
 	        if(err){
 	            console.log("Error Selecting : %s ",err );
 	            return res.redirect('/categories?error=true&msg=category_linked');
