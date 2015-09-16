@@ -6,7 +6,7 @@ exports.showProductList = function(req, res, next) {
 				return next (err);
 	
 			connection.query('SELECT products.id, products.name,categories.name as category_name FROM products,categories WHERE products.cat_id = categories.id',[],function (err, products) {
-				connection.query('SELECT name FROM categories ',[],function (err, categories) {
+				connection.query('SELECT name,id FROM categories ',[],function (err, categories) {
 				connection
 				if (err){
 					console.log(err);

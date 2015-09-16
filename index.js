@@ -1,9 +1,13 @@
  var express = require("express"),
      exphbs = require("express-handlebars"),
      mysql = require("mysql"),
+     bcrypt = require('bcrypt'),
+     cookieParser = require('cookie-parser'),
+     session = require('express-session'), 
      bodyParser = require("body-parser"),
      myConnection = require("express-myconnection"),
-     spaza = require("./routes/spaza");    
+     spaza = require("./routes/spaza"),
+     login = require('./routes/login');   
      
  
      products = require("./routes/products");
@@ -101,11 +105,12 @@ app.get("/sales/delete/:id",sales.delete);
  
 app.get("/purchases", addPurchases.show);
 app.get("/purchases/add/", addPurchases.showAdd);
-//app.get("/products/add/:id", products.showAdd);
+app.get("/purchases/edit/:id", addPurchases.showEdit);
+app.get("/purchases/update/:id", addPurchases.update);
 app.post("/purchases/add/",addPurchases.add);
-app.post("/addPurchases/update/:id", addPurchases.update);
-app.post("/addPurchases/add/:id", addPurchases.add);
-app.get("/addPurchases/delete/:id", addPurchases.delete);
+app.post("/purchases/update/", addPurchases.update);
+app.post("/purchases/add/:id", addPurchases.add);
+app.get("/purchases/delete/:id", addPurchases.delete);
  
  
  app.get('/suppliers',suppliers.show);
@@ -116,6 +121,7 @@ app.get("/addPurchases/delete/:id", addPurchases.delete);
  
  
  //app.get();
+ app.post("/login", login.userLogin);
  
  app.get("/",function (req, res){
  res.render("index");

@@ -2,7 +2,7 @@ exports.show = function (req, res, next) {
 	req.getConnection(function(err, connection) {
 			if (err)
 				return next(err);
-		var query = "SELECT DATE_FORMAT(purchases.purchase_date,'%d %b %y') as date,purchases.quantity as quantity,products.name as product from purchases,products where products.id = purchases.prod_id order by purchases.purchase_date DESC";
+		var query = "SELECT purchases.id as id,DATE_FORMAT(purchases.purchase_date,'%d %b %y') as date,purchases.quantity as quantity,products.name as product from purchases,products where products.id = purchases.prod_id order by purchases.purchase_date DESC";
 		connection.query(query,[], function(err, purchases) {
 			if (err)
 				return next(err);
@@ -22,7 +22,7 @@ exports.showAdd = function (req, res, next) {
 	req.getConnection(function(err, connection) {
 		if (err)
 			return next(err);
-	var query = "SELECT DATE_FORMAT(purchases.purchase_date,'%d %b %y') as date,purchases.quantity as quantity,purchases.cost as price, products.name as product from purchases,products where products.id = purchases.prod_id order by purchases.purchase_date DESC";
+	var query = "SELECT purchases.id as id,DATE_FORMAT(purchases.purchase_date,'%d %b %y') as date,purchases.quantity as quantity,purchases.cost as price, products.name as product from purchases,products where products.id = purchases.prod_id order by purchases.purchase_date DESC";
 	connection.query(query,[], function(err, purchases) {
 		if (err)
 			return next(err);
@@ -38,6 +38,25 @@ exports.showAdd = function (req, res, next) {
 	});
 };
 
+exports.showEdit = function (req, res, next) {
+	req.getConnection(function(err, connection) {
+		if (err)
+			return next(err);
+	var query = "SELECT purchases.id as id,DATE_FORMAT(purchases.purchase_date,'%d %b %y') as date,purchases.quantity as quantity,purchases.cost as price, products.name as product from purchases,products where products.id = purchases.prod_id order by purchases.purchase_date DESC";
+	connection.query(query,[], function(err, purchases) {
+		if (err)
+			return next(err);
+			//console.log(purchases);
+	var query = 'SELECT * FROM suppliers';
+	connection.query(query,[], function(err, supply) {
+		res.render('editPurchases', {
+			purchases : purchases,
+			suppliers : supply
+				});
+			});
+		});
+	});
+};
  exports.add = function (req, res, next) {
 		req.getConnection(function(err, connection){
 			if (err){
@@ -101,8 +120,8 @@ exports.update = function(req, res, next){
 	var purchase_price = req.params.purchase_price;
 	var prodid = req.params.product_id;
 		req.getConnection(function(err, connection){
-		connection.query('UPDATE Purchases SET ? WHERE id = ?', [data, id,qty,purchase_date,purchase_price], function(err, rows){
-		connection.query('UPDATE products SET ? WHERE id = ?', [data, prod_id], function(err, rows){
+		connection.query('UPDATE Purchases SET ? WHERE id = ?', [data, id,quantity,purchase_date,cost], function(err, rows){
+		connection.query('UPDATE products SET ? WHERE id = ?', [data,prod_id], function(err, rows){
 				if (err){
 		console.log("Error Updating : %s ",err );
 		}

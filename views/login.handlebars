@@ -1,0 +1,33 @@
+<div id="page-inner">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <h1 class = "text-center data-title">Nelisa Spaza</h1>
+                <p class = "text-center">Welcome to Nelisa Spaza</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <h2 class = " text-center data-title">Login</h2>
+                <p class = "text-center">{{msg}}</p>
+                <form name="login" method='POST' action="/login">
+   
+          <div class="field-wrap">
+            <input type="text" required="required" autocomplete="off" name="username" placeholder="Username *"/>
+          </div>
+     
+        <div class="field-wrap">
+          <input type="password" required="required" autocomplete="off" name="password" placeholder="Password *"/>
+        </div>
+        <button type="submit" class="button button-block">Login</button>
+        <h2>Don't have an account? <a href="sign_up">sign up</a> or sign up as <a href="admin_signup">admin</a></h2>
+      </form>
+                <form class="text-center"  action="/signUp" method="get">
+                    <button class = "signButt">Sign Up</button>
+                    </div>
+               </form>
+        </div>
+
+        <hr />
+    </div>
+</div>

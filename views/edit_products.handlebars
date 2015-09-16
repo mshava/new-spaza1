@@ -7,9 +7,17 @@
 
      <form action="/products/update/{{id}}" method="POST">
 
-		Description: <input type="text" name="name" value="{{name}}" required>
+		Description: <input type="text" name="name" value="{{name}}" required><br />
+		 {{/data}}
+       <br/><br/>Category Name: <br />
+                
+            <select name="cat_id">
+                {{#categories}}
+                    <option value="{{id}}">{{name}}</option>
+                {{/categories}}
+            </select>
 		<input type="submit">
      </form>
-{{/data}}
+
 
 </div>
