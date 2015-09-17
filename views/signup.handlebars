@@ -1,4 +1,14 @@
-<script type='text/javascript'>
+<div id="container">
+  <ul class="people_list">
+    <h1>Register Here</h1>
+      <form method="POST" action="signup">
+        Username: <input type='text' name='username'placeholder="username" input value='{{username}}' /><br />
+        Password(6-8 characters): <input name="password" placeholder="password" input value='{{password}}' /><br />
+        Occupation: <input type='text'name="occupation" placeholder="occupation" value='{{occupation}}' /><br />
+        <input type='submit'  />
+      </form>
+  </ul>
+  <script>
 
 function formValidator(){
   // Make quick references to our fields
@@ -93,10 +103,7 @@ function emailValidator(elem, helperMsg){
   }
 }
 </script>
+</div>
 
-<form method="POST" action="/signup">
-First Name: <input type='text' id='{{firstname}}' /><br />
-Username(6-8 characters): <input type='text' id='{{username}}' /><br />
-Email: <input type='text' id='{{email}}' /><br />
-<input type='submit' value='Check Form' />
-</form>
+
+

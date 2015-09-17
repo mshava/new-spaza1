@@ -1,0 +1,11 @@
+<div id="container">
+	<ul class="people_list">
+  		<h1>Add Users</h1>
+			{{#data}}
+				<form method="POST" action="/users/add">
+				Description: <input type="text" name="user_add" value="{{user_add}}" required>
+				<input type="submit">
+				</form>
+			{{/data}}
+	</ul>
+</div>

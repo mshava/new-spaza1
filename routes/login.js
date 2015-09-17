@@ -12,7 +12,7 @@ exports.login = function (req, res, next) {
                             if (err)
                     console.log("Error inserting : %s ",err );
                     }
-         		res.render('login', {
+         		res.send('login', {
 					login: data
 					});
     }); 

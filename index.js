@@ -40,7 +40,25 @@
  app.use(bodyParser.json());
  
  //app.get("/",products.show);
+ 
+ /*var checkUser = function(req, res, next){
+  if (req.session.user){
+    return next();
+  }
+  // the user is not logged in redirect them to the login page
+  res.redirect('login');
+};
 
+app.get('/users', checkUser, function(req, res){
+  var userData = userService.getUserData();
+  res.render('users', userData)
+});
+
+ app.use(function(req, res, next){
+  console.log('in my middleware!');
+  //proceed to the next middleware component
+  next();
+});*/
 
  
   app.get("/Products", products.showProductList);
@@ -116,8 +134,8 @@ app.get("/addPurchases/delete/:id", addPurchases.delete);
  app.get('/suppliers/delete/:id', suppliers.delete);
 
 
-//app.get("/login",function (req, res){
-//res.render("login");
+//app.get("/login",function (req, res, next){
+//res.send("login");
 //});
 
 //app.post("/login/add",function (req,res){
@@ -135,7 +153,7 @@ app.get("/addPurchases/delete/:id", addPurchases.delete);
 
 
  app.get("/signup",signup.show);
- app.post("/signup/add",signup.add);
+ app.post("/signup",signup.get);
  app.post("/signup/update/:id",signup.update);
  app.get("/signup/edit/:id",signup.get);
  app.get("/signup/delete:id",signup.delete);
@@ -144,7 +162,7 @@ app.get("/addPurchases/delete/:id", addPurchases.delete);
  //app.get();
  
  app.get("/",function (req, res){
- res.render("index");
+ res.render("signup");
  });
  
  
