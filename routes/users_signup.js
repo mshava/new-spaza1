@@ -5,7 +5,7 @@ exports.show = function (req, res, next) {
 		//var isAdmin = req.session.role === "admin";
 		//var readOnly = req.session.role !== "admin";
 			connection.query('SELECT * from Users', [], function(err, results, fields) {
-				res.render('sign-up', {
+				res.render('signup', {
 					users: results
 					//in_ca: isAdmin,
 					//action:readOnly
@@ -13,11 +13,15 @@ exports.show = function (req, res, next) {
 		});
 	});
 };
-
+/*
 exports.get = function(req, res, next){
-	var Id = req.params.User_role;
+	//var Id = req.params.User_role;
+	var data = {
+              firstname : input.firstname,
+              username : input.username,
+              email : input.email
 		req.getConnection(function(err, connection){
-			connection.query('SELECT * FROM Users WHERE User_role = ?', [id], function(err,rows){
+			connection.query('SELECT * FROM Users WHERE User_role = ?', [data], function(err,rows){
 					if(err){
 					console.log("Error Selecting : %s ",err );
 					}
@@ -25,6 +29,7 @@ exports.get = function(req, res, next){
 		});
 	});
 };
+*/
 //updating a user
 exports.admin = function(req, res, next) {
 	var data = JSON.parse(JSON.stringify(req.body));
@@ -34,7 +39,7 @@ exports.admin = function(req, res, next) {
 					if (err) {
 					console.log("Error Updating : %s ", err);
 					}
-			res.redirect('/sign-up');
+			res.redirect('/signup');
 		});
 	});
 };
@@ -46,7 +51,7 @@ exports.notAdmin = function(req, res, next) {
 					if (err) {
 					console.log("Error Updating : %s ", err);
 					}
-			res.redirect('/sign-up');
+			res.redirect('/signup');
 		});
 	});
 };
@@ -58,7 +63,7 @@ exports.update = function(req, res, next){
 					if (err){
 					console.log("Error Updating : %s ",err );
 					}
-			res.redirect('/sign-up');
+			res.redirect('/signup');
 		});
 	});
 };
@@ -69,13 +74,27 @@ exports.delete = function(req, res, next){
 					if(err){
 					console.log("Error Selecting : %s ",err );
 					}
-			res.redirect('/sign-up');
+			res.redirect('/signup');
 		});
 	});
 };
 
-exports.add = function(req, res){
-	var id = req.body;
-	console.log(JSON.stringify(req.body));
-
-};
+ exports.get = function (req, res, next) {
+ 	req.getConnection(function(err, connection){
+ 		if (err){ 
+ 			return next(err);
+ 		}
+ 		var input = JSON.parse(JSON.stringify(req.body));
+ 		var data = {
+              username : input.username,
+              password : input.password,
+              occupation: input.occupation
+         };
+ 		connection.query('insert into users set ?', data, function(err, results) {
+             if (err)
+             console.log("Error inserting : %s ",err );
+           //res.redirect('/addProducts');
+            res.redirect('/signup');
+       	});
+ 	});
+ };

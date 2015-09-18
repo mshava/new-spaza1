@@ -16,10 +16,10 @@
  
      products = require("./routes/products");
      categories = require("./routes/categories");
-     addPurchases = require("./routes/purchases")
-     //addProducts = require("./routes/products");
+     addPurchases = require("./routes/purchases");
      sales = require("./routes/sales");
      suppliers = require("./routes/suppliers");
+     //login = require("./routes/login");
      signup = require("./routes/users_signup");
 
      
@@ -57,7 +57,7 @@
  
  //app.get("/",products.show);
   app.get ("/",login.login);
- 
+
   app.get("/Products",users.checkUser,products.showProductList);
 
 
@@ -115,8 +115,6 @@ app.get("/sales/delete/:id",sales.delete);
  app.get("/product_earnings",spaza.showearningsPerPdt);
  app.get("/profitable_product",spaza.showmostProfPdt);
  
- 
-
 app.get("/purchases", addPurchases.show);
 app.get("/purchases/add/", addPurchases.showAdd);
 app.get("/purchases/edit/:id", addPurchases.showEdit);
@@ -126,14 +124,8 @@ app.post("/purchases/update/", addPurchases.update);
 app.post("/purchases/add/:id", addPurchases.add);
 app.get("/purchases/delete/:id", addPurchases.delete);
 app.get("/addPurchases",addPurchases.show);
-//app.get("/addPurchases/add/", addPurchases.showAdd);
-//app.get("/products/add/:id", products.showAdd);
-//app.post("/addPurchases/add/",addPurchases.add);
- //app.post("/addPurchases/update/:id", addPurchases.update);
- //app.post("/addPurchases/add/:id", addPurchases.add);
- //app.get("/addPurchases/delete/:id", addPurchases.delete);
  
- 
+
  app.get('/suppliers',suppliers.show);
  app.post('/suppliers/update/:id',suppliers.update);
  app.post('/suppliers/add',suppliers.add);
@@ -141,7 +133,7 @@ app.get("/addPurchases",addPurchases.show);
  app.get('/suppliers/delete/:id', suppliers.delete);
 
  app.get("/signup",signup.show);
- app.post("/signup/add",signup.add);
+ app.post("/signup",signup.get);
  app.post("/signup/update/:id",signup.update);
  app.get("/signup/edit/:id",signup.get);
  app.get("/signup/delete:id",signup.delete);
@@ -151,7 +143,7 @@ app.get("/addPurchases",addPurchases.show);
  app.post("/login", login.userLogin);
  
  app.get("/",function (req, res){
- res.render("index");
+ res.render("signup");
  });
  
  
