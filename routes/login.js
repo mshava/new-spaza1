@@ -1,4 +1,17 @@
-var bcrypt = require('bcrypt');
+//var bcrypt = require('bcrypt');
+exports.login = function (req, res){
+        if(req.session.user ){
+            user.username = req.session.user;
+            res.render('loggedIn', {
+                    user: req.session.user,
+                    admin:admin
+            });
+
+        }
+        else{
+            res.render('home');
+        }
+};
 
 exports.userCheck = function (req, res, next) {
 
@@ -90,7 +103,7 @@ exports.userLogin = function(req, res, next) {
 
             connection.query('SELECT * from Users WHERE Username=?', [username], function(err, users) {
 
-            var user = users[0];
+            //var user = users[0];
 
                 bcrypt.compare(input.password, user.Password, function(err, pass) {
 

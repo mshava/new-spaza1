@@ -1,13 +1,17 @@
  var express = require("express"),
+
+     
      exphbs = require("express-handlebars"),
      mysql = require("mysql"),
-     bcrypt = require('bcrypt'),
-     cookieParser = require('cookie-parser'),
+     //bcrypt = require('bcrypt'),
+     //cookieParser = require('cookie-parser'),
      session = require('express-session'), 
      bodyParser = require("body-parser"),
      myConnection = require("express-myconnection"),
      spaza = require("./routes/spaza"),
-     login = require('./routes/login');   
+     users = require("./routes/users")
+     login = require('./routes/login'); 
+
      
  
      products = require("./routes/products");
@@ -16,14 +20,17 @@
      //addProducts = require("./routes/products");
      sales = require("./routes/sales");
      suppliers = require("./routes/suppliers");
+     signup = require("./routes/users_signup");
+
+     
  
          
  var app = express();
+
  
  var dbOptions = {
      host : "localhost",
      user : "root",
-    // password : "2197832",
      password : "amila",
      port : 3306,
      database : "sakonwaba"
@@ -40,12 +47,18 @@
  //gives the request the ability to handle form parameters
  app.use(bodyParser.urlencoded({ extended : false}))
  app.use(bodyParser.json());
+ app.use(session ({
+        secret:'sakonwa',
+        cookie:{maxAge:600000},
+        resave: false,
+        saveUninitialized:true,
+     }))  
+     
  
  //app.get("/",products.show);
-
-
+  app.get ("/",login.login);
  
-  app.get("/Products", products.showProductList);
+  app.get("/Products",users.checkUser,products.showProductList);
 
 
  
@@ -103,6 +116,7 @@ app.get("/sales/delete/:id",sales.delete);
  app.get("/profitable_product",spaza.showmostProfPdt);
  
  
+
 app.get("/purchases", addPurchases.show);
 app.get("/purchases/add/", addPurchases.showAdd);
 app.get("/purchases/edit/:id", addPurchases.showEdit);
@@ -111,6 +125,13 @@ app.post("/purchases/add/",addPurchases.add);
 app.post("/purchases/update/", addPurchases.update);
 app.post("/purchases/add/:id", addPurchases.add);
 app.get("/purchases/delete/:id", addPurchases.delete);
+app.get("/addPurchases",addPurchases.show);
+//app.get("/addPurchases/add/", addPurchases.showAdd);
+//app.get("/products/add/:id", products.showAdd);
+//app.post("/addPurchases/add/",addPurchases.add);
+ //app.post("/addPurchases/update/:id", addPurchases.update);
+ //app.post("/addPurchases/add/:id", addPurchases.add);
+ //app.get("/addPurchases/delete/:id", addPurchases.delete);
  
  
  app.get('/suppliers',suppliers.show);
@@ -118,7 +139,13 @@ app.get("/purchases/delete/:id", addPurchases.delete);
  app.post('/suppliers/add',suppliers.add);
  app.get('/suppliers_edit/:id', suppliers.get);
  app.get('/suppliers/delete/:id', suppliers.delete);
- 
+
+ app.get("/signup",signup.show);
+ app.post("/signup/add",signup.add);
+ app.post("/signup/update/:id",signup.update);
+ app.get("/signup/edit/:id",signup.get);
+ app.get("/signup/delete:id",signup.delete);
+
  
  //app.get();
  app.post("/login", login.userLogin);

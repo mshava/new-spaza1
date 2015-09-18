@@ -2,7 +2,14 @@ exports.show = function (req, res, next) {
 	req.getConnection(function(err, connection) {
 			if (err)
 				return next(err);
+
 		var query = "SELECT purchases.id as id,DATE_FORMAT(purchases.purchase_date,'%d %b %y') as date,purchases.quantity as quantity,products.name as product from purchases,products where products.id = purchases.prod_id order by purchases.purchase_date DESC";
+
+
+		var query = "SELECT * FROM  purchases"	
+		var query = "SELECT DATE_FORMAT(purchases.date,'%d %b %y') as date,purchases.qty,purchases.sales_price, products.name as name from purchases,products where products.id = purchases.prod_id order by purchases.date DESC";
+
+
 		connection.query(query,[], function(err, purchases) {
 			if (err)
 				return next(err);
