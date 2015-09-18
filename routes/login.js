@@ -9,7 +9,7 @@ exports.login = function (req, res){
 
         }
         else{
-            res.render('home');
+            res.render('login');
         }
 };
 

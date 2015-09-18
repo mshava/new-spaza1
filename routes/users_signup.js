@@ -79,22 +79,24 @@ exports.delete = function(req, res, next){
 	});
 };
 
- exports.get = function (req, res, next) {
- 	req.getConnection(function(err, connection){
- 		if (err){ 
- 			return next(err);
- 		}
- 		var input = JSON.parse(JSON.stringify(req.body));
- 		var data = {
-              username : input.username,
-              password : input.password,
-              occupation: input.occupation
-         };
- 		connection.query('insert into users set ?', data, function(err, results) {
-             if (err)
-             console.log("Error inserting : %s ",err );
-           //res.redirect('/addProducts');
-            res.redirect('/signup');
-       	});
- 	});
- };
+exports.get = function (req, res, next) {
+    req.getConnection(function(err, connection){
+        if (err){ 
+            return next(err);
+        }
+        var input = JSON.parse(JSON.stringify(req.body));
+        var data = {
+             
+             email_address : input.email,
+             username : input.username,
+             password : input.password,
+             role: input.role
+        };
+        connection.query('insert into users set ?', data, function(err, results) {
+            if (err)
+            console.log("Error inserting : %s ",err );
+          //res.redirect('/addProducts');
+           res.redirect('/signup');
+          });
+    });
+};

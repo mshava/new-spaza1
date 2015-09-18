@@ -19,7 +19,7 @@
      addPurchases = require("./routes/purchases");
      sales = require("./routes/sales");
      suppliers = require("./routes/suppliers");
-     //login = require("./routes/login");
+     
      signup = require("./routes/users_signup");
 
      
@@ -56,13 +56,13 @@
      
  
  //app.get("/",products.show);
-  app.get ("/",login.login);
+  app.get ("/login",login.login);
 
   app.get("/Products",users.checkUser,products.showProductList);
 
 
  
- app.get("/Products", products.showProductList);
+ app.get("/Products",users.checkUser, products.showProductList);
  //app.get("/add",Products.show)
  //app.get("/products/edit/:id", products.get);
  //app.get("/products/add/", products.showAdd);
@@ -73,14 +73,14 @@
  //app.get("/add",products.show);
 
 
-  app.get("/products/edit/:id", products.get);
-  app.get("/products/add/:id", products.showAdd);
-  app.post("/products/add/",products.add);
-  app.post("/products/update/:id", products.update);
-  app.get("/products/delete/:id", products.delete);
+  app.get("/products/edit/:id",users.checkUser, products.get);
+  app.get("/products/add/:id",users.checkUser, products.showAdd);
+  app.post("/products/add/",users.checkUser,products.add);
+  app.post("/products/update/:id", users.checkUser,products.update);
+  app.get("/products/delete/:id", users.checkUser,products.delete);
  
- app.get("/popular_products", products.showpopularPdt);
- app.get("/least_products", products.showleastPdt);
+ app.get("/popular_products", users.checkUser,products.showpopularPdt);
+ app.get("/least_products", users.checkUser,products.showleastPdt);
 
 
  //app.get("/products/edit/:id", products.get);
@@ -90,47 +90,47 @@
  
  
  //app.get("/categories", categories.show);
-app.get("/sales",sales.show);
-app.get("/sales/update/:id", sales.get);
-app.get("/sales/edit/:id", sales.showEdit);
+app.get("/sales",users.checkUser,sales.show);
+app.get("/sales/update/:id",users.checkUser, sales.get);
+app.get("/sales/edit/:id", users.checkUser,sales.showEdit);
 //app.get("/sales/update/:id", sales.get)
-app.get("/sales/update/:id", sales.get)
-app.get("/sales/add/", sales.showAdd);
-app.post("/sales/add/", sales.addsale);
-app.post("/sales/edit/", sales.salesUpdate);
-app.post("/sales/update/",sales.salesUpdate);
-app.post("/sales/update/:id",sales.salesUpdate);
-app.get("/sales/delete/:id",sales.delete);
+app.get("/sales/update/:id", users.checkUser,sales.get)
+app.get("/sales/add/", users.checkUser,sales.showAdd);
+app.post("/sales/add/", users.checkUser,sales.addsale);
+app.post("/sales/edit/", users.checkUser,sales.salesUpdate);
+app.post("/sales/update/",users.checkUser,sales.salesUpdate);
+app.post("/sales/update/:id",users.checkUser,sales.salesUpdate);
+app.get("/sales/delete/:id",users.checkUser,sales.delete);
  
  
- app.get("/categories", categories.show);
- app.post("/categories/add", categories.add);
- app.get("/categories/edit/:id", categories.get);
- app.post("/categories/update/:id",categories.update);
- app.get("/categories/delete/:id",categories.delete);
+ app.get("/categories",users.checkUser, categories.show);
+ app.post("/categories/add", users.checkUser,categories.add);
+ app.get("/categories/edit/:id", users.checkUser,categories.get);
+ app.post("/categories/update/:id",users.checkUser,categories.update);
+ app.get("/categories/delete/:id",users.checkUser,categories.delete);
  
- app.get("/popular_category",categories.showmostPopCat);
- app.get("/least_category",categories.showleastPopCat);
+ app.get("/popular_category",users.checkUser,categories.showmostPopCat);
+ app.get("/least_category",users.checkUser,categories.showleastPopCat);
  
- app.get("/product_earnings",spaza.showearningsPerPdt);
- app.get("/profitable_product",spaza.showmostProfPdt);
+ app.get("/product_earnings",users.checkUser,spaza.showearningsPerPdt);
+ app.get("/profitable_product",users.checkUser,spaza.showmostProfPdt);
  
-app.get("/purchases", addPurchases.show);
-app.get("/purchases/add/", addPurchases.showAdd);
-app.get("/purchases/edit/:id", addPurchases.showEdit);
-app.get("/purchases/update/:id", addPurchases.update);
-app.post("/purchases/add/",addPurchases.add);
-app.post("/purchases/update/", addPurchases.update);
-app.post("/purchases/add/:id", addPurchases.add);
-app.get("/purchases/delete/:id", addPurchases.delete);
-app.get("/addPurchases",addPurchases.show);
+app.get("/purchases", users.checkUser,addPurchases.show);
+app.get("/purchases/add/", users.checkUser,addPurchases.showAdd);
+app.get("/purchases/edit/:id", users.checkUser,addPurchases.showEdit);
+app.get("/purchases/update/:id", users.checkUser,addPurchases.update);
+app.post("/purchases/add/",users.checkUser,addPurchases.add);
+app.post("/purchases/update/", users.checkUser,addPurchases.update);
+app.post("/purchases/add/:id", users.checkUser,addPurchases.add);
+app.get("/purchases/delete/:id", users.checkUser,addPurchases.delete);
+app.get("/addPurchases",users.checkUser,addPurchases.show);
  
 
- app.get('/suppliers',suppliers.show);
- app.post('/suppliers/update/:id',suppliers.update);
- app.post('/suppliers/add',suppliers.add);
- app.get('/suppliers_edit/:id', suppliers.get);
- app.get('/suppliers/delete/:id', suppliers.delete);
+ app.get('/suppliers',users.checkUser,suppliers.show);
+ app.post('/suppliers/update/:id',users.checkUser,suppliers.update);
+ app.post('/suppliers/add',users.checkUser,suppliers.add);
+ app.get('/suppliers_edit/:id', users.checkUser,suppliers.get);
+ app.get('/suppliers/delete/:id', users.checkUser,suppliers.delete);
 
  app.get("/signup",signup.show);
  app.post("/signup",signup.get);
