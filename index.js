@@ -138,12 +138,14 @@ app.get("/addPurchases",users.checkUser,addPurchases.show);
  app.get("/signup/edit/:id",signup.get);
  app.get("/signup/delete:id",signup.delete);
 
+ app.get("/users", users.showUsers);
+
  
  //app.get();
  app.post("/login", login.userLogin);
  
  app.get("/",function (req, res){
- res.render("signup");
+ res.render("login");
  });
  
  

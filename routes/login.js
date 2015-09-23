@@ -1,4 +1,4 @@
-//var bcrypt = require('bcrypt');
+var bcrypt = require('bcrypt');
 exports.login = function (req, res){
         if(req.session.user ){
             user.username = req.session.user;
@@ -96,34 +96,38 @@ exports.adminSignup = function(req, res, next) {
 
 exports.userLogin = function(req, res, next) {
     var input = JSON.parse(JSON.stringify(req.body));
-    var username = input.username;
+    var data = {
+        username :input.username,
+        password :input.password
+    }
+    
     req.getConnection(function(err, connection) {
         if (err)
             return next(err)
 
-            connection.query('SELECT * from Users WHERE Username=?', [username], function(err, users) {
+            connection.query('SELECT * from users WHERE username=?', [data], function(err, users) {
 
             //var user = users[0];
 
-                bcrypt.compare(input.password, user.Password, function(err, pass) {
+                //bcrypt.compare(input.password, users.password, function(err, pass) {
 
             
                 if (err) {
                     console.log(err);
                 }
 
-                if (pass) {
-                    req.session.user = username;
-                    req.session.role =  user.User_role;
-                    return res.redirect("/home")
+                if (data.password) {
+                    req.session.user = data.username;
+                    //req.session.role =  users.User_role;
+                    res.render("home")
                 } 
                 else {
-                    return res.redirect('/');
+                    return res.redirect('/login');
                 }
-            })
-        })
-    })
-};
+            });
+        });
+    };
+
 
 /*
 exports.login = function (req, res, next) {

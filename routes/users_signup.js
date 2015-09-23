@@ -4,7 +4,7 @@ exports.show = function (req, res, next) {
 			return next(err);
 		//var isAdmin = req.session.role === "admin";
 		//var readOnly = req.session.role !== "admin";
-			connection.query('SELECT * from Users', [], function(err, results, fields) {
+			connection.query('SELECT * from users', [], function(err, results, fields) {
 				res.render('signup', {
 					users: results
 					//in_ca: isAdmin,
@@ -87,7 +87,7 @@ exports.get = function (req, res, next) {
         var input = JSON.parse(JSON.stringify(req.body));
         var data = {
              
-             email_address : input.email,
+             name : input.name,
              username : input.username,
              password : input.password,
              role: input.role
