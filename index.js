@@ -1,10 +1,9 @@
  var express = require("express"),
-
-     
      exphbs = require("express-handlebars"),
      mysql = require("mysql"),
-     //bcrypt = require('bcrypt'),
-     //cookieParser = require('cookie-parser'),
+     bcrypt = require('bcrypt'),
+     cookieParser = require('cookie-parser'),
+     
      session = require('express-session'), 
      bodyParser = require("body-parser"),
      myConnection = require("express-myconnection"),
@@ -31,7 +30,7 @@
  var dbOptions = {
      host : "localhost",
      user : "root",
-     password : "amila",
+     password : "2197832",
      port : 3306,
      database : "sakonwaba"
  };
