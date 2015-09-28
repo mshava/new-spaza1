@@ -1,10 +1,22 @@
 var bcrypt = require('bcrypt');
 exports.login = function (req, res){
+    var input = JSON.parse(JSON.stringify(req.body));
+    var data = {
+        username :input.username,
+        password :input.password
+    }
         if(req.session.user ){
+<<<<<<< HEAD
            user.username = req.session.user;
             res.render('loggedIn', {
                     user: req.session.user,
                     admin:admin
+=======
+            data.username = req.session.user;
+            res.render('home', {
+                    user: req.session.user
+                    //admin:admin
+>>>>>>> 1fa7707663a1f7100664570412ab584c449c4865
             });
 
         }
@@ -109,12 +121,17 @@ exports.userLogin = function(req, res, next) {
 
             var user = users[0];
 
+<<<<<<< HEAD
                 bcrypt.compare(data.password, data.password, function(err, pass) {
+=======
+                bcrypt.compare(input.password, users.password, function(err, pass) {
+>>>>>>> 1fa7707663a1f7100664570412ab584c449c4865
 
             
                 if (err) {
                     console.log(err);
                 }
+                console.log(users);
 
                 if (data.password === users[0].password) {
                     req.session.user = data.username;
@@ -128,7 +145,10 @@ exports.userLogin = function(req, res, next) {
         });
     });
 };
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1fa7707663a1f7100664570412ab584c449c4865
 
 
 /*

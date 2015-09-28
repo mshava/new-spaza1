@@ -6,7 +6,7 @@ exports.show = function (req, res, next) {
 		connection.query(query, [], function(err, results) {
 			if (err) 
 				return next(err);
-
+					
 			var result = {
 				products : results
 			};

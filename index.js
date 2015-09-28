@@ -8,7 +8,7 @@
      bodyParser = require("body-parser"),
      myConnection = require("express-myconnection"),
      spaza = require("./routes/spaza"),
-     users = require("./routes/users")
+     users = require("./routes/users"),
      login = require('./routes/login'); 
 
      
@@ -137,11 +137,15 @@ app.get("/addPurchases",users.checkUser,addPurchases.show);
  app.get("/signup/edit/:id",signup.get);
  app.get("/signup/delete:id",signup.delete);
 
- app.get("/users", users.showUsers);
+ app.get("/users", users.checkUser,users.showUsers);
 
- 
- //app.get();
  app.post("/login", login.userLogin);
+ //app.get();
+app.get('/logout', function (req, res) {
+  delete req.session.user;
+  res.redirect('/')
+});
+
  
  app.get("/login",function (req, res){
     res.render("login", {layout:false});

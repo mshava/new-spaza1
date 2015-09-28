@@ -1,5 +1,5 @@
 exports.checkUser = function (req, res,next) {
-	if(req.session.user === true){
+    if(req.session.user){
 		next();
 	}
 	else{
@@ -11,6 +11,13 @@ exports.login = function(req,res){
 	res.render('users',userData)
 };
 
+exports.logout = function (req, res){
+        var msg = "You have logged out";
+        delete req.session.user;
+        res.render('home',{
+                    msg : msg
+        });
+    };
 exports.showUsers = function (req, res, next) {
 	req.getConnection(function(err, connection){
 		if (err)
