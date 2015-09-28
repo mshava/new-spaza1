@@ -30,7 +30,7 @@
  var dbOptions = {
      host : "localhost",
      user : "root",
-     password : "2197832",
+     password : "amila",
      port : 3306,
      database : "sakonwaba"
  };
@@ -143,7 +143,7 @@ app.get("/addPurchases",users.checkUser,addPurchases.show);
  //app.get();
 app.get('/logout', function (req, res) {
   delete req.session.user;
-  res.redirect('/')
+  res.redirect('/login')
 });
 
  

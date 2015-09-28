@@ -7,6 +7,7 @@ exports.login = function (req, res){
     }
         if(req.session.user ){
 <<<<<<< HEAD
+<<<<<<< HEAD
            user.username = req.session.user;
             res.render('loggedIn', {
                     user: req.session.user,
@@ -17,10 +18,15 @@ exports.login = function (req, res){
                     user: req.session.user
                     //admin:admin
 >>>>>>> 1fa7707663a1f7100664570412ab584c449c4865
+=======
+            data.username = req.session.user;
+            res.render('home', {
+                user: req.session.user
+                //admin:admin
+>>>>>>> a2a336db541f07c57c66794aebfda9f23eb77b60
             });
-
         }
-        else{
+        else {
             res.render('login');
         }
 };
@@ -122,10 +128,15 @@ exports.userLogin = function(req, res, next) {
             var user = users[0];
 
 <<<<<<< HEAD
+<<<<<<< HEAD
                 bcrypt.compare(data.password, data.password, function(err, pass) {
 =======
                 bcrypt.compare(input.password, users.password, function(err, pass) {
 >>>>>>> 1fa7707663a1f7100664570412ab584c449c4865
+=======
+
+                //bcrypt.compare(data.password, data.password, function(err, pass) {
+>>>>>>> a2a336db541f07c57c66794aebfda9f23eb77b60
 
             
                 if (err) {
@@ -143,6 +154,7 @@ exports.userLogin = function(req, res, next) {
                 }
             });
         });
+<<<<<<< HEAD
     });
 };
 <<<<<<< HEAD
@@ -257,3 +269,8 @@ exports.userLogin = function(req, res, next) {
     })
 };
 */
+=======
+    };
+//};
+
+>>>>>>> a2a336db541f07c57c66794aebfda9f23eb77b60
