@@ -3,7 +3,7 @@
      mysql = require("mysql"),
      bcrypt = require('bcrypt'),
      cookieParser = require('cookie-parser'),
-     
+     cookieSession = require('cookie-session'),
      session = require('express-session'), 
      bodyParser = require("body-parser"),
      myConnection = require("express-myconnection"),
@@ -55,7 +55,7 @@
      
  
  //app.get("/",products.show);
-  app.get ("/login",login.login);
+  //app.get ("/login",login.login);
 
   app.get("/Products",users.checkUser,products.showProductList);
 
@@ -89,7 +89,7 @@
  
  
  //app.get("/categories", categories.show);
-app.get("/sales",users.checkUser,sales.show);
+app.get("/sales",sales.show);
 app.get("/sales/update/:id",users.checkUser, sales.get);
 app.get("/sales/edit/:id", users.checkUser,sales.showEdit);
 //app.get("/sales/update/:id", sales.get)
@@ -131,7 +131,7 @@ app.get("/addPurchases",users.checkUser,addPurchases.show);
  app.get('/suppliers_edit/:id', users.checkUser,suppliers.get);
  app.get('/suppliers/delete/:id', users.checkUser,suppliers.delete);
 
- app.get("/signup",signup.show);
+ //app.get("/signup",signup.show);
  app.post("/signup",signup.get);
  app.post("/signup/update/:id",signup.update);
  app.get("/signup/edit/:id",signup.get);
@@ -147,10 +147,13 @@ app.get('/logout', function (req, res) {
 });
 
  
- app.get("/",function (req, res){
- res.render("login");
+ app.get("/login",function (req, res){
+    res.render("login", {layout:false});
  });
  
+ app.get("/signup", function (req, res){
+    res.render("signup", {layout:false});
+ });
  
  var port = process.env.PORT || 8080;       
     //start the server
