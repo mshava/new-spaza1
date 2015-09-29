@@ -1,32 +1,25 @@
- var express = require("express"),
-     exphbs = require("express-handlebars"),
-     mysql = require("mysql"),
-     bcrypt = require('bcrypt'),
-     cookieParser = require('cookie-parser'),
-     cookieSession = require('cookie-session'),
-     session = require('express-session'), 
-     bodyParser = require("body-parser"),
-     myConnection = require("express-myconnection"),
-     spaza = require("./routes/spaza"),
-     users = require("./routes/users"),
-     login = require('./routes/login'); 
-
-     
- 
-     products = require("./routes/products");
-     categories = require("./routes/categories");
-     addPurchases = require("./routes/purchases");
-     sales = require("./routes/sales");
-     suppliers = require("./routes/suppliers");
-     signup = require("./routes/users_signup");
-
-     
- 
+var express = require("express"),
+   exphbs = require("express-handlebars"),
+   mysql = require("mysql"),
+   bcrypt = require('bcrypt'),
+   cookieParser = require('cookie-parser'),
+   cookieSession = require('cookie-session'),
+   session = require('express-session'), 
+   bodyParser = require("body-parser"),
+   myConnection = require("express-myconnection"),
+   spaza = require("./routes/spaza"),
+   users = require("./routes/users"),
+   login = require('./routes/login'); 
+   products = require("./routes/products");
+   categories = require("./routes/categories");
+   addPurchases = require("./routes/purchases");
+   sales = require("./routes/sales");
+   suppliers = require("./routes/suppliers");
+   signup = require("./routes/users_signup");
          
- var app = express();
-
+var app = express();
  
- var dbOptions = {
+var dbOptions = {
      host : "localhost",
      user : "root",
      password : "2197832",
@@ -34,18 +27,15 @@
      database : "sakonwaba"
  };
  
- app.engine("handlebars", exphbs({defaultLayout : "main"}));
- app.set("view engine", "handlebars");
- 
- app.use(express.static(__dirname + "/public"));
- 
+app.engine("handlebars", exphbs({defaultLayout : "main"}));
+app.set("view engine", "handlebars"); 
+app.use(express.static(__dirname + "/public")); 
  // allows you to use mysql from the http request
- app.use(myConnection(mysql, dbOptions, "single"));
- 
+app.use(myConnection(mysql, dbOptions, "single")); 
  //gives the request the ability to handle form parameters
- app.use(bodyParser.urlencoded({ extended : false}))
- app.use(bodyParser.json());
- app.use(session ({
+app.use(bodyParser.urlencoded({ extended : false}))
+app.use(bodyParser.json());
+app.use(session ({
         secret:'sakonwa',
         cookie:{maxAge:600000},
         resave: false,
@@ -94,28 +84,23 @@ app.post("/purchases/add/:id", users.checkUser,addPurchases.add);
 app.get("/purchases/delete/:id", users.checkUser,addPurchases.delete);
 app.get("/addPurchases",users.checkUser,addPurchases.show);
  
-
- app.get('/suppliers',users.checkUser,suppliers.show);
- app.post('/suppliers/update/:id',users.checkUser,suppliers.update);
- app.post('/suppliers/add',users.checkUser,suppliers.add);
- app.get('/suppliers_edit/:id', users.checkUser,suppliers.get);
- app.get('/suppliers/delete/:id', users.checkUser,suppliers.delete);
-
+app.get('/suppliers',users.checkUser,suppliers.show);
+app.post('/suppliers/update/:id',users.checkUser,suppliers.update);
+app.post('/suppliers/add',users.checkUser,suppliers.add);
+app.get('/suppliers_edit/:id', users.checkUser,suppliers.get);
+app.get('/suppliers/delete/:id', users.checkUser,suppliers.delete);
  //app.get("/signup",signup.show);
- app.post("/signup",signup.get);
- app.post("/signup/update/:id",signup.update);
- app.get("/signup/edit/:id",signup.get);
- app.get("/signup/delete:id",signup.delete);
+app.post("/signup",signup.get);
+app.post("/signup/update/:id",signup.update);
+app.get("/signup/edit/:id",signup.get);
+app.get("/signup/delete:id",signup.delete);
 
- app.get("/users", users.checkUser,users.showUsers);
-
- app.post("/login", login.userLogin);
- //app.get();
+app.get("/users", users.checkUser,users.showUsers);
+app.post("/login", login.userLogin);
 app.get('/logout', function (req, res) {
   delete req.session.user;
   res.redirect('/login')
 });
-
  
 app.get("/",function (req, res){
   res.render("login", {layout:false});
