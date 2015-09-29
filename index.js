@@ -96,10 +96,16 @@ app.get("/signup/edit/:id",signup.get);
 app.get("/signup/delete:id",signup.delete);
 
 app.get("/users", users.checkUser,users.showUsers);
+app.get("/users/edit/:id",users.get);
+//app.post("/users/update/:id",users.update);
+
+
+
 app.post("/login", login.userLogin);
+
 app.get('/logout', function (req, res) {
   delete req.session.user;
-  res.redirect('/login')
+  res.redirect('/')
 });
  
 app.get("/",function (req, res){

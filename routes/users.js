@@ -23,7 +23,7 @@ exports.showUsers = function (req, res, next) {
 		if (err)
 			return next(err);
 		var query = 'SELECT  * from users';
-		connection.query(query, [], function(err, results) {
+		connection.query(query, [], function (err, results) {
 			if (err) 
 				return next(err);
 
@@ -40,5 +40,24 @@ exports.showUsers = function (req, res, next) {
 
 			res.render( 'users', result);
 		});
+	});
+};
+
+exports.get = function(req, res){
+	var data = JSON.parse(JSON.stringify(req.body));
+	var id = req.params.id;
+	req.getConnection(function (err, connection){
+			if (err)
+				return next(err);
+	var query = "SELECT * from users WHERE id = ?";
+		connection.query(query, [id, data], function (err, result){
+			if (err)
+				return next(err)
+			var results = {
+				users : results
+			};	
+		
+			res.render("users", results);
+		});	
 	});
 };

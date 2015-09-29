@@ -1,11 +1,22 @@
 <div id="container">
 	<ul class="people_list">
   		<h1>Edit users here</h1>
-			{{#data}}
-				<form action="/users/update/{{id}}" method="POST">
-				Description: <input type="text" name="user_role" value="{{user_role}}" required>
-				<input type="submit">
-				</form>
-			{{/data}}
-	</ul>
+  		<table class="table-responsive">
+  			<table class="table">
+				{{#users}}
+				<tr>	
+					<form method="POST" action="/users/update/{{id}}">
+	   					Description:<input type="text" name="name" value="{{username}}" required><br />
+	   						<br /><br />User Role:<br />
+	   						<select name="users_id">
+	   						{{#users}}
+	   							<option value="{{id}}">{{role}}</option>
+	   						{{/users}}
+	   						</select>
+	   					<input type="submit">
+	   				</form>	
+				</tr>		
+				{{/users}}
+			</table>
+		</ul>
 </div>

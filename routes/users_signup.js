@@ -57,9 +57,9 @@ exports.notAdmin = function(req, res, next) {
 };
 exports.update = function(req, res, next){
 	var data = JSON.parse(JSON.stringify(req.body));
-	var Id = req.params.id;
+	var id = req.params.id;
 		req.getConnection(function(err, connection){
-			connection.query('UPDATE Users SET ? WHERE Id = ?', [data, id], function(err, rows){
+			connection.query('UPDATE users SET ? WHERE id = ?', [data, id], function(err, rows){
 					if (err){
 					console.log("Error Updating : %s ",err );
 					}
