@@ -1,31 +1,14 @@
 var bcrypt = require('bcrypt');
-exports.login = function (req, res){
-    var input = JSON.parse(JSON.stringify(req.body));
-    var data = {
-        username :input.username,
-        password :input.password
-    }
+    exports.login = function (req, res){
+        var input = JSON.parse(JSON.stringify(req.body));
+        var data = {
+            username :input.username,
+            password :input.password
+            }
         if(req.session.user ){
-<<<<<<< HEAD
-<<<<<<< HEAD
-           user.username = req.session.user;
-            res.render('loggedIn', {
-                    user: req.session.user,
-                    admin:admin
-=======
-            data.username = req.session.user;
-            res.render('home', {
-                    user: req.session.user
-                    //admin:admin
->>>>>>> 1fa7707663a1f7100664570412ab584c449c4865
-=======
-            data.username = req.session.user;
-            res.render('home', {
-                user: req.session.user
-                //admin:admin
->>>>>>> a2a336db541f07c57c66794aebfda9f23eb77b60
-            });
-        }
+         user: req.session.user
+ //admin:admin
+                }
         else {
             res.render('login');
         }
@@ -127,16 +110,7 @@ exports.userLogin = function(req, res, next) {
 
             var user = users[0];
 
-<<<<<<< HEAD
-<<<<<<< HEAD
                 bcrypt.compare(data.password, data.password, function(err, pass) {
-=======
-                bcrypt.compare(input.password, users.password, function(err, pass) {
->>>>>>> 1fa7707663a1f7100664570412ab584c449c4865
-=======
-
-                //bcrypt.compare(data.password, data.password, function(err, pass) {
->>>>>>> a2a336db541f07c57c66794aebfda9f23eb77b60
 
             
                 if (err) {
@@ -154,14 +128,9 @@ exports.userLogin = function(req, res, next) {
                 }
             });
         });
-<<<<<<< HEAD
+
     });
 };
-<<<<<<< HEAD
-
-=======
->>>>>>> 1fa7707663a1f7100664570412ab584c449c4865
-
 
 /*
 var bcrypt = require('bcrypt');
@@ -269,8 +238,7 @@ exports.userLogin = function(req, res, next) {
     })
 };
 */
-=======
-    };
-//};
 
->>>>>>> a2a336db541f07c57c66794aebfda9f23eb77b60
+    
+
+

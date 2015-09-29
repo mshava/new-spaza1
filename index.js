@@ -18,7 +18,6 @@
      addPurchases = require("./routes/purchases");
      sales = require("./routes/sales");
      suppliers = require("./routes/suppliers");
-     
      signup = require("./routes/users_signup");
 
      
@@ -30,7 +29,7 @@
  var dbOptions = {
      host : "localhost",
      user : "root",
-     password : "amila",
+     password : "2197832",
      port : 3306,
      database : "sakonwaba"
  };
@@ -52,47 +51,20 @@
         resave: false,
         saveUninitialized:true,
      }))  
-     
- 
- //app.get("/",products.show);
-  //app.get ("/login",login.login);
 
-  app.get("/Products",users.checkUser,products.showProductList);
+app.get("/Products",users.checkUser,products.showProductList); 
+app.get("/Products",users.checkUser, products.showProductList);
+app.get("/products/edit/:id",users.checkUser, products.get);
+app.get("/products/add/:id",users.checkUser, products.showAdd);
+app.post("/products/add/",users.checkUser,products.add);
+app.post("/products/update/:id", users.checkUser,products.update);
+app.get("/products/delete/:id", users.checkUser,products.delete); 
+app.get("/popular_products", users.checkUser,products.showpopularPdt);
+app.get("/least_products", users.checkUser,products.showleastPdt);
 
-
- 
- app.get("/Products",users.checkUser, products.showProductList);
- //app.get("/add",Products.show)
- //app.get("/products/edit/:id", products.get);
- //app.get("/products/add/", products.showAdd);
- 
- //app.get("/products", products.showProductList);
- //app.get("/products/add/:id", products.showAdd);
- 
- //app.get("/add",products.show);
-
-
-  app.get("/products/edit/:id",users.checkUser, products.get);
-  app.get("/products/add/:id",users.checkUser, products.showAdd);
-  app.post("/products/add/",users.checkUser,products.add);
-  app.post("/products/update/:id", users.checkUser,products.update);
-  app.get("/products/delete/:id", users.checkUser,products.delete);
- 
- app.get("/popular_products", users.checkUser,products.showpopularPdt);
- app.get("/least_products", users.checkUser,products.showleastPdt);
-
-
- //app.get("/products/edit/:id", products.get);
- //app.post("/products/update/:id", products.update);
- 
- //app.get("/products/delete/:id", products.delete);
- 
- 
- //app.get("/categories", categories.show);
 app.get("/sales",sales.show);
 app.get("/sales/update/:id",users.checkUser, sales.get);
 app.get("/sales/edit/:id", users.checkUser,sales.showEdit);
-//app.get("/sales/update/:id", sales.get)
 app.get("/sales/update/:id", users.checkUser,sales.get)
 app.get("/sales/add/", users.checkUser,sales.showAdd);
 app.post("/sales/add/", users.checkUser,sales.addsale);
@@ -100,19 +72,17 @@ app.post("/sales/edit/", users.checkUser,sales.salesUpdate);
 app.post("/sales/update/",users.checkUser,sales.salesUpdate);
 app.post("/sales/update/:id",users.checkUser,sales.salesUpdate);
 app.get("/sales/delete/:id",users.checkUser,sales.delete);
+  
+app.get("/categories",users.checkUser, categories.show);
+app.post("/categories/add", users.checkUser,categories.add);
+app.get("/categories/edit/:id", users.checkUser,categories.get);
+app.post("/categories/update/:id",users.checkUser,categories.update);
+app.get("/categories/delete/:id",users.checkUser,categories.delete); 
+app.get("/popular_category",users.checkUser,categories.showmostPopCat);
+app.get("/least_category",users.checkUser,categories.showleastPopCat);
  
- 
- app.get("/categories",users.checkUser, categories.show);
- app.post("/categories/add", users.checkUser,categories.add);
- app.get("/categories/edit/:id", users.checkUser,categories.get);
- app.post("/categories/update/:id",users.checkUser,categories.update);
- app.get("/categories/delete/:id",users.checkUser,categories.delete);
- 
- app.get("/popular_category",users.checkUser,categories.showmostPopCat);
- app.get("/least_category",users.checkUser,categories.showleastPopCat);
- 
- app.get("/product_earnings",users.checkUser,spaza.showearningsPerPdt);
- app.get("/profitable_product",users.checkUser,spaza.showmostProfPdt);
+app.get("/product_earnings",users.checkUser,spaza.showearningsPerPdt);
+app.get("/profitable_product",users.checkUser,spaza.showmostProfPdt);
  
 app.get("/purchases", users.checkUser,addPurchases.show);
 app.get("/purchases/add/", users.checkUser,addPurchases.showAdd);
@@ -147,18 +117,18 @@ app.get('/logout', function (req, res) {
 });
 
  
- app.get("/login",function (req, res){
-    res.render("login", {layout:false});
- });
+app.get("/",function (req, res){
+  res.render("login", {layout:false});
+});
  
- app.get("/signup", function (req, res){
-    res.render("signup", {layout:false});
- });
+app.get("/signup", function (req, res){
+  res.render("signup", {layout:false});
+});
  
- var port = process.env.PORT || 8080;       
+var port = process.env.PORT || 8080;       
     //start the server
- var server = app.listen(port, function () {
-     var host = server.address().address;
-     var port = server.address().port;
-        console.log('Example app listening at http://%s:%s', host, port);
- });
+var server = app.listen(port, function () {
+   var host = server.address().address;
+   var port = server.address().port;
+      console.log('Example app listening at http://%s:%s', host, port);
+});
