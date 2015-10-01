@@ -13,23 +13,9 @@ exports.show = function (req, res, next) {
 		});
 	});
 };
-/*
-exports.get = function(req, res, next){
-	//var Id = req.params.User_role;
-	var data = {
-              firstname : input.firstname,
-              username : input.username,
-              email : input.email
-		req.getConnection(function(err, connection){
-			connection.query('SELECT * FROM Users WHERE User_role = ?', [data], function(err,rows){
-					if(err){
-					console.log("Error Selecting : %s ",err );
-					}
-			res.render('users_edit',{page_title:"Edit Customers - Node.js", data : rows[3]});
-		});
-	});
-};
-*/
+
+
+
 //updating a user
 exports.admin = function(req, res, next) {
 	var data = JSON.parse(JSON.stringify(req.body));

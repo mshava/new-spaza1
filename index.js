@@ -99,8 +99,6 @@ app.get("/users", users.checkUser,users.showUsers);
 app.get("/users/edit/:id",users.get);
 //app.post("/users/update/:id",users.update);
 
-
-
 app.post("/login", login.userLogin);
 
 app.get('/logout', function (req, res) {

@@ -42,22 +42,35 @@ exports.showUsers = function (req, res, next) {
 		});
 	});
 };
+/*
+exports.get = function(req, res, next){
+ 	var input = JSON.parse(JSON.stringify(req.body));
+	var id = req.params.user_role;
+	var user = users[0];
+	var data = {
+              username : input.username,
+              role : input.users_role,
+   						}
+		req.getConnection(function(err, connection){
+			connection.query('SELECT * FROM users WHERE id = ?', [data], function(err,rows){
+				
+					if(err){
+					console.log("Error Selecting : %s ",err );
+					}
+			res.render('users_edit',{page_title:"Edit Customers - Node.js", data : rows[3]});
+		});
+	});
+};
+*/
 
-exports.get = function(req, res){
-	var data = JSON.parse(JSON.stringify(req.body));
+exports.get = function(req, res, next){
 	var id = req.params.id;
-	req.getConnection(function (err, connection){
-			if (err)
-				return next(err);
-	var query = "SELECT * from users WHERE id = ?";
-		connection.query(query, [id, data], function (err, result){
-			if (err)
-				return next(err)
-			var results = {
-				users : results
-			};	
-		
-			res.render("users", results);
-		});	
+		req.getConnection(function(err, connection){
+			connection.query('SELECT * FROM users WHERE id = ?', [id], function(err,rows){
+					if(err){
+					console.log("Error Selecting : %s ",err );
+					}
+			res.render('users_edit', {page_title:"Edit Customers - Node.js", data : rows[0]});
+		});
 	});
 };

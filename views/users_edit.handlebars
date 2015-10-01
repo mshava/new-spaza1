@@ -3,20 +3,18 @@
   		<h1>Edit users here</h1>
   		<table class="table-responsive">
   			<table class="table">
-				{{#users}}
-				<tr>	
-					<form method="POST" action="/users/update/{{id}}">
+				{{#data}}	
+					<form method="POST" action="users/update/{{id}}">
 	   					Description:<input type="text" name="name" value="{{username}}" required><br />
 	   						<br /><br />User Role:<br />
-	   						<select name="users_id">
-	   						{{#users}}
-	   							<option value="{{id}}">{{role}}</option>
-	   						{{/users}}
+	   						<select name="users_role">
+	   						{{#users_role}}
+	   							<option type="text" name="name" value="{{users_role}}">{{role}}</option>
+	   						{{/users_role}}
 	   						</select>
 	   					<input type="submit">
-	   				</form>	
-				</tr>		
-				{{/users}}
+	   				</form>			
+				{{/data}}
 			</table>
 		</ul>
 </div>
