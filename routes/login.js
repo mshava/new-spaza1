@@ -102,15 +102,15 @@ exports.userLogin = function(req, res, next) {
         password :input.password
     }
     
-    req.getConnection(function(err, connection) {
+    req.getConnection(function (err, connection) {
         if (err)
             return next(err)
 
-            connection.query('SELECT * from users WHERE username=?', [data.username], function(err, users) {
+            connection.query('SELECT * from users WHERE username=?', [data.username], function (err, users) {
 
             var user = users[0];
 
-                bcrypt.compare(data.password, data.password, function(err, pass) {
+                bcrypt.compare(data.password, data.password, function (err, pass) {
 
             
                 if (err) {
@@ -130,6 +130,23 @@ exports.userLogin = function(req, res, next) {
         });
 
     });
+};
+
+exports.get = function (req, res , next){
+    var input = JSON.parse(JSON.stringify(req.body));
+    var data = {
+        username : input.username,
+        password : input.password
+        }    
+    req.getConnection(function (err, connection){
+        if (err)
+            return next(err)
+        var query = "SELECT * From users WHERE id =?";
+        connection.query(query,[id, data],function (err, results){
+                console.log("results");
+                res.redirect("/login");
+        });
+    });    
 };
 
 /*
