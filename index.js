@@ -89,21 +89,24 @@ app.post('/suppliers/update/:id',users.checkUser,suppliers.update);
 app.post('/suppliers/add',users.checkUser,suppliers.add);
 app.get('/suppliers_edit/:id', users.checkUser,suppliers.get);
 app.get('/suppliers/delete/:id', users.checkUser,suppliers.delete);
- //app.get("/signup",signup.show);
+ 
 app.post("/signup",signup.get);
 app.post("/signup/update/:id",signup.update);
 app.get("/signup/edit/:id",signup.get);
 app.get("/signup/delete:id",signup.delete);
 
 app.get("/users", users.checkUser,users.showUsers);
-app.get("/users/edit/:id",users.get);
-//app.post("/users/update/:id",users.update);
+app.get("/users/edit/:id",users.checkUser,users.get);
+app.post("/users/update/:id",users.checkUser,users.update);
+//app.get("/users/add/",users.add);
+
+
 
 app.post("/login", login.userLogin);
 
 app.get('/logout', function (req, res) {
   delete req.session.user;
-  res.redirect('/')
+  res.redirect('/login')
 });
  
 app.get("/",function (req, res){
@@ -111,7 +114,7 @@ app.get("/",function (req, res){
 });
  
 app.get("/signup", function (req, res){
-  res.render("signup", {layout:false});
+  res.render("login", {layout:false});
 });
  
 var port = process.env.PORT || 8080;       

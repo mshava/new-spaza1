@@ -26,51 +26,53 @@ exports.showUsers = function (req, res, next) {
 		connection.query(query, [], function (err, results) {
 			if (err) 
 				return next(err);
-
 			var result = {
 				users : results
 			};
-
 			console.log(req.query);
 			console.log("---> " + req.query);
-
-			//if(req.query.error === "true" ){
-				//result.error = "Can't delete category..."
-			//}
-
 			res.render( 'users', result);
 		});
 	});
 };
-/*
 exports.get = function(req, res, next){
- 	var input = JSON.parse(JSON.stringify(req.body));
-	var id = req.params.user_role;
-	var user = users[0];
-	var data = {
-              username : input.username,
-              role : input.users_role,
-   						}
+	var data = JSON.parse(JSON.stringify(req.body));
+				console.log("data")
+	var id = req.params.id;
 		req.getConnection(function(err, connection){
-			connection.query('SELECT * FROM users WHERE id = ?', [data], function(err,rows){
-				
-					if(err){
-					console.log("Error Selecting : %s ",err );
-					}
-			res.render('users_edit',{page_title:"Edit Customers - Node.js", data : rows[3]});
+				if (err)
+					return next(err);
+			var query = "SELECT * FROM users WHERE id = ?";
+				connection.query(query, [id,data], function(err,rows){
+						if(err){
+						console.log("Error Selecting : %s ",err );
+						}
+			res.render('users_edit', {page_title:"Edit Customers - Node.js", data : rows[0]});
 		});
 	});
 };
-*/
-
-exports.get = function(req, res, next){
+exports.update = function(req, res, next){
+	var input = JSON.parse(JSON.stringify(req.body));
+	var data = {user_role:input.users_role};
+	var id = req.params.id;
+	console.log(data);
+		req.getConnection(function(err, connection){
+			connection.query('UPDATE users SET ? WHERE id = ?', [data, id], function(err, rows){
+				if (err){
+					console.log("Error Updating : %s ",err );
+					}
+			res.redirect('/users');
+		});
+	});
+};
+exports.delete = function(req, res, next){
 	var id = req.params.id;
 		req.getConnection(function(err, connection){
-			connection.query('SELECT * FROM users WHERE id = ?', [id], function(err,rows){
-					if(err){
+			connection.query('DELETE FROM users WHERE id = ?', [id], function(err,rows){
+				if(err){
 					console.log("Error Selecting : %s ",err );
-					}
-			res.render('users_edit', {page_title:"Edit Customers - Node.js", data : rows[0]});
+				}
+			res.redirect('/users');
 		});
 	});
 };

@@ -21,7 +21,7 @@ exports.admin = function(req, res, next) {
 	var data = JSON.parse(JSON.stringify(req.body));
 	var id = req.params.id;
 		req.getConnection(function(err, connection) {
-			connection.query('UPDATE Users SET User_role = "admin" WHERE ID = ?', id, function(err, rows) {
+			connection.query('UPDATE users SET user_role = "admin" WHERE id = ?', id, function(err, rows) {
 					if (err) {
 					console.log("Error Updating : %s ", err);
 					}
@@ -33,7 +33,7 @@ exports.notAdmin = function(req, res, next) {
 	var data = JSON.parse(JSON.stringify(req.body));
 	var id = req.params.id;
 		req.getConnection(function(err, connection) {
-			connection.query('UPDATE Users SET User_role = "read-only" WHERE ID = ?', id, function(err, rows) {
+			connection.query('UPDATE Users SET User_role = "read-only" WHERE id = ?', id, function(err, rows) {
 					if (err) {
 					console.log("Error Updating : %s ", err);
 					}
@@ -54,9 +54,9 @@ exports.update = function(req, res, next){
 	});
 };
 exports.delete = function(req, res, next){
-	var Id = req.params.id;
+	var id = req.params.id;
 		req.getConnection(function(err, connection){
-			connection.query('DELETE FROM Users WHERE Id = ?', [id], function(err,rows){
+			connection.query('DELETE FROM users WHERE id = ?', [id], function(err,rows){
 					if(err){
 					console.log("Error Selecting : %s ",err );
 					}
@@ -76,7 +76,7 @@ exports.get = function (req, res, next) {
              name : input.name,
              username : input.username,
              password : input.password,
-             role: input.role
+             user_role: input.user_role
         };
         connection.query('insert into users set ?', data, function(err, results) {
             if (err)

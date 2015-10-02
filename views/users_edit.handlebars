@@ -4,13 +4,13 @@
   		<table class="table-responsive">
   			<table class="table">
 				{{#data}}	
-					<form method="POST" action="users/update/{{id}}">
-	   					Description:<input type="text" name="name" value="{{username}}" required><br />
+					<form method="POST" action="/users/update/{{id}}">
 	   						<br /><br />User Role:<br />
 	   						<select name="users_role">
-	   						{{#users_role}}
-	   							<option type="text" name="name" value="{{users_role}}">{{role}}</option>
-	   						{{/users_role}}
+	   						
+	   							<option type="text" name="user_role" value="Admin">Admin</option>
+	   							<option type="text" name="user_role" value="Viewer">Viewer</option>
+	   					
 	   						</select>
 	   					<input type="submit">
 	   				</form>			
