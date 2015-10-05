@@ -1,11 +1,17 @@
 <div id="container">
-<h1>Users</h1>
 	<div class="table-responsive">
 	<table class="table">
+		<tr>
+			<th><h2>NAMES</h2></th>
+	        <th><h2>USER NAMES</h2></th>
+	        <th><h2>USER ROLES</h2></th>
+
+		</tr>
 	   {{#users}}
 	   <tr>
 	        <td><h2>{{name}}</h2></td>
 	        <td><h2>{{username}}</h2></td>
+	        <td><h2>{{user_role}}</h2></td>
 		    <td><a href="/users/edit/{{id}}">Edit</a></td>
 		    <td><a href="/users/delete/{{id}}">Delete</a></td>
 		</tr>

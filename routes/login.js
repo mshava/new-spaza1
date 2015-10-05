@@ -35,9 +35,9 @@ exports.signup = function(req, res, next) {
 
         var input = JSON.parse(JSON.stringify(req.body));
         var data = {
-            Username: input.username,
-            Password: input.password,
-            User_role: 'read-only'
+            username: input.username,
+            password: input.password,
+            user_role: 'read-only'
 
         };
 
@@ -45,8 +45,10 @@ exports.signup = function(req, res, next) {
         bcrypt.genSalt(10, function(err, salt) {
         bcrypt.hash(input.password, salt, function(err, hash) {
         // Store hash in your password DB. 
-            data.Password = hash;
-            connection.query('insert into Users set ?', data, function(err, results) {
+            data.password = hash;
+            console.log("onwaba");
+            console.log(hash);
+             connection.query('insert into Users set ?', data, function(err, results) {
                 if (err)
                     console.log("Error inserting : %s ", err);
 
@@ -58,7 +60,7 @@ exports.signup = function(req, res, next) {
     });
 };
 
-exports.adminSignup = function(req, res, next) {
+/*exports.adminSignup = function(req, res, next) {
     req.getConnection(function(err, connection) {
         if (err) {
             return next(err);
@@ -66,18 +68,18 @@ exports.adminSignup = function(req, res, next) {
 
         var input = JSON.parse(JSON.stringify(req.body));
         var data = {
-            Username: input.username,
-            Password: input.password,
-            User_role: input.key,
+            username: input.username,
+            password: input.password,
+            user_role: input.key,
         };
 
         admin = 'admin';
 
         //bcrypt the password===
-        bcrypt.genSalt(10, function(err, salt) {
-        bcrypt.hash(input.password, salt, function(err, hash) {
+        //bcrypt.genSalt(10, function(err, salt) {
+        bcrypt.hash(data.password, salt, function(err, hash) {
             // Store hash in your password DB. 
-            data.Password = hash;
+            data.password = hash;
             connection.query('insert into Users set ?', data, function(err, results) {
                 if (err)
                 console.log("Error inserting : %s ", err);
@@ -91,8 +93,8 @@ exports.adminSignup = function(req, res, next) {
             });
         });
         });
-    });
-};
+    //});
+};*/
 
 
 exports.userLogin = function(req, res, next) {
@@ -102,15 +104,15 @@ exports.userLogin = function(req, res, next) {
         password :input.password
     }
     
-    req.getConnection(function(err, connection) {
+    req.getConnection(function (err, connection) {
         if (err)
             return next(err)
 
-            connection.query('SELECT * from users WHERE username=?', [data.username], function(err, users) {
+            connection.query('SELECT * from users WHERE username=?', [data.username], function (err, users) {
 
             var user = users[0];
 
-                bcrypt.compare(data.password, data.password, function(err, pass) {
+                bcrypt.compare(data.password, data.password, function (err, pass) {
 
             
                 if (err) {
@@ -130,6 +132,23 @@ exports.userLogin = function(req, res, next) {
         });
 
     });
+};
+
+exports.get = function (req, res , next){
+    var input = JSON.parse(JSON.stringify(req.body));
+    var data = {
+        username : input.username,
+        password : input.password
+        }    
+    req.getConnection(function (err, connection){
+        if (err)
+            return next(err)
+        var query = "SELECT * From users WHERE id =?";
+        connection.query(query,[id, data],function (err, results){
+                console.log("results");
+                res.redirect("/login");
+        });
+    });    
 };
 
 /*
