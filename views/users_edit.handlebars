@@ -6,10 +6,19 @@
 				{{#data}}	
 					<form method="POST" action="/users/update/{{id}}">
 	   						<br /><br />User Role:<br />
+<<<<<<< HEAD
 	   						<select name="users_role">
 	   							<option type="text" name="user_role" value="Admin">Admin</option>
 	   							<option type="radio" name="user_role" value="Viewer">Viewer</option>
 	   						</select>
+=======
+	   						<select name="user_role">
+	   						
+	   							<option type="text" name="user_role" value="Admin">Admin</option>
+	   							<option type="text" name="user_role" value="Viewer">Viewer</option>
+	   					
+	   						</select><br />
+>>>>>>> 42bc184936b1ed48ec51ab99efdfca28a4b75106
 	   					<input type="submit">
 	   				</form>			
 				{{/data}}

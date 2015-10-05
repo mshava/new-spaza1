@@ -53,7 +53,7 @@ exports.get = function(req, res, next){
 };
 exports.update = function(req, res, next){
 	var input = JSON.parse(JSON.stringify(req.body));
-	var data = {user_role:input.users_role};
+	var data = {user_role:input.user_role};
 	var id = req.params.id;
 	console.log(data);
 		req.getConnection(function(err, connection){
