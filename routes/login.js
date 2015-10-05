@@ -46,7 +46,7 @@ exports.signup = function(req, res, next) {
         bcrypt.hash(input.password, salt, function(err, hash) {
         // Store hash in your password DB. 
             data.password = hash;
-            console.log("onwaba");
+            console.log("hash.lenght");
             console.log(hash);
              connection.query('insert into Users set ?', data, function(err, results) {
                 if (err)
@@ -144,8 +144,8 @@ exports.get = function (req, res , next){
         if (err)
             return next(err)
         var query = "SELECT * From users WHERE id =?";
-        connection.query(query,[id, data],function (err, results){
-                console.log("results");
+        connection.query(query,[data],function (err, results){
+                console.log("data");
                 res.redirect("/login");
         });
     });    

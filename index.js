@@ -22,7 +22,7 @@ var app = express();
 var dbOptions = {
      host : "localhost",
      user : "root",
-     password : "amila",
+     password : "2197832",
      port : 3306,
      database : "sakonwaba"
  };
@@ -101,12 +101,12 @@ app.post("/users/update/:id",users.checkUser,users.update);
 //app.get("/users/add/",users.add);
 
 
-
+app.get("/login",login.get);
 app.post("/login", login.userLogin);
 
 app.get('/logout', function (req, res) {
   delete req.session.user;
-  res.redirect('login')
+  res.redirect('/')
 });
  
 app.get("/",function (req, res){
