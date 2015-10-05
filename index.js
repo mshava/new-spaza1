@@ -103,11 +103,10 @@ app.post("/users/update/:id",users.checkUser,users.update);
 
 
 app.post("/login", login.userLogin);
-app.get("/login",users.checkUser,login.get);
 
 app.get('/logout', function (req, res) {
   delete req.session.user;
-  res.redirect('/login')
+  res.redirect('login')
 });
  
 app.get("/",function (req, res){
@@ -115,7 +114,7 @@ app.get("/",function (req, res){
 });
  
 app.get("/signup", function (req, res){
-  res.render("login", {layout:false});
+  res.render("signup", {layout:false});
 });
  
 var port = process.env.PORT || 8080;       

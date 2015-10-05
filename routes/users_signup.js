@@ -1,3 +1,5 @@
+var bcrypt = require('bcrypt');
+
 exports.show = function (req, res, next) {
 		req.getConnection(function(err, connection){
 			if (err)
@@ -78,11 +80,20 @@ exports.get = function (req, res, next) {
              password : input.password,
              user_role: input.user_role
         };
+        //bcrypt the password===
+        bcrypt.genSalt(10, function(err, salt) {
+        bcrypt.hash(input.password, salt, function(err, hash) {
+        // Store hash in your password DB. 
+            data.password = hash;
+            console.log("onwaba");
+            console.log(hash);
         connection.query('insert into users set ?', data, function(err, results) {
             if (err)
             console.log("Error inserting : %s ",err );
           //res.redirect('/addProducts');
            res.redirect('/signup');
           });
+    });
+    });
     });
 };
