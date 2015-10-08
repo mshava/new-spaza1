@@ -1,20 +1,35 @@
+<div id ="container">
+	<div id="add-products">
+		    <h1>Add product</h1>
+		    <form action="/products/add" method="POST">
+	            Product Name:<input value="{{name}}" name="name">
+	            <br/><br/>Category Name:<select name="cat_id">
+		                {{#categories}}
+		                    <option value="{{id}}">{{name}}</option>
+		                {{/categories}}
+		            </select> 
+	            <br /><br /><input type="submit">
+	        </form>
+		</div>
+	</div>
+  <br /><br />	
+
 <div id="container">
 	<div class="table-responsive">
-	<table class="table">
-	<thead>
-			<th data-field="name">Product Name</th> 
-			<th data-field="name">Category Name</th> 
-	</thead>
-    <tbody>
-		{{#products}}
-		<tr>
-		    <td><h2>{{name}}</h2></td>
-		    <td><h2>{{category_name}}</h2></td> 
-			<td><a href="/products/add/{{id}}">Add</a><td>
-			<td><a href="/products/edit/{{id}}">Edit</a></td>
-			<td><a href="/products/delete/{{id}}">Delete</a></td>
-		</tr>
-		{{/products}}
+			<table class="table">
+				<thead>
+					<th data-field="name">Product Name</th> 
+					<th data-field="name">Category Name</th> 
+				</thead>
+    			<tbody>
+				{{#products}}
+				<tr>
+				    <td><h2>{{name}}</h2></td>
+				    <td><h2>{{category_name}}</h2></td> 
+					<td><a href="/products/edit/{{id}}">Edit</a></td>
+					<td><a href="/products/delete/{{id}}">Delete</a></td>
+				</tr>
+				{{/products}}
 		</tbody>
 	</table>
 </div>
@@ -22,6 +37,4 @@
 	{{#empty}}
 		<p>The list is empty</p>
 	{{/empty}}
-	
-	
 	
