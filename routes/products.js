@@ -148,8 +148,15 @@ exports.get = function(req, res, next){
 			if(err){
     			console.log("Error Selecting : %s ",err );
 			}
-			res.render('edit_products',{page_title:"Edit Customers - Node.js", data : rows[0]});      
-		}); 
+			var query ="SELECT * FROM categories";	
+			connection.query(query,[id], function(err, categories){
+				if(err){
+					console.log("categories");
+					console.log("Error Selecting : %s ",err);
+				}
+					res.render('edit_products',{page_title:"Edit Customers - Node.js",categories:categories ,data : rows[0]});      
+				}); 
+			});
 	});
 };
 exports.update = function(req, res, next){
