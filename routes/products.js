@@ -49,27 +49,6 @@ exports.showProductList = function(req, res, next) {
 		})
 	};
 
-
-/*		
-	
-exports.show = function (req, res, next) {
-	req.getConnection(function(err, connection){
-		if (err) 
-			return next(err);
-		connection.query('SELECT * FROM categories', [], function(err, results1) {
-			connection.query('SELECT * FROM products', [], function(err, results) {
-	        	if (err) return next(err);
-
-	    		res.render( '/products', {
-	    			products : results,
-	    			categories : results1
-	    		});
-	        });
-	    });
-	});
-};
-*/
-
 exports.showpopularPdt = function(req, res, next) {
 		req.getConnection(function(err, connection) {
 
