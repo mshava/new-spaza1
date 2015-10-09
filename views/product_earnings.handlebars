@@ -1,7 +1,22 @@
-<div id="container"><h2>Product Earnings</h2>
-	<ul class="people_list">
-		{{#each products}}
-		   {{this.name}} - R{{this.earningsPerProduct}}.00<br />
-		{{/each}}
-	</ul>
+<div id="container"><strong><h2>Product Earnings</h2></strong>
+                <table class="table-responsive">
+                        <table class="table">
+                                <thead>
+                                        <th data-field="name">Product Name</th>
+                                        <th data-field="name">Total Quantity</th>
+                                        
+                                </thead>
+                                        <tbody>
+                                                
+                                        {{#products}}
+                                                <tr>
+                                                  <td><h2>{{this.name}}</h2></td>
+                                                  <td><h2> R{{this.earningsPerProduct}}.00</h2></td>
+                                                </tr>
+                                        {{/products}}
+                                        
+                                        </tbody>
+                                
+                                </table>
+                        </table>                
 </div>
