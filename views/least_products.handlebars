@@ -1,8 +1,20 @@
-<div id="container">
-  <h2>Least Popular Product</h2>
-	<ul class="people_list">
-	    {{#each products}}
-		{{this.name}} - {{this.totalqty}}
-		{{/each}}	
-	</ul>
+<div id="container"><h2>Least Popular Product</h2>
+	<table class="table-responsive">
+		<table class="table">
+			<thead>
+				<th data-field="name">Product Name</th>
+				<th data-field="name">Total Quantity</th>
+
+			</thead>
+			<tbody>
+	
+	    {{#products}}
+		    <tr>
+			<td><h2>{{this.name}}</h2></td> 
+			<td><h2>{{this.totalqty}}-Iterms</h2></td>
+			</tr>
+		{{/products}}	
+			</tbody>
+		</table>
+	</table>	
 </div>
