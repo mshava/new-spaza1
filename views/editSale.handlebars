@@ -47,28 +47,62 @@ edit_sales
 </head>
 <body>
 
-			<div id="container">
-				<ul class="people_list">
-					<h1>Edit</h1>
-						Description:
-						{{#products}} 
-						<form action="/sales/update/{{id}}" method="POST">
-							
-							<option>
-								<select value = {{id}}>{{name}}</select>
-							</option>
-							<input type="submit">
-							</form>
-			         		{{/products}}
-								{{#sales}}
-							<form method="POST" action="/sales/update/{{id}}" >
-								Description: <input type="text" name="name" value="{{id}}" required>
-							<input type="submit">
-						</form>
-						{{/sales}}
-				</ul>
-			</div>
+			<div id="container"><h1>Edit</h1>
 
-</body>
+                <table class="table-responsive">
+
+                    <table class="table">
+				        
+                        <thead>
+						
+                        {{#products}}
+
+                            <tr>
+
+						        <form action="/sales/update/{{id}}" method="POST">
+							
+        							<option>
+
+        								<select value ="{{id}}">{{name}}</select>
+
+        							</option>
+
+							             <input type="submit">
+
+							    </form>
+
+                            </tr>    
+
+			         	{{/products}}
+
+                        </thead>
+
+                        <tbody>  
+
+						{{#sales}}
+
+                            <tr>  
+
+							  <form method="POST" action="/sales/update/{{id}}">
+
+								        Sales: <input type="text" name="name" value="{{id}}" required>
+
+							                 <input type="submit">
+
+						        </form>
+
+                            </tr>          
+
+						{{/sales}}
+
+                        </tbody>
+
+                    </table>    
+
+		        </table>		
+		
+            </div>
+
+    </body>
 
 </html>

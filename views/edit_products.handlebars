@@ -48,21 +48,32 @@ edit_users
 <body>
 
 <div id="container"><h1>Edit Products</h1>
-            {{#data}}
-                <form method="POST" action="/products/update/{{id}}">
-                    <form action="/products/update/{{id}}" method="POST">
-                      Product Name: <input type="text" name="name" value="{{name}}" required><br />
-                      {{/data}}
-                     <br/>Category Name: <select name="cat_id">
-                             {{#categories}}
-                                    <option value="{{id}}">{{name}}</option>
-                            {{/categories}} 
-                         
-            </select><br /><br />
-        <input type="submit">
-     </form>
-</div>
 
-</body>
+                        {{#data}}
+
+                            <form method="POST" action="/products/update/{{id}}">
+
+                                 <form action="/products/update/{{id}}" method="POST">
+
+                            Product Name: <input type="text" name="name" value="{{name}}" required><br />
+
+                        {{/data}}
+
+                            <br/>Category Name: <select name="cat_id">
+
+                        {{#categories}}
+
+                                    <option value="{{id}}">{{name}}</option>
+
+                        {{/categories}} 
+                         
+                                    </select><br /><br />
+
+                                <input type="submit">
+
+                            </form>
+                </div>
+
+        </body>
 
 </html>

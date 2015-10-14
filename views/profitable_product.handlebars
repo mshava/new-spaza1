@@ -1,20 +1,23 @@
 <div id="container"><h2><strong>Most Profitable Product</strong></h2>
-	<table class="table-responsive">
-		<table class="table">
-			<thead>
-				<th data-field="name">Product Name</th>
-				<th data-field="name">Total Amount</th>
+		<table class="table-responsive">
+				<table class="table">
+					
+						<thead>
 
-			</thead>
-			<tbody>
-	
-	    {{#each products}}
-		    <tr>
-			<td><h2>{{this.name}}</h2></td> 
-			<td><h2>R{{this.earningsPerProduct}}.00</h2></td>
-			</tr>
-		{{/each}}	
-			</tbody>
-		</table>
-	</table>	
+							<th data-field="name">Product Name</th>
+							<th data-field="name">Total Amount</th>
+
+						</thead>
+								<tbody>
+			
+							    {{#each products}}
+								    <tr>
+										<td><h2>{{this.name}}</h2></td> 
+										<td><h2>R{{this.earningsPerProduct}}.00</h2></td>
+									</tr>
+								{{/each}}
+
+								</tbody>
+				</table>
+		</table>	
 </div>
