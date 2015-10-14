@@ -102,7 +102,7 @@ app.post("/users/update/:id",users.checkUser,users.update);
 
 
 app.get("/view_chart", function (req, res){
-  res.render("view_chart")
+  res.render("view_chart");
 });
 //app.get("/users/add/",users.add);
 

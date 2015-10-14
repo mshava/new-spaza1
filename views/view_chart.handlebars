@@ -1,26 +1,63 @@
 <DOCTYPE html>
 <html lang = "en">
 <head>
-  <script src="http://d3js.org/d3.v3.min.js"></script>
-  <script src="http://dimplejs.org/dist/dimple.v2.1.6.min.js"></script>
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+  	<script src="http://dimplejs.org/dist/dimple.v2.1.6.min.js"></script>
+<title>
+signup page
+</title>
+
+<style> 
+
+body{
+				background-color: #4e5d6a;
+                font-family: "Open Sans", sans-serif;
+                text-decoration-style: wavy;
+                text-decoration-color: red;
+                background-image:url("./store1.jpg");
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-attachment: fixed;
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+                align:center;
+                text-color:red;
+            }
+#container{
+	border: 10px solid black;
+	margin-left: 50px;
+	
+	
+}            
+
+
+</style>
 </head>
 <body>
-	<h3>Visual Presentation of Nellisa Categories</h3>
-  
-  <script type="text/javascript">
-  	var svg = dimple.newSvg("body", 800, 600);
-  	var data = [
-  	  { "Categories":"Bakery", "Awesomeness":1000 },
-  	  { "Categories": "Dairy", "Awesomeness":2000 },
-  	  { "Categories": "Cold Beverages", "Awesomeness":3000 },
-  	  { "Categories": "Distilled Beverages", "Awesomeness":1500 }
-  	];
-  	var chart = new dimple.chart(svg, data);
-  	chart.addCategoryAxis("x", "Categories");
-  	chart.addMeasureAxis("y", "Awesomeness");
-  	chart.addSeries(null, dimple.plot.bar);
-  	chart.draw();
-  </script> 
+
+  <div id="container"><h3>Visual Presentation of Nellisa Categories</h3>
+  	<ul class="people_list">
+	  <script type="text/javascript">
+	  	var svg = dimple.newSvg("body", 800, 600);
+	  	var data = [
+	  	  { "Categories":"Bakery", "Awesomeness":1000 },
+	  	  { "Categories": "Dairy", "Awesomeness":2000 },
+	  	  { "Categories": "Cold Beverages", "Awesomeness":3000 },
+	  	  { "Categories": "Distilled Beverages", "Awesomeness":1500 }
+	  	];
+	  	var chart = new dimple.chart(svg, data);
+	  	chart.addCategoryAxis("x", "Categories");
+	  	chart.addMeasureAxis("y", "Awesomeness");
+	  	chart.addSeries(null, dimple.plot.bar);
+	  	chart.draw();
+	  </script> 
+	</ul>
+</div>
 
 </body>
+
 </html>
+
+
