@@ -4,13 +4,13 @@ exports.show = function (req, res, next) {
 		req.getConnection(function(err, connection){
 			if (err)
 			return next(err);
-		//var isAdmin = req.session.role === "admin";
-		//var readOnly = req.session.role !== "admin";
+		var Admin = req.session.role === "admin";
+		var Viewer = req.session.role !== "admin";
 			connection.query('SELECT * from users', [], function(err, results, fields) {
 				res.render('signup', {
-					users: results
-					//in_ca: isAdmin,
-					//action:readOnly
+					users: results,
+				    isAdmin: Admin,
+					action: read-only
 			});
 		});
 	});
@@ -35,7 +35,7 @@ exports.notAdmin = function(req, res, next) {
 	var data = JSON.parse(JSON.stringify(req.body));
 	var id = req.params.id;
 		req.getConnection(function(err, connection) {
-			connection.query('UPDATE Users SET User_role = "read-only" WHERE id = ?', id, function(err, rows) {
+			connection.query('UPDATE users SET user_role = "read-only" WHERE id = ?', id, function(err, rows) {
 					if (err) {
 					console.log("Error Updating : %s ", err);
 					}

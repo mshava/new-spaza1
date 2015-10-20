@@ -1,9 +1,10 @@
+
 exports.checkUser = function (req, res,next) {
     if(req.session.user){
 		next();
 	}
 	else{
-		res.redirect('/login')
+		res.redirect('/');
 	}
 };
 exports.login = function(req,res){
@@ -18,6 +19,8 @@ exports.logout = function (req, res){
                     msg : msg
         });
     };
+
+
 exports.showUsers = function (req, res, next) {
 	req.getConnection(function(err, connection){
 		if (err)
