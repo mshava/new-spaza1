@@ -1,91 +1,214 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/bin/nodejs', '/usr/bin/npm', 'install', 'update' ]
+1 verbose cli [ '/usr/bin/nodejs', '/usr/bin/npm', 'install', '-g', 'nodemon' ]
 2 info using npm@1.3.10
 3 info using node@v0.10.25
-4 warn package.json spaza-sakonwaba@0.0.0 No description
-5 warn package.json spaza-sakonwaba@0.0.0 No README data
-6 verbose readDependencies using package.json deps
-7 verbose cache add [ 'update', null ]
-8 verbose cache add name=undefined spec="update" args=["update",null]
-9 verbose parsed url { protocol: null,
-9 verbose parsed url   slashes: null,
-9 verbose parsed url   auth: null,
-9 verbose parsed url   host: null,
-9 verbose parsed url   port: null,
-9 verbose parsed url   hostname: null,
-9 verbose parsed url   hash: null,
-9 verbose parsed url   search: null,
-9 verbose parsed url   query: null,
-9 verbose parsed url   pathname: 'update',
-9 verbose parsed url   path: 'update',
-9 verbose parsed url   href: 'update' }
-10 silly lockFile 0a25ba59-update update
-11 verbose lock update /home/coder-pc-22/.npm/0a25ba59-update.lock
-12 silly lockFile 0a25ba59-update update
-13 silly lockFile 0a25ba59-update update
-14 verbose addNamed [ 'update', '' ]
-15 verbose addNamed [ null, '*' ]
-16 silly lockFile f8258749-update update@
-17 verbose lock update@ /home/coder-pc-22/.npm/f8258749-update.lock
-18 silly addNameRange { name: 'update', range: '*', hasData: false }
-19 verbose url raw update
-20 verbose url resolving [ 'https://registry.npmjs.org/', './update' ]
-21 verbose url resolved https://registry.npmjs.org/update
-22 info trying registry request attempt 1 at 12:04:00
-23 verbose etag "7Y8DBB3ASI3QFID32Q0E2UKZL"
-24 http GET https://registry.npmjs.org/update
-25 http 304 https://registry.npmjs.org/update
-26 silly registry.get cb [ 304,
-26 silly registry.get   { date: 'Thu, 08 Oct 2015 10:04:01 GMT',
-26 silly registry.get     via: '1.1 varnish',
-26 silly registry.get     'cache-control': 'max-age=60',
-26 silly registry.get     etag: '"7Y8DBB3ASI3QFID32Q0E2UKZL"',
-26 silly registry.get     age: '30',
-26 silly registry.get     connection: 'keep-alive',
-26 silly registry.get     'x-served-by': 'cache-fra1240-FRA',
-26 silly registry.get     'x-cache': 'HIT',
-26 silly registry.get     'x-cache-hits': '1',
-26 silly registry.get     'x-timer': 'S1444298641.266793,VS0,VE0',
-26 silly registry.get     vary: 'Accept' } ]
-27 verbose etag update from cache
-28 silly addNameRange number 2 { name: 'update', range: '*', hasData: true }
-29 silly addNameRange versions [ 'update',
-29 silly addNameRange   [ '0.1.0',
-29 silly addNameRange     '0.2.0',
-29 silly addNameRange     '0.3.0-beta',
-29 silly addNameRange     '0.3.1-beta',
-29 silly addNameRange     '0.3.2-beta',
-29 silly addNameRange     '0.3.3-beta',
-29 silly addNameRange     '0.3.3',
-29 silly addNameRange     '0.3.5',
-29 silly addNameRange     '0.3.6' ] ]
-30 verbose addNamed [ 'update', '0.3.6' ]
-31 verbose addNamed [ '0.3.6', '0.3.6' ]
-32 silly lockFile 03d883a6-update-0-3-6 update@0.3.6
-33 verbose lock update@0.3.6 /home/coder-pc-22/.npm/03d883a6-update-0-3-6.lock
-34 silly lockFile 2ca92941-pmjs-org-update-update-0-3-6-tgz https://registry.npmjs.org/update/-/update-0.3.6.tgz
-35 verbose lock https://registry.npmjs.org/update/-/update-0.3.6.tgz /home/coder-pc-22/.npm/2ca92941-pmjs-org-update-update-0-3-6-tgz.lock
-36 verbose addRemoteTarball [ 'https://registry.npmjs.org/update/-/update-0.3.6.tgz',
-36 verbose addRemoteTarball   '11bcae2d5fe3413a5dd0910f424d6310e50c99e8' ]
-37 silly lockFile 2ca92941-pmjs-org-update-update-0-3-6-tgz https://registry.npmjs.org/update/-/update-0.3.6.tgz
-38 silly lockFile 2ca92941-pmjs-org-update-update-0-3-6-tgz https://registry.npmjs.org/update/-/update-0.3.6.tgz
-39 silly lockFile 03d883a6-update-0-3-6 update@0.3.6
-40 silly lockFile 03d883a6-update-0-3-6 update@0.3.6
-41 silly lockFile f8258749-update update@
-42 silly lockFile f8258749-update update@
-43 error Error: EACCES, mkdir '/home/coder-pc-22/tmp/npm-7079-Ju2Qd_u5'
-43 error  { [Error: EACCES, mkdir '/home/coder-pc-22/tmp/npm-7079-Ju2Qd_u5']
-43 error   errno: 3,
-43 error   code: 'EACCES',
-43 error   path: '/home/coder-pc-22/tmp/npm-7079-Ju2Qd_u5' }
-44 error Please try running this command again as root/Administrator.
-45 error System Linux 3.13.0-32-generic
-46 error command "/usr/bin/nodejs" "/usr/bin/npm" "install" "update"
-47 error cwd /home/coder-pc-22/projects/spaza-sakonwaba
-48 error node -v v0.10.25
-49 error npm -v 1.3.10
-50 error path /home/coder-pc-22/tmp/npm-7079-Ju2Qd_u5
-51 error code EACCES
-52 error errno 3
-53 error stack Error: EACCES, mkdir '/home/coder-pc-22/tmp/npm-7079-Ju2Qd_u5'
-54 verbose exit [ 3, true ]
+4 verbose cache add [ 'nodemon', null ]
+5 verbose cache add name=undefined spec="nodemon" args=["nodemon",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'nodemon',
+6 verbose parsed url   path: 'nodemon',
+6 verbose parsed url   href: 'nodemon' }
+7 silly lockFile 1625b929-nodemon nodemon
+8 verbose lock nodemon /home/coder-pc-22/.npm/1625b929-nodemon.lock
+9 silly lockFile 1625b929-nodemon nodemon
+10 silly lockFile 1625b929-nodemon nodemon
+11 verbose addNamed [ 'nodemon', '' ]
+12 verbose addNamed [ null, '*' ]
+13 silly lockFile 4f5e51c6-nodemon nodemon@
+14 verbose lock nodemon@ /home/coder-pc-22/.npm/4f5e51c6-nodemon.lock
+15 silly addNameRange { name: 'nodemon', range: '*', hasData: false }
+16 verbose url raw nodemon
+17 verbose url resolving [ 'https://registry.npmjs.org/', './nodemon' ]
+18 verbose url resolved https://registry.npmjs.org/nodemon
+19 info trying registry request attempt 1 at 14:23:12
+20 verbose etag "D2IB5F6Y74X8H7W24V1SPTASX"
+21 http GET https://registry.npmjs.org/nodemon
+22 http 200 https://registry.npmjs.org/nodemon
+23 silly registry.get cb [ 200,
+23 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+23 silly registry.get     etag: '"J0X32ROLWHB4QP7B5I1I37CG"',
+23 silly registry.get     'content-type': 'application/json',
+23 silly registry.get     'cache-control': 'max-age=60',
+23 silly registry.get     'content-length': '179368',
+23 silly registry.get     'accept-ranges': 'bytes',
+23 silly registry.get     date: 'Tue, 27 Oct 2015 12:23:13 GMT',
+23 silly registry.get     via: '1.1 varnish',
+23 silly registry.get     age: '54',
+23 silly registry.get     connection: 'keep-alive',
+23 silly registry.get     'x-served-by': 'cache-lhr6322-LHR',
+23 silly registry.get     'x-cache': 'HIT',
+23 silly registry.get     'x-cache-hits': '1',
+23 silly registry.get     'x-timer': 'S1445948593.493486,VS0,VE1',
+23 silly registry.get     vary: 'Accept' } ]
+24 silly addNameRange number 2 { name: 'nodemon', range: '*', hasData: true }
+25 silly addNameRange versions [ 'nodemon',
+25 silly addNameRange   [ '0.1.4',
+25 silly addNameRange     '0.1.5',
+25 silly addNameRange     '0.1.6',
+25 silly addNameRange     '0.1.7',
+25 silly addNameRange     '0.1.8',
+25 silly addNameRange     '0.2.0',
+25 silly addNameRange     '0.2.1',
+25 silly addNameRange     '0.2.2',
+25 silly addNameRange     '0.3.0',
+25 silly addNameRange     '0.3.1',
+25 silly addNameRange     '0.3.2',
+25 silly addNameRange     '0.4.0',
+25 silly addNameRange     '0.4.1',
+25 silly addNameRange     '0.5.0',
+25 silly addNameRange     '0.5.1',
+25 silly addNameRange     '0.5.2',
+25 silly addNameRange     '0.5.3',
+25 silly addNameRange     '0.5.4',
+25 silly addNameRange     '0.5.5',
+25 silly addNameRange     '0.5.6',
+25 silly addNameRange     '0.5.7',
+25 silly addNameRange     '0.6.0',
+25 silly addNameRange     '0.6.1',
+25 silly addNameRange     '0.6.2',
+25 silly addNameRange     '0.6.3',
+25 silly addNameRange     '0.6.4',
+25 silly addNameRange     '0.6.5',
+25 silly addNameRange     '0.6.6',
+25 silly addNameRange     '0.6.7',
+25 silly addNameRange     '0.6.8',
+25 silly addNameRange     '0.6.9',
+25 silly addNameRange     '0.6.10',
+25 silly addNameRange     '0.6.11',
+25 silly addNameRange     '0.6.12',
+25 silly addNameRange     '0.6.13',
+25 silly addNameRange     '0.6.14',
+25 silly addNameRange     '0.6.15',
+25 silly addNameRange     '0.6.16',
+25 silly addNameRange     '0.6.17',
+25 silly addNameRange     '0.6.18',
+25 silly addNameRange     '0.6.19',
+25 silly addNameRange     '0.6.20',
+25 silly addNameRange     '0.6.21',
+25 silly addNameRange     '0.6.22',
+25 silly addNameRange     '0.6.23',
+25 silly addNameRange     '0.7.0',
+25 silly addNameRange     '0.7.1',
+25 silly addNameRange     '0.7.2',
+25 silly addNameRange     '0.7.3',
+25 silly addNameRange     '0.7.4',
+25 silly addNameRange     '0.7.5',
+25 silly addNameRange     '0.7.6',
+25 silly addNameRange     '0.7.7',
+25 silly addNameRange     '0.7.8',
+25 silly addNameRange     '0.7.10',
+25 silly addNameRange     '0.9.0',
+25 silly addNameRange     '0.9.1',
+25 silly addNameRange     '0.9.2',
+25 silly addNameRange     '0.9.3',
+25 silly addNameRange     '0.9.5',
+25 silly addNameRange     '0.9.6',
+25 silly addNameRange     '0.9.7',
+25 silly addNameRange     '0.9.10',
+25 silly addNameRange     '0.9.11',
+25 silly addNameRange     '0.9.12',
+25 silly addNameRange     '0.9.14',
+25 silly addNameRange     '0.9.16',
+25 silly addNameRange     '0.9.17',
+25 silly addNameRange     '1.0.0',
+25 silly addNameRange     '1.0.1',
+25 silly addNameRange     '1.0.2',
+25 silly addNameRange     '1.0.2-rc',
+25 silly addNameRange     '0.6.10-a',
+25 silly addNameRange     '1.0.2-rc3',
+25 silly addNameRange     '1.0.2-rc4',
+25 silly addNameRange     '1.0.3',
+25 silly addNameRange     '1.0.4',
+25 silly addNameRange     '1.0.5',
+25 silly addNameRange     '1.0.6',
+25 silly addNameRange     '1.0.7',
+25 silly addNameRange     '1.0.8',
+25 silly addNameRange     '1.0.9',
+25 silly addNameRange     '1.0.10',
+25 silly addNameRange     '1.0.11',
+25 silly addNameRange     '1.0.12',
+25 silly addNameRange     '1.0.13',
+25 silly addNameRange     '1.0.14',
+25 silly addNameRange     '1.0.15',
+25 silly addNameRange     '1.0.16',
+25 silly addNameRange     '1.0.17-rc1',
+25 silly addNameRange     '1.0.17-rc2',
+25 silly addNameRange     '1.0.17',
+25 silly addNameRange     '1.0.18',
+25 silly addNameRange     '1.0.19',
+25 silly addNameRange     '1.0.20',
+25 silly addNameRange     '1.1.0-alpha',
+25 silly addNameRange     '1.1.0',
+25 silly addNameRange     '1.1.1',
+25 silly addNameRange     '1.2.0',
+25 silly addNameRange     '1.2.1',
+25 silly addNameRange     '1.3.0-0',
+25 silly addNameRange     '1.3.0-1',
+25 silly addNameRange     '1.3.0-2',
+25 silly addNameRange     '1.3.0-3',
+25 silly addNameRange     '1.3.0-4',
+25 silly addNameRange     '1.3.0-5',
+25 silly addNameRange     '1.3.0-6',
+25 silly addNameRange     '1.3.0-7',
+25 silly addNameRange     '1.3.0',
+25 silly addNameRange     '1.3.1',
+25 silly addNameRange     '1.3.2',
+25 silly addNameRange     '1.3.3',
+25 silly addNameRange     '1.3.5',
+25 silly addNameRange     '1.3.6',
+25 silly addNameRange     '1.3.7',
+25 silly addNameRange     '1.3.8',
+25 silly addNameRange     '1.4.0',
+25 silly addNameRange     '1.4.1',
+25 silly addNameRange     '1.5.0-alpha1',
+25 silly addNameRange     '1.5.0-alpha2',
+25 silly addNameRange     '1.5.0-alpha3',
+25 silly addNameRange     '1.5.0-alpha4',
+25 silly addNameRange     '1.4.2',
+25 silly addNameRange     '1.5.0',
+25 silly addNameRange     '1.5.1',
+25 silly addNameRange     '1.6.0',
+25 silly addNameRange     '1.6.1',
+25 silly addNameRange     '1.7.0',
+25 silly addNameRange     '1.7.1',
+25 silly addNameRange     '1.7.2',
+25 silly addNameRange     '1.7.3',
+25 silly addNameRange     '1.8.0' ] ]
+26 verbose addNamed [ 'nodemon', '1.8.0' ]
+27 verbose addNamed [ '1.8.0', '1.8.0' ]
+28 silly lockFile 19afe46d-nodemon-1-8-0 nodemon@1.8.0
+29 verbose lock nodemon@1.8.0 /home/coder-pc-22/.npm/19afe46d-nodemon-1-8-0.lock
+30 silly lockFile 38eb6658-js-org-nodemon-nodemon-1-8-0-tgz https://registry.npmjs.org/nodemon/-/nodemon-1.8.0.tgz
+31 verbose lock https://registry.npmjs.org/nodemon/-/nodemon-1.8.0.tgz /home/coder-pc-22/.npm/38eb6658-js-org-nodemon-nodemon-1-8-0-tgz.lock
+32 verbose addRemoteTarball [ 'https://registry.npmjs.org/nodemon/-/nodemon-1.8.0.tgz',
+32 verbose addRemoteTarball   '37114e9d1b231975a8be9d36572c99338161fbae' ]
+33 silly lockFile 38eb6658-js-org-nodemon-nodemon-1-8-0-tgz https://registry.npmjs.org/nodemon/-/nodemon-1.8.0.tgz
+34 silly lockFile 38eb6658-js-org-nodemon-nodemon-1-8-0-tgz https://registry.npmjs.org/nodemon/-/nodemon-1.8.0.tgz
+35 silly lockFile 19afe46d-nodemon-1-8-0 nodemon@1.8.0
+36 silly lockFile 19afe46d-nodemon-1-8-0 nodemon@1.8.0
+37 silly lockFile 4f5e51c6-nodemon nodemon@
+38 silly lockFile 4f5e51c6-nodemon nodemon@
+39 error Error: EACCES, mkdir '/home/coder-pc-22/tmp/npm-6148-ug2UrKmU'
+39 error  { [Error: EACCES, mkdir '/home/coder-pc-22/tmp/npm-6148-ug2UrKmU']
+39 error   errno: 3,
+39 error   code: 'EACCES',
+39 error   path: '/home/coder-pc-22/tmp/npm-6148-ug2UrKmU' }
+40 error Please try running this command again as root/Administrator.
+41 error System Linux 3.13.0-67-generic
+42 error command "/usr/bin/nodejs" "/usr/bin/npm" "install" "-g" "nodemon"
+43 error cwd /home/coder-pc-22/projects/spaza-sakonwaba
+44 error node -v v0.10.25
+45 error npm -v 1.3.10
+46 error path /home/coder-pc-22/tmp/npm-6148-ug2UrKmU
+47 error code EACCES
+48 error errno 3
+49 error stack Error: EACCES, mkdir '/home/coder-pc-22/tmp/npm-6148-ug2UrKmU'
+50 verbose exit [ 3, true ]

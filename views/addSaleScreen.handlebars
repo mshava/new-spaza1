@@ -1,6 +1,55 @@
+<DOCTYPE html>
+<html lang = "en">
+<head>
+<title>
+edit_users
+</title>
+<head>
+<style> 
+ #text:hover { 
+                background-color:#9933FF;
+            }
+            #sa{
+                color:#9933FF;       
+            }
+            #head{
+                background-image: url("/header2.png");
+                background-repeat: no-repeat;
+                background-size: 100%;
+                height: 220px;
+                width: auto;
+                opacity: 0.89;
+            }
+            body{
+                background-image:url("/store1.jpg");
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-attachment: fixed;
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+            }
+            #container{
+                background-color:#000000;
+                font-family: "Times New Roman", Times, serif;
+                color:#FF3399;
+                font-size: 25px;
+                height:auto;
+                width: auto;
+                opacity: 0.70;
+            }
+            button{
+                color:#FF0000;
+                background-color:#CCFF00;
+            }
+</style>
+</head>
+<body>
+
 <div id="container">
 
-	<div id="add-product">
+	<div id="add-sales">
 		<h1>Add Sale</h1>
 		<form action="/sales/add" method="POST">
 		    Date:<input type="date" name="sale_date"><br />
@@ -17,3 +66,6 @@
 	    </form>
 	</div>
 </div>
+
+</body>
+</html>

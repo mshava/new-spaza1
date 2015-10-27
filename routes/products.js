@@ -1,22 +1,28 @@
+/*
 exports.getsearchProduct = function(req, res, next) {
 	req.getConnection(function (err, connection) {
 		if (err)
 			return next(err);
+		var Admin = req.session === "Admin";
+		var userRole = req.session !== "Admin";
 		var searchValue = req.params.searchValue;
 		searchValue = "%" + searchValue + "%";
 		var query = "SELECT * FROM products LIKE ?";
-		connection.query(query,[searchValue, searchValue], function (err, results) {
+		connection.query(query,[searchValue, searchValue], function (err, products) {
 			if (err) {
 				console.log(results.length);
 				return (err);
 				};
-			res.render('products'{
-				products : results
+			res.render('products',{
+				products : products,
+				Admin : Admin,
+				userRole : userRole,
+				layout : false
 			});
 		});
 	});
 };
-
+*/
 exports.showProductList = function(req, res, next) {
 	req.getConnection(function (err, connection) {				
 		if (err)
@@ -27,7 +33,7 @@ exports.showProductList = function(req, res, next) {
 				console.log(err);
 				return (err);
 				};
-		console.log(results.length);				
+		//console.log(results.length);				
 		   res.render('Products', {
 				products : products,
 				categories : categories
