@@ -3,7 +3,7 @@ exports.show = function (req, res, next) {
 			if (err)
 				return next(err);
 
-		var query = "SELECT DATE_FORMAT(purchase_date,'%d %b %y') as date,purchases_qty,purchase.sales_price, products.name as name from purchases,products where products.id = purchases.prod_id order by purchases.date DESC";
+		var query = "SELECT DATE_FORMAT(purchase_date,'%d %b %y') as date,purchases.quantity,purchases.cost as price, products.name as name from purchases,products where products.id = purchases.prod_id order by purchases_date DESC";
 		connection.query(query,[], function(err, purchases) {
 			if (err)
 				return next(err);
