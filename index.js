@@ -51,6 +51,7 @@ app.post("/products/update/:id", users.checkUser,products.update);
 app.get("/products/delete/:id", users.checkUser,products.delete); 
 app.get("/popular_products", users.checkUser,products.showpopularPdt);
 app.get("/least_products", users.checkUser,products.showleastPdt);
+app.get("products/search/:searchValue",users.checkUser,products.getsearchProduct);
 
 app.get("/sales",sales.show);
 app.get("/sales/update/:id",users.checkUser, sales.get);
