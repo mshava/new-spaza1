@@ -1,4 +1,3 @@
-/*
 exports.getsearchProduct = function(req, res, next) {
 	req.getConnection(function (err, connection) {
 		if (err)
@@ -6,14 +5,15 @@ exports.getsearchProduct = function(req, res, next) {
 		var Admin = req.session === "Admin";
 		var userRole = req.session !== "Admin";
 		var searchValue = req.params.searchValue;
-		searchValue = "%" + searchValue + "%";
-		var query = "SELECT * FROM products LIKE ?";
-		connection.query(query,[searchValue, searchValue], function (err, products) {
+		searchValue = searchValue + "%";
+		console.log(searchValue);
+		var query = "SELECT * FROM products_name LIKE ?";
+		connection.query(query, searchValue, function (err, products) {
 			if (err) {
 				console.log(results.length);
 				return (err);
 				};
-			res.render('products',{
+			res.render('productList',{
 				products : products,
 				Admin : Admin,
 				userRole : userRole,
@@ -22,7 +22,7 @@ exports.getsearchProduct = function(req, res, next) {
 		});
 	});
 };
-*/
+
 exports.showProductList = function(req, res, next) {
 	req.getConnection(function (err, connection) {				
 		if (err)
