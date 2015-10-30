@@ -1,31 +1,24 @@
-<div id= "container">
-	<div class="table-responsive">
-		<form>
-			<input id="searchBar" type="text" name="product"></input>
-		</form>
-				<table class="table-responsive" id="productList">
-					<table class="table">
 
-						<thead>
-							<tr>
-								<th data-field="name">Product id</th>
-								<th data-field="name">Product Name</th>
-								<th data-field="name">Category Name</th>
-							</tr>
-						</thead>
-							
-						<tbody>	
-							{{#products}}	
-								<tr>
-									<td><h2>{{product_id}}</h2></td>
-									<td><h2>{{product_name}}</h2></td>
-									<td><h2>{{category_name}}</h2></td>
-								</tr>
-							{{/products}}
-						</tbody>
+<table class="table-responsive" id="productList">
+	<table class="table">
 
-					</table>
-				</table>
-	</div>
-</div>
+		<thead>
+			<tr>
+				<th data-field="name">Product id</th>
+				<th data-field="name">Product Name</th>
+				<th data-field="name">Category Name</th>
+			</tr>
+		</thead>
+			
+		<tbody>	
+			{{#products}}	
+				<tr>
+					<td><h2>{{id}}</h2></td>
+					<td><h2>{{prodName}}</h2></td>
+					<td><h2>{{name}}</h2></td>
+				</tr>
+			{{/products}}
+		</tbody>
 
+	</table>
+</table>

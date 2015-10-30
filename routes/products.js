@@ -5,29 +5,22 @@ exports.getsearchProduct = function(req, res, next) {
 		var Admin = req.session === "Admin";
 		var userRole = req.session !== "Admin";
 		var searchValue = req.params.searchValue;
-		searchValue = searchValue + "%";
+		searchValue = "%"+searchValue + "%";
 		console.log(searchValue);
-		var query = "SELECT * FROM products WHERE product_name LIKE ?";
-		connection.query(query, searchValue, function (err, products) {
-			if (err) {
-				console.log(results.length);
-				return (err);
-				};
-		var query = "SELECT  prod_id, product_name, category_name FROM categories, products WHERE cat_id = products.cat_id AND (product_name LIKE ? OR category_name LIKE?)";
+		var query = "SELECT  products.id, products.name as prodName, categories.name FROM categories, products WHERE categories.id = products.cat_id AND (products.name LIKE ? OR categories.name LIKE ?)";
 		connection.query(query,[searchValue, searchValue], function(err, results){	
 			if (err){
-				console.log(results);
 				return next (err);
 				};	
+				console.log(results);
 			res.render('productList',{
-				products : products,
+				products : results,
 				Admin : Admin,
 				userRole : userRole,
 				layout : false
 				});
 			});
 		});
-	});
 };
 
 exports.showProductList = function(req, res, next) {
