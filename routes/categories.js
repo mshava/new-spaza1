@@ -7,7 +7,7 @@ exports.getSearchCategories = function (req, res, next){
     var searchValue = req.params.searchValue;
     searchValue = "%" + searchValue + "%";
     console.log(searchValue);
-    var query = "SELECT * FROM categories WHERE categories.name LIKE ?";
+    var query = "SELECT * FROM categories WHERE category_name LIKE ?";
     connection.query(query,[searchValue],function (err, results){
     	if (err){
     		return next(err);
