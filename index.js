@@ -51,7 +51,7 @@ app.post("/products/update/:id", users.checkUser,products.update);
 app.get("/products/delete/:id", users.checkUser,products.delete); 
 app.get("/popular_products", users.checkUser,products.showpopularPdt);
 app.get("/least_products", users.checkUser,products.showleastPdt);
-app.get("products/search/:searchValue",users.checkUser,products.getsearchProduct);
+app.get("productList/products/search/:searchValue",users.checkUser,products.getsearchProduct);
 
 app.get("/sales",sales.show);
 app.get("/sales/update/:id",users.checkUser, sales.get);
@@ -100,8 +100,6 @@ app.get("/users", users.checkUser,users.showUsers);
 app.get("/users/edit/:id",users.checkUser,users.get);
 app.post("/users/update/:id",users.checkUser,users.update);
 
-
-
 app.get("/view_chart", function (req, res){
   res.render("view_chart");
 });
@@ -109,10 +107,6 @@ app.get("/view_chart", function (req, res){
 app.get("/data_visuals", function (req, res){
   res.render("data_visuals",{layout:false});
 });
-
-
-//app.get("/users/add/",users.add);
-
 
 app.get("/login",login.get);
 app.post("/login", login.userLogin);

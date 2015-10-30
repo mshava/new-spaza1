@@ -2,7 +2,6 @@
 	<div class="table-responsive">
 		<form>
 			<input id="searchBar" type="text" name="product"></input>
-			<input class="searchBar" id="productSearchBar" type="text" name="product"></input>
 		</form>
 				<table class="table-responsive" id="productList">
 					<table class="table">
@@ -30,27 +29,3 @@
 	</div>
 </div>
 
-<div id="container">
-	<div class="table-responsive">
-			<table class="table">
-				<thead>
-					<th data-field="name">Product Name</th> 
-					<th data-field="name">Category Name</th> 
-				</thead>
-    			<tbody>
-				{{#products}}
-				<tr>
-				    <td><h2>{{name}}</h2></td>
-				    <td><h2>{{category_name}}</h2></td> 
-					<td><a href="/products/edit/{{id}}">Edit</a></td>
-					<td><a href="/products/delete/{{id}}">Delete</a></td>
-				</tr>
-				{{/products}}
-		</tbody>
-	</table>
-</div>
-</div>
-	{{#empty}}
-		<p>The list is empty</p>
-	{{/empty}}
-	

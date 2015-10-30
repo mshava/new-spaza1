@@ -7,17 +7,24 @@ exports.getsearchProduct = function(req, res, next) {
 		var searchValue = req.params.searchValue;
 		searchValue = searchValue + "%";
 		console.log(searchValue);
-		var query = "SELECT * FROM products_name LIKE ?";
+		var query = "SELECT * FROM products WHERE product_name LIKE ?";
 		connection.query(query, searchValue, function (err, products) {
 			if (err) {
 				console.log(results.length);
 				return (err);
 				};
+		var query = "SELECT  prod_id, product_name, category_name FROM categories, products WHERE cat_id = products.cat_id AND (product_name LIKE ? OR category_name LIKE?)";
+		connection.query(query,[searchValue, searchValue], function(err, results){	
+			if (err){
+				console.log(results);
+				return next (err);
+				};	
 			res.render('productList',{
 				products : products,
 				Admin : Admin,
 				userRole : userRole,
 				layout : false
+				});
 			});
 		});
 	});
