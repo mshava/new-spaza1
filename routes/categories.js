@@ -1,3 +1,22 @@
+exports.getSearchCategories = function (req, res, next){
+	req.getConnection(function (err, connection){
+		if (err)
+			return next(err);
+	var Admin = req.session === "Admin";
+	var users = req.session !== "Admin";	
+    var searchValue = req.params.searchValue;
+    searchValue = "%" + searchValue + "%";
+    console.log(searchValue);
+    var query = "SELECT * FROM categories WHERE categories.name LIKE ?";
+    connection.query(query,[searchValue],function (err, results){
+    	if (err){
+    		return next(err);
+    	};
+    	res.render("category_list", results);
+    	});
+	});
+};
+
 exports.show = function (req, res, next) {
 	req.getConnection(function(err, connection){
 		if (err)
