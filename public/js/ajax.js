@@ -13,11 +13,11 @@ $('document').ready(function(){
 				$('#productList').html(results);
 			});
 
+
 			$('#categoriesSearchBar').keydown(function(){
 				var searchValue = $('categoriesSearchBar').val();
 				$('#/categories/search/' + searchValue, function(results){
-				$.('#categoryList').html(results);
+				$('#category_list').html(results);
 			});			
 		});
-	});
-});
+	});		

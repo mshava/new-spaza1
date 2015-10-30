@@ -1,7 +1,26 @@
 <div id="container">
-	
-	******* {{error}}******
+<table class="table-responsive" id="category_list">
+	<table class="table">
+		<form>
+			<input class="searchBar" id="categoriesSearchBar" type="text" name="categories"></input>
+		</form>
+			<thead>
+				<tr>
+					<th data-field="name">Categories Id</th>
+					<th data-field="name">Categories Name</th>
+				</tr>
+			</thead>
 
+			<tbody>
+				{{#categories}}
+				<tr>
+					<td>{{cat_id}}</td>
+					<td>{{cat_name}}</td>
+				</tr>
+				{{/categories}}
+			</tbody>
+	</table>
+</table>		
 
 	<div id="addCategories">
 	   		<h1>Add Category</h1>

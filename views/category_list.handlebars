@@ -1,5 +1,8 @@
 <table class="table-responsive" id="category_list">
 	<table class="table">
+		<form>
+			<input class="searchBar" id="categoriesSearchBar" type="text" name="categories"></input>
+		</form>
 			<thead>
 				<tr>
 					<th data-field="name">Categoeies Id</th>
@@ -8,12 +11,12 @@
 			</thead>
 
 			<tbody>
-				{{{#categories}}}
+				{{#categories}}
 				<tr>
-					<td>{{{cat_id}}}</td>
-					<td>{{{cat_name}}}</td>
+					<td>{{this.cat_id}}</td>
+					<td>{{this.cat_name}}</td>
 				</tr>
-				{{{/categories}}}
+				{{/categories}}
 			</tbody>
 	</table>
 </table>			

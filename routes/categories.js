@@ -2,8 +2,8 @@ exports.getSearchCategories = function (req, res, next){
 	req.getConnection(function (err, connection){
 		if (err)
 			return next(err);
-	var Admin = req.session === "Admin";
-	var users = req.session !== "Admin";	
+	var Admin = req.session.user === "Admin";
+	var userRole = req.session.user !== "Admin";	
     var searchValue = req.params.searchValue;
     searchValue = "%" + searchValue + "%";
     console.log(searchValue);
@@ -12,10 +12,15 @@ exports.getSearchCategories = function (req, res, next){
     	if (err){
     		return next(err);
     	};
-    	res.render("category_list", results);
+    	res.render("category_list",{
+    		categories : results,
+    		Admin : Admin,
+    		userRole : userRole,
+    		layout : false
+    		});
     	});
-	});
-};
+    });
+};    	
 
 exports.show = function (req, res, next) {
 	req.getConnection(function(err, connection){
