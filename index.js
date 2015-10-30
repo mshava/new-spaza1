@@ -71,6 +71,7 @@ app.post("/categories/update/:id",users.checkUser,categories.update);
 app.get("/categories/delete/:id",users.checkUser,categories.delete); 
 app.get("/popular_category",users.checkUser,categories.showmostPopCat);
 app.get("/least_category",users.checkUser,categories.showleastPopCat);
+app.get("/categories/search/:searchValue",users.checkUser,categories.getSearchCategories);
  
 app.get("/product_earnings",users.checkUser,spaza.showearningsPerPdt);
 app.get("/profitable_product",users.checkUser,spaza.showmostProfPdt);
