@@ -16,7 +16,7 @@ module.exports = function(connection) {
     return.executeQuery('INSERT INTO categories set ?', data);
   };
 
-  this.getCategories = functiono(id) {
+  this.editCategories = functiono(id) {
     return queryService.executeQuery('SELECT * FROM categories WHERE id = ?', id);
   };
 

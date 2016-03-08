@@ -4,7 +4,7 @@ const productDataService = require('./data_services/productDataService');
 
 module.exports = function(connection) {
   const queryService = new queryService(connection);
-  
+
   this.showProducts = function() {
     return queryService.executeQuery('SELECT * FROM products');
   };
@@ -17,12 +17,16 @@ module.exports = function(connection) {
     return queryService.executeQuery('INSERT INTO products set ?', data);
   };
 
-  this.getProducts = function(id) {
+  this.editProducts = function(id) {
       return queryService.executeQuery('SELECT * FROM products WHERE id = ?' id);
   };
 
   this.updateProducts = function(id) {
     return queryService.executeQuery('SELECT * FROM products WHERE id = ?', id);
+  };
+
+  this.deleteProducts = function(id) {
+      return queryService.executeQuery('DELETE FROM products WHERE id = ?', id);
   };
 
 };
