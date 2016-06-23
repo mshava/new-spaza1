@@ -3,19 +3,13 @@ exports.show = function (req, res, next) {
 			if (err)
 				return next(err);
 
-		var query = "SELECT DATE_FORMAT(purchase_date,'%d %b %y') as date,purchases.quantity,purchases.cost as price, products.name as name from purchases,products where products.id = purchases.prod_id order by purchases_date DESC";
-		connection.query(query,[], function(err, purchases) {
-			if (err)
-				return next(err);
-				console.log(purchases);
-		var query = 'SELECT * FROM purchases';
-		connection.query(query,[], function(err, purchases) {
+
+		connection.query('SELECT  DATE_FORMAT(purchases.date,\'%d/%m/%Y\') as niceDate ,purchases.qty as quantity,purchases.sales_price as cost, products.name as name from purchases,products where products.id = purchases.prod_id order by niceDate DESC',[], function(err, purchases) {
 			res.render('addPurchases', {
 				purchases : purchases,
 				//suppliers : supply
 					});
 				});
-			});
 		});
 	};
 
@@ -23,7 +17,7 @@ exports.showAdd = function (req, res, next) {
 	req.getConnection(function(err, connection) {
 		if (err)
 			return next(err);
-	var query = "SELECT purchases.id as id,DATE_FORMAT(purchases.purchase_date,'%d %b %y') as date,purchases.quantity as quantity,purchases.cost as price, products.name as product from purchases,products where products.id = purchases.prod_id order by purchases.purchase_date DESC";
+	var query = "SELECT purchases.id as id,DATE_FORMAT(purchases.date,'%d/%m/%Y') AS niceDate, purchases.qty as quantity,purchases.sales_price as cost, products.name as product from purchases,products where products.id = purchases.prod_id order by niceDate DESC";
 	connection.query(query,[], function(err, purchases) {
 		if (err)
 			return next(err);
@@ -43,7 +37,7 @@ exports.showEdit = function (req, res, next) {
 	req.getConnection(function(err, connection) {
 		if (err)
 			return next(err);
-	var query = "SELECT purchases.id as id,DATE_FORMAT(purchases.purchase_date,'%d %b %y') as date,purchases.quantity as quantity,purchases.cost as price, products.name as product from purchases,products where products.id = purchases.prod_id order by purchases.purchase_date DESC";
+	var query = "SELECT purchases.id as id,DATE_FORMAT(purchases.date,'%d/%m/%Y') AS niceDate,purchases.qty as quantity,purchases.sales_price as cost, products.name as product from purchases,products where products.id = purchases.prod_id order by purchases.purchase_date DESC";
 	connection.query(query,[], function(err, purchases) {
 		if (err)
 			return next(err);
@@ -74,7 +68,7 @@ exports.showEdit = function (req, res, next) {
 				if (err)
 					console.log(err);
 			res.redirect('/purchases');
-		});	
+		});
 	});
 };
 
@@ -89,7 +83,7 @@ exports.get = function(req, res, next){
 					if (err){
 						return next(err);
 						}
-		
+
 			connection.query('SELECT * FROM products', [], function(err, products) {
 					if (err)
 						return next(err);

@@ -3,7 +3,7 @@ exports.getSearchCategories = function (req, res, next){
 		if (err)
 			return next(err);
 	var Admin = req.session.user === "Admin";
-	var userRole = req.session.user !== "Admin";	
+	var userRole = req.session.user !== "Admin";
     var searchValue = req.params.searchValue;
     searchValue = "%" + searchValue + "%";
     console.log(searchValue);
@@ -20,7 +20,7 @@ exports.getSearchCategories = function (req, res, next){
     		});
     	});
     });
-};    	
+};
 
 exports.show = function (req, res, next) {
 	req.getConnection(function(err, connection){
@@ -28,9 +28,9 @@ exports.show = function (req, res, next) {
 			return next(err);
 		var query = 'SELECT  * from categories';
 		connection.query(query, [], function(err, results) {
-			if (err) 
+			if (err)
 				return next(err);
-					
+
 			var result = {
 				products : results
 			};
@@ -51,31 +51,31 @@ exports.showmostPopCat = function(req, res, next) {
 		req.getConnection(function(err, connection) {
 			if (err)
 				return next (err);
-					connection.query('SELECT  categories.name, sum(sales.quantity) as totalqty FROM sales INNER JOIN products ON sales.prod_id = products.id INNER JOIN categories ON products.cat_id = categories.id GROUP BY categories.name ORDER BY totalqty DESC LIMIT 0,1; ',[],function (err, results) {
+					connection.query('SELECT  categories.name, sum(sales.no_sold) as totalqty FROM sales INNER JOIN products ON sales.prod_id = products.id INNER JOIN categories ON products.cat_id = categories.id GROUP BY categories.name ORDER BY totalqty DESC LIMIT 0,1; ',[],function (err, results) {
 				if (err){
 				//console.log("...." + results.length);
-					return (err);	
+					return (err);
 				}
 				res.render('popular_category', {
 			    	products : results
-				});	
-			});				
+				});
+			});
 		})
-	};	
+	};
 
 exports.showleastPopCat = function(req, res, next) {
 		req.getConnection(function(err, connection) {
 			if (err)
 			return next (err);
-		        connection.query('SELECT  categories.name, sum(sales.quantity) as totalqty FROM sales INNER JOIN products ON sales.prod_id = products.id INNER JOIN categories ON products.cat_id = categories.id GROUP BY categories.name ORDER BY totalqty ASC LIMIT 0,1; ',[],function (err, results) {
+		        connection.query('SELECT  categories.name, sum(sales.no_sold) as totalqty FROM sales INNER JOIN products ON sales.prod_id = products.id INNER JOIN categories ON products.cat_id = categories.id GROUP BY categories.name ORDER BY totalqty ASC LIMIT 0,1; ',[],function (err, results) {
 				if (err){
 					//console.log("...." + results.length);
-					return (err);	
+					return (err);
 				}
 				res.render('least_category', {
 				    products : results
-				});	
-			});				
+				});
+			});
 		})
 	};
 
@@ -87,7 +87,7 @@ exports.add = function (req, res, next) {
 		if (err){
 			return next(err);
 		}
-		
+
 		// get the data from the user & put it in a map that match your db columns
 		var input = JSON.parse(JSON.stringify(req.body));
 		var data = {

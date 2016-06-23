@@ -69,29 +69,29 @@ exports.delete = function(req, res, next){
 
 exports.get = function (req, res, next) {
     req.getConnection(function(err, connection){
-        if (err){ 
+        if (err){
             return next(err);
         }
         var input = JSON.parse(JSON.stringify(req.body));
         var data = {
-             
+
              name : input.name,
              username : input.username,
-             password : input.password,
              user_role: input.user_role
         };
         //bcrypt the password===
         bcrypt.genSalt(10, function(err, salt) {
         bcrypt.hash(input.password, salt, function(err, hash) {
-        // Store hash in your password DB. 
+        // Store hash in your password DB.
             data.password = hash;
             console.log("onwaba");
             console.log(hash);
         connection.query('insert into users set ?', data, function(err, results) {
+						console.log(results);
             if (err)
             console.log("Error inserting : %s ",err );
           //res.redirect('/addProducts');
-           res.redirect('/signup');
+           res.redirect('/');
           });
     });
     });

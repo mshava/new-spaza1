@@ -1,29 +1,26 @@
-<div id="container">
+<div id="container" >
     <h1>Purchases</h1>
-    <a href="/purchases/add/" class="btn btn-warning btn-lg" role="button"> Add Purchase </a>
-    <table border="2">
-    
-		
+    <a href="/purchases/add/" class="btn btn-warning btn-lg" role="button">Add Purchase</a>
+    <table border="2" style="margin-left:100">
 		<thead>
 			<th data-field="purchases_id">Product</th>
-			<th data-field="purchases_date">Date</th>    
+			<th data-field="purchases_date">Date</th>
 		    <th data-field="cost">Cost</th>
 		    <th data-field="quantity">Quantity</th>
 		    <th data-field="Edit">Edit</th>
 		    <th data-field="Delete">Delete</th>
 		</thead>
 		<tbody>
-			
 				<tr>
 				{{#each purchases}}
-				    <td><h2>{{product}}</h2></td>
-				    <td><h2>{{date}}</h2></td>
+			    <td><h2>{{name}}</h2></td>
+			    <td><h2>{{niceDate}}</h2></td>
 					<td><h2>{{cost}}</h2></td>
 					<td><h2>{{quantity}}</h2></td>
 					<td><a href="/purchases/edit/{{id}}">Edit</a></td>
 					<td><a href="/purchases/delete/{{id}}">Delete</a></td>
 				</tr>
-			{{/purchases}}
+			{{/each}}
 		</tbody>
 
 	</table>
@@ -36,7 +33,7 @@
 	    <h1>Add Purchases</h1>
 	    <form method="POST" action="/purchases/add" >
 	        Date:<input type="date" name="purchase_date"><br />
-            Product Name:<br /> 
+            Product Name:<br />
             <select name="purchases_id">
 	            {{#purchases}}
 	            	<option value="{{id}}">{{product}}</option>
@@ -44,8 +41,15 @@
             </select><br />
 	        Price:<br /><input type="price" name="price"><br />
 	        Quantity:<br /><input type="number" name="qty"><br />
-	      
+
             <br /><br /><input type="submit">
         </form>
 	</div>
 </div>
+{{#purchases}}
+<script>
+console.log({{date}});
+
+
+</script>
+{{/purchases}}

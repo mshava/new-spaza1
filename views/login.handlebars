@@ -2,10 +2,10 @@
 <html lang = "en">
 <head>
 <title>
-signup page
+Login Here
 </title>
 <head>
-<style> 
+<style>
 body{
   background-color: #4e5d6a;
   font-family: "Open Sans", sans-serif;
@@ -103,17 +103,17 @@ button:hover{
 <div id = "container">
     <ul class ="people_list">
         <h1>Login</h1>
-        <form method ="POST" action= "login">
-          
-            Username:<br /><input type="username"name="username" placeholder="username" input value="" class='col-xs-12 form-control'/><br />
-            Password:<br /><input type="password" name="password" value="" placeholder="Password" required autofocus><br />
+        <form method ="POST" action= "/login">
+
+            Username:<br /><input type="username"name="username" class='col-xs-12 form-control'/><br />
+            Password:<br /><input type="password" name="password" required autofocus><br />
             <input type = "submit"/>
         </form>
         <h3>You don't have an account sign up <a href="/signup">here</a><h3>
     </ul>
 </div>
     <script>
-  
+
 
   $('form').on('submit',function(){
   $(this).find('.password').remove();
@@ -142,7 +142,7 @@ button:hover{
       .focus()
       .after('<span class="message">Please fill in your name!</span>');
   }
-  
+
   // Test AJAX
   else{
     $.ajax({
@@ -161,5 +161,3 @@ button:hover{
 </body>
 
 </html>
-
-

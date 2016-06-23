@@ -5,7 +5,7 @@
 signup page
 </title>
 <head>
-<style> 
+<style>
 body{
                 background-color: #4e5d6a;
                 font-family: "Open Sans", sans-serif;
@@ -39,7 +39,7 @@ body{
 
 .text-center{
                 text-decoration-style: wavy;
-                text-decoration-color: red; 
+                text-decoration-color: red;
                 text-align: center;
                 margin-bottom: 1em;
 }
@@ -113,18 +113,18 @@ button:hover{
 <div id="container">
   <ul class="people_list">
     <h1>Register Here</h1>
-      <form method="POST" action="signup">
-        Name:<br /><input name='name'placeholder="name" input value='' /><br />
-        Username:<br /> <input name="username" placeholder="username" input value='{{username}}' /><br />
-       Password:<br /><input type="password" name="password" value="" placeholder="Password" required autofocus><br />
-        <input type='submit'  />
+      <form method="POST" action="/signup">
+        Name:<br /><input name="name"/><br />
+        Username:<br /> <input name="username" /><br />
+       Password:<br /><input type="password" name="password" required autofocus><br />
+        <input type='submit' />
       </form>
-         <h3>You already have an account sign in <a href="/login">here</a><h3>
+         <h3>You already have an account sign in <a href="/">here</a><h3>
   </ul>
     </div>
 
 <script>
-  
+
 
   $('form').on('submit',function(){
   $(this).find('.password').remove();
@@ -153,7 +153,7 @@ button:hover{
       .focus()
       .after('<span class="message">Please fill in your name!</span>');
   }
- /* 
+ /*
   // Test AJAX
   else{
     $.ajax({
@@ -172,5 +172,3 @@ button:hover{
 </body>
 
 </html>
-
-
