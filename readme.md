@@ -34,7 +34,7 @@ You will need the following things properly installed on your computer.
 ## Running / Development
 
 * `node`
-* Visit your app at [http://localhost:3000](http://localhost:3000).
+* Visit your app at [http://localhost:8080](http://localhost:8080).
 
 
 
