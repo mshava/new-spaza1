@@ -56,6 +56,11 @@ exports.userLogin = function(req, res, next) {
                 return next(err)
             connection.query('SELECT * from users WHERE username = ?', [username], function(err, users) {
             var user = users[0];
+            if (user === undefined){
+              return res.redirect('/');
+            }else{
+
+
             console.log(user)
                 bcrypt.compare(pass, user.password, function(err, pass) {
                   console.log(pass);
@@ -67,6 +72,7 @@ exports.userLogin = function(req, res, next) {
                 return res.redirect('/');
                 }
             })
+          };
         })
     })
 };

@@ -1,17 +1,17 @@
 <div id="container">
     <h1>Sales</h1>
-    <a href="sales/add/{{sales_id}}" class="btn btn-success btn-lg" role="button">Add Sale</a>	
+    <a href="sales/add/{{sales_id}}" class="btn btn-success btn-lg" role="button">Add Sale</a>
     <table border="2">
-    
-		
+
+
 		<thead>
 			<th data-field="name">name</th>
-			<th data-field="sale_date">Sale date</th>    
+			<th data-field="sale_date">Sale date</th>
 		    <th data-field="sales">Sales</th>
 		    <th data-field="sales.quantity">Quantity</th>
 		    <th data-field="Edit">Edit</th>
 		    <th data-field="Delete">Delete</th>
-		    
+
 		</thead>
 		<tbody>
 			{{#sales}}
@@ -19,8 +19,8 @@
 				    <td><h2>{{name}}</h2></td>
 				    <td><h2>{{date}}</h2></td>
 					<td><h2>R{{sales}}</h2></td>
-					<td><h2>{{quantity}}</h2></td>
-					
+					<td><h2>{{Quantity}}</h2></td>
+
 					<td><a href="/sales/edit/{{id}}">Edit</a></td>
 					<td><a href="/sales/delete/{{id}}">Delete</a></td>
 				</tr>
@@ -31,5 +31,3 @@
 	{{#empty}}
 		<p>The list is empty</p>
 	{{/empty}}
-
-	

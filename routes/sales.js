@@ -2,16 +2,12 @@ exports.show = function (req, res, next) {
  	req.getConnection(function(err, connection){
  		if (err)
  			return next(err);
- 	
-			connection.query("SELECT DATE_FORMAT(sales.sale_date,'%d %b %y') as date, sales.id as id,sales.quantity as Quantity, sales.prod_id as id,products.name as name,sum(sales.quantity * sales.price) as sales from sales, products WHERE products.id = sales.prod_id group by name order by sum(sales.quantity*sales.price) DESC", [], function(err, results) {
-			connection.query("SELECT sales.id as id, DATE_FORMAT(sales.sale_date,'%d %b %y') as date, sales.id as id,sales.quantity as Quantity, sales.prod_id as prod_id,products.name as name,sum(sales.quantity * sales.price) as sales from sales, products WHERE products.id = sales.prod_id group by name order by sum(sales.quantity*sales.price) DESC", [], function(err, results) {
- 	        	if (err) 
+			connection.query("SELECT DATE_FORMAT(sales_date,\'%d/%m/%Y\') as niceDate , sales.id as id,sales.no_sold as Quantity, sales.prod_id as id,products.name as name,sum(sales.no_sold * sales_price) as sales from sales, products WHERE products.id = sales.prod_id group by name order by sum(sales.no_sold*sales_price) DESC", [], function(err, results) {
+			connection.query("SELECT sales.id as id, DATE_FORMAT(sales_date,'%d %b %y') as niceDate, sales.id as id,no_sold as Quantity, sales.prod_id as prod_id,products.name as name,sum(no_sold * sales_price) as sales from sales, products WHERE products.id = sales.prod_id group by name order by sum(no_sold*sales_price) DESC", [], function(err, results) {
+ 	        	if (err)
  	        		return next(err);
  		    var query = 'SELECT name,id from products';
- 		//var query = 'SELECT sales.prod_id as id,products.name as name from sales,products WHERE products.id = sales.prod_id group by name';
  		    connection.query(query, [], function(err, results1){
- 		    
- 
  				  res.render( 'sales', {
  					sales : results,
  					products : results1
@@ -22,17 +18,14 @@ exports.show = function (req, res, next) {
     });
 };
 exports.showAdd = function (req, res, next) {
- 
  		req.getConnection(function(err, connection){
  		if (err)
  			return next(err);
- 	
-			connection.query("SELECT DATE_FORMAT(sales.sale_date,'%d %b %y') as date, sales.quantity as quantity, sales.prod_id as id,products.name as name,sum(sales.quantity * sales.price) as sales from sales, products WHERE products.id = sales.prod_id group by name order by sum(sales.quantity*sales.price) DESC", [], function(err, results) {
-			connection.query("SELECT sales.id as id, DATE_FORMAT(sales.sale_date,'%d %b %y') as date, sales.quantity as Quantity, sales.prod_id as prod_id,products.name as name,sum(sales.quantity * sales.price) as sales from sales, products WHERE products.id = sales.prod_id group by name order by sum(sales.quantity*sales.price) DESC", [], function(err, results) {
- 	        	if (err) 
+			connection.query("SELECT DATE_FORMAT(sales_date,'%d %b %y') as niceDate, no_sold as quantity, sales.prod_id as id,products.name as name,sum(no_sold * sales_price) as sales from sales, products WHERE products.id = sales.prod_id group by name order by sum(no_sold*sales_price) DESC", [], function(err, results) {
+			connection.query("SELECT sales.id as id, DATE_FORMAT(sales.sales_date,'%d %b %y') as date, no_sold as Quantity, sales.prod_id as prod_id,products.name as name,sum(no_sold * sales_price) as sales from sales, products WHERE products.id = sales.prod_id group by name order by sum(no_sold*sales_price) DESC", [], function(err, results) {
+ 	        	if (err)
  	        		return next(err);
  		var query = 'SELECT name,id from products';
- 		//var query = 'SELECT sales.prod_id as id,products.name as name from sales,products WHERE products.id = sales.prod_id group by name';
  		connection.query(query, [], function(err, results1){
  				res.render( 'addSaleScreen', {
  					sales : results,
@@ -44,17 +37,14 @@ exports.showAdd = function (req, res, next) {
 	});
  };
 exports.showEdit = function (req, res, next) {
- 
  		req.getConnection(function(err, connection){
  		if (err)
  			return next(err);
- 	
-			connection.query("SELECT DATE_FORMAT(sales.sale_date,'%d %b %y') as date, sales.quantity as Quantity, sales.prod_id as id,products.name as name,sum(sales.quantity * sales.price) as sales from sales, products WHERE products.id = sales.prod_id group by name order by sum(sales.quantity*sales.price) DESC", [], function(err, results) {
-			connection.query("SELECT sales.id, DATE_FORMAT(sales.sale_date,'%d %b %y') as date, sales.quantity as Quantity, sales.prod_id as prod_id ,products.name as name,sum(sales.quantity * sales.price) as sales from sales, products WHERE products.id = sales.prod_id group by name order by sum(sales.quantity*sales.price) DESC", [], function(err, results) {
- 	        	if (err) 
+			connection.query("SELECT DATE_FORMAT(sales.sales_date,'%d %b %y') as date, no_sold as Quantity, sales.prod_id as id,products.name as name,sum(no_sold * sales_price) as sales from sales, products WHERE products.id = sales.prod_id group by name order by sum(no_sold*sales_price) DESC", [], function(err, results) {
+			connection.query("SELECT sales.id, DATE_FORMAT(sales.sales_date,'%d %b %y') as date, no_sold as Quantity, sales.prod_id as prod_id ,products.name as name,sum(no_sold * sales_price) as sales from sales, products WHERE products.id = sales.prod_id group by name order by sum(no_sold*sales_price) DESC", [], function(err, results) {
+ 	        	if (err)
  	        		return next(err);
  		var query = 'SELECT name,id from products';
- 		//var query = 'SELECT sales.prod_id as id,products.name as name from sales,products WHERE products.id = sales.prod_id group by name';
  		connection.query(query, [], function(err, results1){
  				res.render( 'editSales', {
  					sales : results,
@@ -80,13 +70,11 @@ exports.addsale = function (req, res, next) {
  		connection.query('insert into sales set ?', data, function(err, results) {
  			if (err)
  			    console.log("Error inserting : %s ",err );
- 
  			res.redirect('/sales');
  		});
  	});
 };
- 
- 
+
  exports.get = function(req, res, next){
  	var id = req.params.id;
  	var input = JSON.parse(JSON.stringify(req.body));
@@ -105,20 +93,16 @@ exports.addsale = function (req, res, next) {
  		});
  	});
  };
- 
  exports.salesUpdate = function(req, res, next){
  	var data = JSON.parse(JSON.stringify(req.body));
  	var id = req.params.id;
  	var input = JSON.parse(JSON.stringify(req.body));
  	     var data = {
-			prod_id: input.id,
-			sale_date: input.date,
-			quantity: input.quantity,
-			price : input.price,
-			name: input.name
-			//date: input.date,
-			//quantity: input.quantity,
-			//price : input.price
+  			prod_id: input.id,
+  			sale_date: input.date,
+  			quantity: input.quantity,
+  			price : input.price,
+  			name: input.name
  		};
  	req.getConnection(function(err, connection){
  		connection.query('UPDATE sales SET ? WHERE id = ?', [data, id], function(err, rows){
@@ -136,44 +120,25 @@ exports.addsale = function (req, res, next) {
  	        if(err){
  	            console.log("Error Selecting : %s ",err );
  	            return res.redirect('/categories?error=true&msg=category_linked');
- 		    }
- 		    else{
+ 		    }else{
  	        	res.redirect('/sales');
  	        }
  		});
  	});
- }; 
+ };
 exports.show = function (req, res, next) {
  	req.getConnection(function(err, connection){
  		if (err)
  			return next(err);
- 	
-			connection.query("SELECT DATE_FORMAT(sales.sale_date,'%d %b %y') as date, sales.id as id,sales.quantity as Quantity, sales.prod_id as id,products.name as name,sum(sales.quantity * sales.price) as sales from sales, products WHERE products.id = sales.prod_id group by name order by sum(sales.quantity*sales.price) DESC", [], function(err, results) {
-			connection.query("SELECT sales.id as id, DATE_FORMAT(sales.sale_date,'%d %b %y') as date, sales.id as id,sales.quantity as Quantity, sales.prod_id as prod_id,products.name as name,sum(sales.quantity * sales.price) as sales from sales, products WHERE products.id = sales.prod_id group by name order by sum(sales.quantity*sales.price) DESC", [], function(err, results) {
- 	        	if (err) 
+			connection.query("SELECT DATE_FORMAT(sales.sales_date,'%d %b %y') as niceDate, sales.id as id,no_sold as Quantity, sales.prod_id as id,products.name as name,sum(no_sold * sales_price) as sales from sales, products WHERE products.id = sales.prod_id group by name order by sum(no_sold*sales_price) DESC", [], function(err, results) {
+			connection.query("SELECT sales.id as id, DATE_FORMAT(sales.sales_date,'%d %b %y') as date, sales.id as id,no_sold as Quantity, sales.prod_id as prod_id,products.name as name,sum(no_sold * sales_price) as sales from sales, products WHERE products.id = sales.prod_id group by name order by sum(no_sold*sales_price) DESC", [], function(err, results) {
+ 	        	if (err)
  	        		return next(err);
- 		var query = 'SELECT name,id from products';
- 		//var query = 'SELECT sales.prod_id as id,products.name as name from sales,products WHERE products.id = sales.prod_id group by name';
- 		connection.query(query, [], function(err, results1){
- 		    //connection.query(query, [], function(err, results) {
- 			//if (err) 
- 				//return next(err);
- 				//console.log(products);
- 
- 			
- 			
- 
- 			//console.log(req.query);
- 			//console.log("--> " + req.query);
- 
- 
- 			//if(req.query.error === "true" ){
- 				//result.error = "Can't delete category..."
- 			//}
- 
- 				res.render( 'sales', {
- 					sales : results,
- 					products : results1
+           		var query = 'SELECT name,id from products';
+           		connection.query(query, [], function(err, results1){
+	             res.render( 'sales', {
+   					sales : results,
+   					products : results1
  				});
  			});
  		});
@@ -181,17 +146,14 @@ exports.show = function (req, res, next) {
 	});
 };
 exports.showAdd = function (req, res, next) {
- 
  		req.getConnection(function(err, connection){
  		if (err)
  			return next(err);
- 	
-			connection.query("SELECT DATE_FORMAT(sales.sale_date,'%d %b %y') as date, sales.quantity as Quantity, sales.prod_id as id,products.name as name,sum(sales.quantity * sales.price) as sales from sales, products WHERE products.id = sales.prod_id group by name order by sum(sales.quantity*sales.price) DESC", [], function(err, results) {
-			connection.query("SELECT sales.id as id, DATE_FORMAT(sales.sale_date,'%d %b %y') as date, sales.quantity as Quantity, sales.prod_id as prod_id,products.name as name,sum(sales.quantity * sales.price) as sales from sales, products WHERE products.id = sales.prod_id group by name order by sum(sales.quantity*sales.price) DESC", [], function(err, results) {
- 	        	if (err) 
+			connection.query("SELECT DATE_FORMAT(sales.sales_date,'%d %b %y') as date, no_sold as Quantity, sales.prod_id as id,products.name as name,sum(no_sold * sales_price) as sales from sales, products WHERE products.id = sales.prod_id group by name order by sum(no_sold*sales_price) DESC", [], function(err, results) {
+			connection.query("SELECT sales.id as id, DATE_FORMAT(sales.sales_date,'%d %b %y') as niceDate, no_sold as Quantity, sales.prod_id as prod_id,products.name as name,sum(no_sold * sales_price) as sales from sales, products WHERE products.id = sales.prod_id group by name order by sum(no_sold*sales_price) DESC", [], function(err, results) {
+ 	        	if (err)
  	        		return next(err);
  		var query = 'SELECT name,id from products';
- 		//var query = 'SELECT sales.prod_id as id,products.name as name from sales,products WHERE products.id = sales.prod_id group by name';
  		connection.query(query, [], function(err, results1){
  				res.render( 'addSaleScreen', {
  					sales : results,
@@ -203,14 +165,12 @@ exports.showAdd = function (req, res, next) {
 });
 };
 exports.showEdit = function (req, res, next) {
- 
  		req.getConnection(function(err, connection){
  		if (err)
  			return next(err);
- 	
-			connection.query("SELECT DATE_FORMAT(sales.sale_date,'%d %b %y') as date, sales.quantity as Quantity, sales.prod_id as id,products.name as name,sum(sales.quantity * sales.price) as sales from sales, products WHERE products.id = sales.prod_id group by name order by sum(sales.quantity*sales.price) DESC", [], function(err, results) {
-			connection.query("SELECT sales.id, DATE_FORMAT(sales.sale_date,'%d %b %y') as date, sales.quantity as Quantity, sales.prod_id as prod_id ,products.name as name,sum(sales.quantity * sales.price) as sales from sales, products WHERE products.id = sales.prod_id group by name order by sum(sales.quantity*sales.price) DESC", [], function(err, results) {
- 	        	if (err) 
+			connection.query("SELECT DATE_FORMAT(sales.sales_date,'%d %b %y') as date, no_sold as Quantity, sales.prod_id as id,products.name as name,sum(no_sold * sales_price) as sales from sales, products WHERE products.id = sales.prod_id group by name order by sum(no_sold*sales_price) DESC", [], function(err, results) {
+			connection.query("SELECT sales.id, DATE_FORMAT(sales.sales_date,'%d %b %y') as date, no_sold as Quantity, sales.prod_id as prod_id ,products.name as name,sum(no_sold * sales_price) as sales from sales, products WHERE products.id = sales.prod_id group by name order by sum(no_sold*sales_price) DESC", [], function(err, results) {
+ 	        	if (err)
  	        		return next(err);
  		var query = 'SELECT name,id from products';
  		//var query = 'SELECT sales.prod_id as id,products.name as name from sales,products WHERE products.id = sales.prod_id group by name';
@@ -239,13 +199,10 @@ exports.addsale = function (req, res, next) {
  		connection.query('insert into sales set ?', data, function(err, results) {
  			if (err)
  			    console.log("Error inserting : %s ",err );
- 
  			res.redirect('/sales');
  		});
  	});
 };
- 
- 
 exports.get = function(req, res, next){
  	var id = req.params.id;
  	var input = JSON.parse(JSON.stringify(req.body));
@@ -264,7 +221,6 @@ exports.get = function(req, res, next){
  		});
  	});
 };
- 
 exports.salesUpdate = function(req, res, next){
  	var data = JSON.parse(JSON.stringify(req.body));
  	var id = req.params.id;
@@ -275,9 +231,6 @@ exports.salesUpdate = function(req, res, next){
 			quantity: input.quantity,
 			price : input.price,
 			name: input.name
-			//date: input.date,
-			//quantity: input.quantity,
-			//price : input.price
  		};
  	req.getConnection(function(err, connection){
  		connection.query('UPDATE sales SET ? WHERE id = ?', [data, id], function(err, rows){
