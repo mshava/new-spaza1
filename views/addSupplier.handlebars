@@ -1,10 +1,10 @@
 <div id="container">
     <h1>Pur</h1>
-     
+
     <table>
 		{{#suppliers}}
 		<tr>
-		    <td><h2>{{name}}</h2></td> 
+		    <td><h2>{{name}}</h2></td>
 			<td><h2>{{description}}</h2></td>
 			<td><a href="/addProducts/edit/{{id}}">Edit</a></td>
 			<td><a href="/addProducts/Delete/{{id}}">Delete</a></td>
@@ -14,7 +14,7 @@
 	{{#empty}}
 		<p>The list is empty</p>
 	{{/empty}}
-	
+
 </div>
 
 <table class="table table-striped custab">
@@ -85,11 +85,7 @@
 <input type="date" class="form-control" name="Purchase_date" placeholder="yyyy-mm-dd" required/>
 </div>
 </div>
-<input type="submit" onclick="myFunction()">
+<input type="submit">
 </form>
+
 </div>
-<script>
-function myFunction() {
-alert("New purchase added");
-}
-</script>

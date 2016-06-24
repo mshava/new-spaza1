@@ -3,11 +3,11 @@
 
     <head>
         <style>
-          #text:hover { 
+          #text:hover {
                 background-color:#9933FF;
             }
             #sa{
-                color:#9933FF;       
+                color:#9933FF;
             }
             #head{
                 background-image: url("./header2.png");
@@ -40,7 +40,7 @@
                 color:#FF0000;
                 background-color:#CCFF00;
             }
-  
+
 
         </style>
 
@@ -51,19 +51,9 @@
             <meta name="author" content="">
 
             <title>NELISSA SPAZA SHOP</title>
-
-            <!-- Bootstrap Core CSS -->
             <link href="/css/bootstrap.min.css" rel="stylesheet">
             <link href="/style.css" rel="stylesheet">
-            <!-- Custom CSS -->
             <link href="/css/simple-sidebar.css" rel="stylesheet">
-
-            <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-            <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-            <!--[if lt IE 9]>
-                <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-                <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-            <![endif]-->
     </head>
     <body>
         <div id="wrapper">
@@ -84,11 +74,6 @@
                             <li>
                             <a id = "text" href="/categories"><strong>Categories</strong></a>
                             </li>
-                            <li>
-                                <a id ="text" href="/view_chart"><strong>Categories Graph</strong></a>
-                            </li>
-
-
                             <li>
                             <a id = "text" href="/popular_category"><strong>Most Popular Categories</strong></a>
                             </li>
@@ -129,10 +114,7 @@
                             <li>
                             <a id ="text"  href="/sales"><strong>Sales</strong></a>
                             </li>
-                            <!--<li>
-                            <a id ="text"  href="/addPurchases"><strong>Add Purchases</strong></a>
-                            </li>-->
-                        </ul>
+                            </ul>
                         <li>
                             <a id ="text"  href="/purchases"><strong>Purchases</strong></a>
                             </li>
@@ -149,15 +131,11 @@
                             <a id ="text"  href="/logout"><strong>Logout</strong></a>
                             </li>
                         </li>
-                        <li>
-                            <a id ="text"  href="/data_visuals"><strong>Visual Data Presentation</strong></a>
-                            </li>
                         </li>
-                        
+
 
             </div>
-            <!-- /#sidebar-wrapper -->
-            <!-- Page Content -->
+
             <div id="page-content-wrapper">
                 <div class="container-fluid">
                     <div class="row">
@@ -179,13 +157,17 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-        <script src="/js/jquery.js"></script>
+        <script src="/js/jquery-3.0.0.min.js"></script>
 
         <!-- Bootstrap Core JavaScript -->
         <script src="/js/bootstrap.min.js"></script>
         <script src="/js/ajax.js"></script>
+              <script>
+          $("#menu-toggle").click(function(e) {
+              e.preventDefault();
+              $("#wrapper").toggleClass("toggled");
+          });
+          </script>
 
-       
     </body>
 </html>
-
