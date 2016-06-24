@@ -59,8 +59,6 @@ exports.userLogin = function(req, res, next) {
             if (user === undefined){
               return res.redirect('/');
             }else{
-
-
             console.log(user)
                 bcrypt.compare(pass, user.password, function(err, pass) {
                   console.log(pass);
