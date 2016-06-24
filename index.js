@@ -50,9 +50,15 @@ app.post("/login",login.userLogin);
 app.get("/signup", function (req, res){
   res.render("signup", {layout:false});
 });
+
 app.post("/signup", login.signup);
 app.get("/home",users.checkUser, function (req, res){
   res.render("index");
+});
+
+app.get('/logout', function (req, res) {
+  delete req.session.user;
+  res.redirect('/')
 });
 
 app.get("/Products",users.checkUser,products.showProductList);
@@ -121,18 +127,6 @@ app.get("/view_chart", function (req, res){
 app.get("/data_visuals", function (req, res){
   res.render("data_visuals",{layout:false});
 });
-/*
-app.get("/login",login.get);
-app.post("/login", login.userLogin);
-
-app.get('/logout', function (req, res) {
-  delete req.session.user;
-  res.redirect('/')
-});
-*/
-
-
-
 
 var port = process.env.PORT || 8080;
     //start the server
