@@ -4,8 +4,8 @@
 		<table "table">
 			{{#suppliers}}
 			<tr>
-			<td><h2>{{supplier}}</h2></td>
-			<td><h2>{{description}}</h2></td>
+			<td><h2>{{shop}}</h2></td>
+			<td><h2>{{item}}</h2></td>
 			<td><a href="/suppliers_edit/{{id}}">Edit</a></td>
 			<td><a href="/suppliers/delete/{{id}}">Delete</a></td>
 			<td><a href='/suppliers/add/{{supplier}}'>Add</a><td>
@@ -33,7 +33,7 @@
 <option value="{{id}}">{{name}}</option>
 {{/categories}}
 </select>-->
-			<br /><br /><input type="add">
+			<br /><br /><input type="submit">
 		</form>
 </div>
 </div>
