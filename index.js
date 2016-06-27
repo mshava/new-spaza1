@@ -119,6 +119,7 @@ app.get("/signup/delete:id",signup.delete);
 app.get("/users", users.checkUser,users.showUsers);
 app.get("/users/edit/:id",users.checkUser,users.get);
 app.post("/users/update/:id",users.checkUser,users.update);
+app.get("/users/delete/:id",users.checkUser, users.delete);
 
 app.get("/view_chart", function (req, res){
   res.render("view_chart");
