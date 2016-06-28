@@ -4,7 +4,7 @@ exports.show = function (req, res, next) {
 				return next(err);
 
 
-		connection.query('SELECT  DATE_FORMAT(purchases.date,\'%d/%m/%Y\') as niceDate ,purchases.qty as quantity,purchases.sales_price as cost, products.name as name from purchases,products where products.id = purchases.prod_id order by niceDate DESC',[], function(err, purchases) {
+		connection.query('SELECT purchases.id as id,DATE_FORMAT(purchases.date,\'%d/%m/%Y\') as niceDate ,purchases.qty as quantity,purchases.sales_price as cost, products.name as name from purchases,products where products.id = purchases.prod_id order by niceDate DESC',[], function(err, purchases) {
 			res.render('addPurchases', {
 				purchases : purchases,
 				//suppliers : supply
@@ -37,7 +37,7 @@ exports.showEdit = function (req, res, next) {
 	req.getConnection(function(err, connection) {
 		if (err)
 			return next(err);
-	var query = "SELECT purchases.id as id,DATE_FORMAT(purchases.date,'%d/%m/%Y') AS niceDate,purchases.qty as quantity,purchases.sales_price as cost, products.name as product from purchases,products where products.id = purchases.prod_id order by purchases.purchase_date DESC";
+	var query = "SELECT purchases.id as id,DATE_FORMAT(purchases.date,'%d/%m/%Y') AS niceDate,purchases.qty as quantity,purchases.sales_price as cost, products.name as product from purchases,products where products.id = purchases.prod_id order by niceDate DESC";
 	connection.query(query,[], function(err, purchases) {
 		if (err)
 			return next(err);
